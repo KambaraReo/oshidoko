@@ -34,9 +34,9 @@ jobs:
       - run:
           name: Setup database
           command: bundle exec rails db:migrate
-      - run:
-          name: Compile webpacker
-          command: bundle exec rake assets:precompile
+      # - run:
+      #     name: Compile webpacker
+      #     command: bundle exec rake assets:precompile
       - run:
           name: Run rspec
           command: bundle exec rspec
