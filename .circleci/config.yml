@@ -37,7 +37,7 @@ jobs:
       - run:
           name: yarn Install
           command: yarn install
-      - run: bundle exec bin/webpack --ignore-engine
+      - run: bundle exec bin/webpack
       - run:
           name: Run rspec
           command: bundle exec rspec
