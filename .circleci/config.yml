@@ -1,0 +1,105 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.1.2
+  heroku: circleci/heroku@2.0
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.7
+    working_directory: ~/oshidoko
+    steps:
+      - checkout
+      - ruby/install-deps
+
+  rspec:
+    docker:
+    - image: circleci/ruby:2.7
+    - image: circleci/mysql:5.5
+      environment:
+        MYSQL_ROOT_PASSWORD: password
+        MYSQL_DATABASE: myapp_test
+        MYSQL_USER: root
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      MYAPP_DATABASE_HOST: "127.0.0.1"
+      RAILS_ENV: test
+    resource_class: small
+    working_directory: ~/oshidoko
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: Setup database
+          command: bundle exec rails db:migrate
+      - run:
+          name: Run rspec
+          command: bundle exec rspec
+
+  rubocop:
+    docker:
+      - image: circleci/ruby:2.7
+      - image: circleci/mysql:5.5
+        environment:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: myapp_test
+          MYSQL_USER: root
+      environment:
+        BUNDLE_JOBS: "3"
+        BUNDLE_RETRY: "3"
+        MYAPP_DATABASE_HOST: "127.0.0.1"
+        RAILS_ENV: test
+    resource_class: small
+    working_directory: ~/oshidoko
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - gemfiles-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gemfiles-{{ .Branch }}-
+            - gemfiles-main-
+      - run: bundle config --local path vendor/bundle
+      - run:
+          name: bundle install
+          command: bundle check || bundle install --jobs=8 --clean
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop --parallel
+      - save_cache:
+          key: gemfiles-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+  # heroku_deploy:
+  #   executor: heroku/default
+  #   resource_class: small
+  #   working_directory: ~/oshidoko
+  #   steps:
+  #     - checkout
+  #     - heroku/install
+  #     - run:
+  #         name: Deploy
+  #         command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:main
+  #     - run:
+  #         name: Run post-deploy tasks
+  #         command: |
+  #           heroku run bin/rails db:migrate -a $HEROKU_APP_NAME
+
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - build
+      - rspec:
+          requires:
+            - build
+      - rubocop:
+          requires:
+            - build
+      # - heroku_deploy:
+      #     requires:
+      #       - build
+      #       - rspec
+      #       - rubocop
