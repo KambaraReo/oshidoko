@@ -7,7 +7,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7
+      - image: circleci/ruby:2.7-node-browsers
     working_directory: ~/oshidoko
     steps:
       - checkout
@@ -15,7 +15,7 @@ jobs:
 
   rspec:
     docker:
-    - image: circleci/ruby:2.7
+    - image: circleci/ruby:2.7-node-browsers
     - image: circleci/mysql:5.5
       environment:
         MYSQL_ROOT_PASSWORD: password
