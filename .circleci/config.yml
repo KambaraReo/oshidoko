@@ -33,7 +33,7 @@ jobs:
       - ruby/install-deps
       - run:
           name: Setup database
-          command: bundle exec rake db:create db:schema:load
+          command: bundle exec rails db:migrate
       - run:
           name: Run rspec
           command: bundle exec rspec
