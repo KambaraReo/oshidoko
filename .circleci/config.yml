@@ -7,7 +7,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7-node-browsers
+      - image: cimg/ruby:2.7-browsers
     working_directory: ~/oshidoko
     steps:
       - checkout
@@ -15,7 +15,7 @@ jobs:
 
   rspec:
     docker:
-    - image: circleci/ruby:2.7-node-browsers
+    - image: cimg/ruby:2.7-browsers
     - image: circleci/mysql:5.5
       environment:
         MYSQL_ROOT_PASSWORD: password
@@ -34,16 +34,17 @@ jobs:
       - run:
           name: Setup database
           command: bundle exec rails db:migrate
-      # - run:
-      #     name: Compile webpacker
-      #     command: bundle exec rake assets:precompile
+      - run:
+          name: Install yarn
+          command: yarn install
+      - run: bundle exec bin/webpack
       - run:
           name: Run rspec
           command: bundle exec rspec
 
   rubocop:
     docker:
-    - image: circleci/ruby:2.7-node-browsers
+    - image: cimg/ruby:2.7-browsers
     - image: circleci/mysql:5.5
       environment:
         MYSQL_ROOT_PASSWORD: password
