@@ -9,7 +9,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.lis
 apt-get update && apt-get install -y yarn
 
 # nodejsをインストール
-RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
+RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && apt-get install -y nodejs
 
 # コンテナ内にmyappディレクトリを作成
 RUN mkdir /myapp
