@@ -1,6 +1,6 @@
 FROM ruby:2.7.5
 
-# ENV RAILS_ENV=production
+ENV RAILS_ENV=production
 
 # yarnをインストール
 RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
