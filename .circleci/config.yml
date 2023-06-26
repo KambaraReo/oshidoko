@@ -78,7 +78,7 @@ jobs:
 
   heroku_deploy:
     docker:
-      - image; circleci/ruby:2.7-node-browsers
+      - image: circleci/ruby:2.7-node-browsers
     steps:
       - checkout
       - setup_remote_docker:
