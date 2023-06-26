@@ -32,14 +32,14 @@ jobs:
       - checkout
       - ruby/install-deps
       - run:
-          name: Setup database
+          name: database setup
           command: bundle exec rails db:migrate
       - run:
-          name: yarn Install
+          name: yarn install
           command: yarn install
       - run: bundle exec bin/webpack
       - run:
-          name: Run rspec
+          name: run rspec
           command: bundle exec rspec
 
   rubocop:
@@ -69,7 +69,7 @@ jobs:
           name: bundle install
           command: bundle check || bundle install --jobs=8 --clean
       - run:
-          name: Run rubocop
+          name: run rubocop
           command: bundle exec rubocop --parallel
       - save_cache:
           key: gemfiles-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
@@ -82,12 +82,26 @@ jobs:
     working_directory: ~/oshidoko
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 19.03.13
       - heroku/install
       - run:
-          name: Deploy
-          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:main
+          name: heroku login
+          command: heroku container:login
       - run:
-          name: Run post-deploy tasks
+          name: build docker image
+          command: docker buildx build . --platform linux/amd64 -t $HEROKU_APP_NAME
+      - run:
+          name: add new tag for docker image
+          command: docker tag $HEROKU_APP_NAME registry.heroku.com/$HEROKU_APP_NAME/web
+      - run:
+          name: push docker image
+          command: docker push registry.heroku.com/$HEROKU_APP_NAME/web
+      - run:
+          name: release docker image
+          command: heroku container:release web -a $HEROKU_APP_NAME
+      - run:
+          name: run post-deploy tasks
           command: |
             heroku run bin/rails db:migrate -a $HEROKU_APP_NAME
 
