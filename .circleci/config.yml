@@ -77,8 +77,9 @@ jobs:
             - vendor/bundle
 
   heroku_deploy:
-    docker:
-      - image: circleci/ruby:2.7-node-browsers
+    executor: heroku/default
+    resource_class: small
+    working_directory: ~/oshidoko
     steps:
       - checkout
       - setup_remote_docker:
