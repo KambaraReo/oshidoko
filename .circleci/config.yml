@@ -90,7 +90,7 @@ jobs:
           command: heroku container:login
       - run :
           name: "build and push docker image"
-          command: heroku container:push web
+          command: heroku container:push web -a $HEROKU_APP_NAME
       - run:
           name: build docker image
           command: docker buildx build . --platform linux/amd64 -t $HEROKU_APP_NAME
