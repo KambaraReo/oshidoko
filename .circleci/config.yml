@@ -77,13 +77,12 @@ jobs:
             - vendor/bundle
 
   heroku_deploy:
-    executor: heroku/default
-    resource_class: small
-    working_directory: ~/oshidoko
+    docker:
+      - image: circleci/ruby:2.7-node-browsers
     steps:
       - checkout
       - setup_remote_docker:
-          version: 19.03.13
+          version: 23.0.5
       - heroku/install
       - run:
           name: heroku login
