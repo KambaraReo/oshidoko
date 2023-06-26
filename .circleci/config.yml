@@ -76,20 +76,20 @@ jobs:
           paths:
             - vendor/bundle
 
-  # heroku_deploy:
-  #   executor: heroku/default
-  #   resource_class: small
-  #   working_directory: ~/oshidoko
-  #   steps:
-  #     - checkout
-  #     - heroku/install
-  #     - run:
-  #         name: Deploy
-  #         command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:main
-  #     - run:
-  #         name: Run post-deploy tasks
-  #         command: |
-  #           heroku run bin/rails db:migrate -a $HEROKU_APP_NAME
+  heroku_deploy:
+    executor: heroku/default
+    resource_class: small
+    working_directory: ~/oshidoko
+    steps:
+      - checkout
+      - heroku/install
+      - run:
+          name: Deploy
+          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:main
+      - run:
+          name: Run post-deploy tasks
+          command: |
+            heroku run bin/rails db:migrate -a $HEROKU_APP_NAME
 
 workflows:
   version: 2.1
@@ -102,8 +102,8 @@ workflows:
       - rubocop:
           requires:
             - build
-      # - heroku_deploy:
-      #     requires:
-      #       - build
-      #       - rspec
-      #       - rubocop
+      - heroku_deploy:
+          requires:
+            - build
+            - rspec
+            - rubocop
