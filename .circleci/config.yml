@@ -103,6 +103,10 @@ jobs:
       - run:
           name: database setup
           command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
+      - run:
+          name: yarn install
+          command: yarn install
+      - run: bundle exec bin/webpack
 
 workflows:
   version: 2.1
