@@ -83,7 +83,6 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: 23.0.5
       - heroku/install
       - run:
           name: heroku login
