@@ -101,9 +101,8 @@ jobs:
           name: release docker image
           command: heroku container:release web -a $HEROKU_APP_NAME
       - run:
-          name: run post-deploy tasks
-          command: |
-            heroku run bin/rails db:migrate -a $HEROKU_APP_NAME
+          name: database setup
+          command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
 
 workflows:
   version: 2.1
