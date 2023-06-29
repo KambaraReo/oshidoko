@@ -19,6 +19,7 @@ AllCops:
   - 'Gemfile'
   - 'vendor/**/*'
   - '.git/**/*'
+  - 'spec/spec_helper.rb'
 
 Rails/ActiveRecordCallbacksOrder: # new in 2.7
   Enabled: true
