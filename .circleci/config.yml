@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@1.1.2
-  heroku: circleci/heroku@2.0
+  # heroku: circleci/heroku@2.0
 
 jobs:
   build:
@@ -76,33 +76,33 @@ jobs:
           paths:
             - vendor/bundle
 
-  heroku_deploy:
-    executor: heroku/default
-    resource_class: small
-    working_directory: ~/oshidoko
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 20.10.18
-      - heroku/install
-      - run:
-          name: heroku login
-          command: heroku container:login
-      - run:
-          name: build docker image
-          command: docker buildx build . --platform linux/amd64 -t $HEROKU_APP_NAME
-      - run:
-          name: add new tag for docker image
-          command: docker tag $HEROKU_APP_NAME registry.heroku.com/$HEROKU_APP_NAME/web
-      - run:
-          name: push docker image
-          command: docker push registry.heroku.com/$HEROKU_APP_NAME/web
-      - run:
-          name: release docker image
-          command: heroku container:release web -a $HEROKU_APP_NAME
-      - run:
-          name: database setup
-          command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
+  # heroku_deploy:
+  #   executor: heroku/default
+  #   resource_class: small
+  #   working_directory: ~/oshidoko
+  #   steps:
+  #     - checkout
+  #     - setup_remote_docker:
+  #         version: 20.10.18
+  #     - heroku/install
+  #     - run:
+  #         name: heroku login
+  #         command: heroku container:login
+  #     - run:
+  #         name: build docker image
+  #         command: docker buildx build . --platform linux/amd64 -t $HEROKU_APP_NAME
+  #     - run:
+  #         name: add new tag for docker image
+  #         command: docker tag $HEROKU_APP_NAME registry.heroku.com/$HEROKU_APP_NAME/web
+  #     - run:
+  #         name: push docker image
+  #         command: docker push registry.heroku.com/$HEROKU_APP_NAME/web
+  #     - run:
+  #         name: release docker image
+  #         command: heroku container:release web -a $HEROKU_APP_NAME
+  #     - run:
+  #         name: database setup
+  #         command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
 
 workflows:
   version: 2.1
@@ -115,8 +115,8 @@ workflows:
       - rubocop:
           requires:
             - build
-      - heroku_deploy:
-          requires:
-            - build
-            - rspec
-            - rubocop
+      # - heroku_deploy:
+      #     requires:
+      #       - build
+      #       - rspec
+      #       - rubocop
