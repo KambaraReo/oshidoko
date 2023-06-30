@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  root 'samples#index'
+  root 'homes#index'
+  get 'homes/index'
   get 'samples/index'
 end
