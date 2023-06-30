@@ -1,0 +1,100 @@
+// ユーザー登録
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.row {
+  width: 70%;
+  border-radius: 0.8em;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgb(144, 144, 144);
+  padding: 40px;
+}
+
+.row > h3 {
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-bottom: 25px;
+}
+
+.sign-up-form {
+  color: #535353;
+  font-size: 14px;
+  font-weight: 400;
+  margin: auto;
+}
+
+.sign-up-form .field {
+  height: 85px;
+}
+
+.sign-up-form .field input {
+  width: 100%;
+  border: 1px solid rgb(142, 142, 142);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.sign-up-form input::placeholder {
+  font-size: 12px;
+ }
+
+.sign-up-form .error-message {
+  color: red;
+  font-size: smaller;
+}
+
+.sign-up-form .required > label:first-of-type::after {
+  content: "*";
+  color: rgb(246, 27, 27);
+  font-size: 12px;
+  margin-left: 2px;
+  vertical-align: top;
+}
+
+.sign-up-form .actions {
+  text-align: center;
+}
+
+.sign-up-form .actions input {
+  padding: 0 1.8em;
+  min-width: 80%;
+  line-height: 3.5;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  border-radius: 2em;
+  border: none;
+  background: linear-gradient(to right, #61c2e9 0%, #51ebb8 100%);
+  color: #ffffff;
+  transition: 0.4s;
+  margin: auto;
+  cursor: pointer;
+}
+
+.sign-up-form .actions input:hover {
+  box-shadow: 5px 5px 10px #afafaf;
+}
+
+.sign-up-form .log-in-actions {
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media screen and (max-width: 544px) {
+  .row {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .sign-up-form .field {
+    height: auto;
+  }
+
+  .sign-up-form .actions input {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,19 @@
+body {
+  @import url('https://cdn.jsdelivr.net/npm/yakuhanjp@3.3.1/dist/css/yakuhanjp.min.css');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto&display=swap');
+  font-family: YakuHanJP, -apple-system, BlinkMacSystemFont, "Noto Sans JP", "Roboto", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Arial", sans-serif !important;
+  color: #535353;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  word-break: break-word;
+  background-image: image-url("background.svg")
+}
+
+a {
+  text-decoration: none !important;
+}
+
+footer {
+  background-color: rgb(193, 193, 193);
+}

@@ -29,10 +29,22 @@ module Myapp
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = 'Tokyo'
+    config.i18n.default_locale = :ja
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # field_with_errorsによるレイアウト崩れを防ぐ
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end
+
+module RailsDevise
+  class Application < Rails::Application
+    config.time_zone = 'Tokyo'
+    config.i18n.default_locale = :ja
+  end
+end
+
