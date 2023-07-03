@@ -1504,6 +1504,8 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffi (1.15.5)
+    font-awesome-sass (6.4.0)
+      sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -1719,6 +1721,7 @@ DEPENDENCIES
   devise
   devise-i18n
   factory_bot_rails
+  font-awesome-sass
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mysql2 (~> 0.5)

@@ -59,3 +59,5 @@ gem "aws-sdk", "~> 3.0"
 
 gem 'devise'
 gem 'devise-i18n'
+
+gem 'font-awesome-sass'
