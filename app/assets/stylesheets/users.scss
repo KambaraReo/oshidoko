@@ -1,12 +1,42 @@
-// ユーザー登録
-.container {
+// ユーザー登録，ログイン/ログアウトの通知
+.notice {
+  width: fit-content;
+  background-color: rgb(138, 109, 181);
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgb(144, 144, 144);
+  padding: 10px 15px;
+  margin: auto;
+  margin-top: 60px;
+  position: fixed;
+  bottom: 80px;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.notice:empty {
+  display: none;
+}
+
+//フラッシュメッセージ
+.alert {
+  color: rgb(246, 27, 27) !important;
+  text-align: center;
+  font-size: 14px;
+  margin: 0 !important;
+}
+
+// ユーザー登録，ログイン
+.form-container {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: auto;
 }
 
-.row {
+.form-row {
   width: 70%;
   border-radius: 0.8em;
   background-color: #ffffff;
@@ -14,35 +44,58 @@
   padding: 40px;
 }
 
-.row > h3 {
+.form-row > h3 {
   text-align: center;
   letter-spacing: 0.05em;
   margin-bottom: 25px;
 }
 
-.sign-up-form {
+.form-row .title > h3 {
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+}
+
+.form-row .title > .guidance {
+  text-align: center;
+  font-size: 14px;
+  color: #8d8d8d;
+  margin-top: 7px;
+}
+
+.sign-up-form, .log-in-form, .password-reset-form {
   color: #535353;
   font-size: 14px;
   font-weight: 400;
   margin: auto;
 }
 
-.sign-up-form .field {
+.sign-up-form .field, .log-in-form .field, .password-reset-form .field {
   height: 85px;
 }
 
-.sign-up-form .field input {
+.sign-up-form .field input, .log-in-form .field input, .password-reset-form .field input {
   width: 100%;
   border: 1px solid rgb(142, 142, 142);
   border-radius: 6px;
   padding: 6px 10px;
 }
 
-.sign-up-form input::placeholder {
+.sign-up-form input::placeholder, .log-in-form input::placeholder, .password-reset-form input::placeholder {
   font-size: 12px;
- }
+}
 
-.sign-up-form .error-message {
+.sign-up-form .icon-std, .log-in-form .icon-std {
+  position: relative;
+}
+
+.sign-up-form #password-toggle, .log-in-form #password-toggle, .sign-up-form #password-confirmation-toggle {
+  position: absolute;
+  top: 28px;
+  right: 8px;
+}
+
+.sign-up-form .error-message, .password-reset-form .error-message {
   color: red;
   font-size: smaller;
 }
@@ -55,11 +108,11 @@
   vertical-align: top;
 }
 
-.sign-up-form .actions {
+.sign-up-form .actions, .log-in-form .actions, .password-reset-form .actions {
   text-align: center;
 }
 
-.sign-up-form .actions input {
+.sign-up-form .actions input, .log-in-form .actions input, .password-reset-form .actions input {
   padding: 0 1.8em;
   min-width: 80%;
   line-height: 3.5;
@@ -74,27 +127,52 @@
   cursor: pointer;
 }
 
-.sign-up-form .actions input:hover {
+.sign-up-form .actions input:hover, .log-in-form .actions input:hover, .password-reset-form .actions input:hover {
   box-shadow: 5px 5px 10px #afafaf;
 }
 
-.sign-up-form .log-in-actions {
-  margin-top: 10px;
+.log-in-form .remember-field {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.log-in-form .remember-field input {
+ width: auto;
+}
+
+.sign-up-form .log-in-link {
+  margin-top: 20px;
+  border-top: 1px solid #c1c1c1;
   text-align: center;
 }
 
+.log-in-form .links, .password-reset-form .links {
+  margin-top: 35px;
+  border-top: 1px solid #c1c1c1;
+  text-align: center;
+}
+
+.sign-up-form .log-in-link a, .log-in-form .links a, .password-reset-form .links a {
+  display: inline-block;
+  margin-top: 7px;
+  font-size: 13px;
+}
+
 @media screen and (max-width: 544px) {
-  .row {
+  .form-row {
     width: 100%;
     padding: 10px;
   }
 
-  .sign-up-form .field {
-    height: auto;
-  }
-
   .sign-up-form .actions input {
     margin-top: 10px;
+    font-size: 15px;
+  }
+
+  .log-in-form .actions input, .password-reset-form .actions input {
     font-size: 15px;
   }
 }

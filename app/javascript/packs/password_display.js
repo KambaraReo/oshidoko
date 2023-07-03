@@ -14,10 +14,18 @@ document.addEventListener('turbolinks:load', () => {
   const passwordToggle1 = document.getElementById("password-toggle");
   const passwordToggle2 = document.getElementById("password-confirmation-toggle");
 
-  passwordToggle1.addEventListener("click", () => {
-    togglePasswordVisibility(passwordField1, passwordToggle1);
-  });
-  passwordToggle2.addEventListener("click", () => {
-    togglePasswordVisibility(passwordField2, passwordToggle2);
-  });
+  if (passwordField1 && passwordToggle1 && passwordField2 && passwordToggle2) {
+    passwordToggle1.addEventListener("click", () => {
+      togglePasswordVisibility(passwordField1, passwordToggle1);
+    });
+    passwordToggle2.addEventListener("click", () => {
+      togglePasswordVisibility(passwordField2, passwordToggle2);
+    });
+  } else if (passwordField1 && passwordToggle1) {
+    passwordToggle1.addEventListener("click", () => {
+      togglePasswordVisibility(passwordField1, passwordToggle1);
+    });
+  } else {
+    return false;
+  }
 })

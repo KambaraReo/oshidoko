@@ -12,8 +12,8 @@ import "bootstrap"
 import "../stylesheets/application.scss"
 import '@fortawesome/fontawesome-free/js/all'
 
+import "./password_display"
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-import "./password_display"

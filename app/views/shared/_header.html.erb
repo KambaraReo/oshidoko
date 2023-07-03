@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <%= link_to "Home", homes_index_path, class: "nav-link active", "aria-current": "page" %>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -31,6 +31,26 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+
+      <% if user_signed_in? %>
+        <div class="btn-group">
+          <button type="button" class="btn btn-light dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= @user.username %>
+          </button>
+          <ul class="dropdown-menu">
+          <li>test1</li>
+          <li><hr class="dropdown-divider"></li>
+          <li>test2</li>
+          <li><hr class="dropdown-divider"></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+        </ul>
+        </div>
+      <% else %>
+        <div class="header-buttons">
+          <%= link_to "新規登録", new_user_registration_path %>
+          <%= link_to "ログイン", new_user_session_path %>
+        </div>
+      <% end %>
     </div>
   </div>
 </nav>
