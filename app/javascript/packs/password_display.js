@@ -11,10 +11,22 @@ document.addEventListener('turbolinks:load', () => {
 
   const passwordField1 = document.querySelector(".password-field");
   const passwordField2 = document.querySelector(".password-confirmation-field");
+  const passwordField3 = document.querySelector(".current-password-field");
   const passwordToggle1 = document.getElementById("password-toggle");
   const passwordToggle2 = document.getElementById("password-confirmation-toggle");
+  const passwordToggle3 = document.getElementById("current-password-toggle");
 
-  if (passwordField1 && passwordToggle1 && passwordField2 && passwordToggle2) {
+  if (passwordField1 && passwordToggle1 && passwordField2 && passwordToggle2 && passwordField3 && passwordToggle3) {
+    passwordToggle1.addEventListener("click", () => {
+      togglePasswordVisibility(passwordField1, passwordToggle1);
+    });
+    passwordToggle2.addEventListener("click", () => {
+      togglePasswordVisibility(passwordField2, passwordToggle2);
+    });
+    passwordToggle3.addEventListener("click", () => {
+      togglePasswordVisibility(passwordField3, passwordToggle3);
+    });
+  } else if (passwordField1 && passwordToggle1 && passwordField2 && passwordToggle2) {
     passwordToggle1.addEventListener("click", () => {
       togglePasswordVisibility(passwordField1, passwordToggle1);
     });
