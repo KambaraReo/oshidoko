@@ -1,56 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to "Home", homes_index_path, class: "nav-link active", "aria-current": "page" %>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+<header class="header">
+  <nav class="navbar navbar-expand-md inner fixed-top">
+    <div class="container-fluid">
+      <div class="header-left">
+        <%= link_to "Oshidoko", homes_index_path, class: "navbar-brand" %>
+      </div>
+      <div class="header-right">
+        <div class="collapse navbar-collapse nav-items" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item"><%= link_to "Top", homes_index_path, class: "nav-link active top-link", "aria-current": "page" %></li>
+            <li class="nav-item"><%= link_to "About", "#", class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "Service", "#", class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "Contact", "#", class: "nav-link" %></li>
           </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-
-      <% if user_signed_in? %>
-        <div class="btn-group">
-          <button type="button" class="btn btn-light dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= @user.username %>
+        </div>
+        <div class="btn-account">
+          <% if user_signed_in? %>
+            <span class="status-signed-in">
+              <%= link_to "#{@user.username}", user_path(@user) %>
+            </span>
+          <% else %>
+            <span class="status-signed-out">
+              <%= link_to "ログイン", new_user_session_path %>
+              <%= link_to "新規登録", new_user_registration_path %>
+            </span>
+          <% end %>
+        </div>
+        <div class="btn-group header-menu">
+          <button type="button" class="btn btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
           </button>
-          <ul class="dropdown-menu">
-          <li>test1</li>
-          <li><hr class="dropdown-divider"></li>
-          <li>test2</li>
-          <li><hr class="dropdown-divider"></li>
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
-        </ul>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
+            <li><%= link_to "Top", homes_index_path, class: "dropdown-item top-link" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "About", "#", class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "Service", "#", class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "Contact", "#", class: "dropdown-item" %></li>
+          </ul>
         </div>
-      <% else %>
-        <div class="header-buttons">
-          <%= link_to "新規登録", new_user_registration_path %>
-          <%= link_to "ログイン", new_user_session_path %>
-        </div>
-      <% end %>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
