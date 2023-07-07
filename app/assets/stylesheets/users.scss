@@ -131,6 +131,10 @@
   box-shadow: 5px 5px 10px #afafaf;
 }
 
+.sign-up-form .actions input:active, .log-in-form .actions input:active, .password-reset-form .actions input:active {
+  box-shadow: 5px 5px 10px #afafaf;
+}
+
 .log-in-form .remember-field {
   display: flex;
   align-items: center;
