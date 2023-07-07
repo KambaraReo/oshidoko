@@ -1,0 +1,54 @@
+<div class="notice"><%= notice %></div>
+
+<div class="mypage-container container">
+  <div class="mypage-row row">
+    <h3>マイページ</h3>
+    <div>
+      <div class="subtitle">プロフィール</div>
+    </div>
+    <div>
+      <div class="subtitle">アカウント</div>
+      <hr>
+      <ul>
+        <li>
+          <%= link_to edit_user_registration_path(@user), class: "link-field" do %>
+          <p>メールアドレス</p>
+          <div class="link-field-email">
+            <span><%= @user.email %></span>
+            <i class="fa-solid fa-angle-right"></i>
+          </div>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to users_edit_password_path(@user), class: "link-field" do %>
+          <p>パスワード</p>
+          <i class="fa-solid fa-angle-right"></i>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="subtitle">その他</div>
+      <hr>
+      <ul>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete, class: "link-field" do %>
+            <p>退会</p>
+            <i class="fa-solid fa-angle-right"></i>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <hr>
+      <ul>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete, class: "link-field" do %>
+            <p>ログアウト</p>
+            <i class="fa-solid fa-angle-right"></i>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

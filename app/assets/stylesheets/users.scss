@@ -180,3 +180,79 @@
     font-size: 15px;
   }
 }
+
+// マイページ
+.mypage-container {
+  background-color: rgba(255, 255, 255, 0.868);
+}
+
+.mypage-container h3 {
+  font-size: 27px;
+  font-weight: 900;
+  margin-top: 20px;
+  font-family: "Roboto";
+}
+
+.mypage-container ul {
+  padding-left: 0;
+}
+
+.mypage-container li a {
+  color: rgba(0, 0, 0, 0.73);
+  height: 46px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mypage-container li a:hover, .mypage-container li a:active {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+
+.mypage-container .subtitle {
+  font-size: 14px;
+  color: rgb(164, 161, 161);
+  padding-left: 10px; 
+}
+
+.mypage-container .link-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.mypage-container .link-field p {
+  margin: 0;
+}
+
+.mypage-container .link-field .link-field-email {
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  gap: 10px;
+}
+
+.mypage-container .link-field .link-field-email span {
+  font-size: 12px;
+  flex: 1;
+  width: 0;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mypage-container hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mypage-row > div {
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 767px) {
+  .mypage-container {
+    max-width: 700px !important;
+  }
+}
