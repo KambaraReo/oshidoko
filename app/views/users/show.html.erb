@@ -12,7 +12,7 @@
             <% if @user.icon.attached? %>
               <%= image_tag @user.icon, class:"rounded-circle", size: "70x70" %>
             <% else %>
-              <%= image_tag "default_user.png", class:"rounded-circle", size: "70x70" %>
+              <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "70x70" %>
             <% end %>
           </div>
           <%= link_to edit_profile_path, class: "link-field-profile", data: {"turbolinks"=>false} do %>
