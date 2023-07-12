@@ -86,8 +86,13 @@ ul {
   margin: 5px;
 }
 
-.btn-account .status-signed-in a {
+.btn-account .status-signed-in .header-username {
   color: rgb(23, 23, 23);
+  margin-left: 5px;
+}
+
+.btn-account .status-signed-in .header-username:hover, .btn-account .status-signed-in .header-username:active {
+  opacity: .6;
 }
 
 .btn-account .status-signed-out a {
@@ -119,9 +124,38 @@ ul {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .header-right {
+    margin-right: 5px;
+  }
+}
+
+@media screen and (min-width: 436px) {
+  .hidden-over-435px {
+    display: none !important;
+  }
+}
+
 @media screen and (max-width: 435px) {
   .header-right {
-    margin-right: 0;
+    margin-right: 5px;
+    gap: 8px;
+  }
+
+  .status-signed-out {
+    display: none;
+  }
+
+  .hidden-over-435px a {
+    color: rgb(12, 56, 233);
+  }
+
+  .hidden-over-435px a:hover, .hidden-over-435px a:active {
+    opacity: .6;
+  }
+
+  .btn-account .status-signed-in .header-username {
+    display: none;
   }
 
   .btn-account .status-signed-out a {
