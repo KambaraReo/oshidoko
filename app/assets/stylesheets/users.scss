@@ -182,10 +182,6 @@
 }
 
 // マイページ
-.mypage-container {
-  background-color: rgba(255, 255, 255, 0.868);
-}
-
 .mypage-container h3 {
   font-size: 27px;
   font-weight: 900;
@@ -212,6 +208,102 @@
   font-size: 14px;
   color: rgb(164, 161, 161);
   padding-left: 10px; 
+}
+
+.mypage-container .profile-area {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 30px;
+}
+
+.mypage-container .profile-area p {
+  margin-bottom: 0;
+}
+
+.mypage-container .profile-area-top {
+  display: flex; 
+  justify-content: space-between;
+}
+
+.mypage-container .profile-area .link-field-profile {
+  white-space: nowrap;
+  padding-right: 6px;
+}
+
+.mypage-container .profile-area .link-field-profile p {
+  display: inline-block;
+  color: #16479c;
+  font-size: 15px;
+}
+
+.mypage-container .profile-area .link-field-profile:hover, .mypage-container .profile-area .link-field-profile:active {
+  opacity: .8;
+}
+
+.mypage-container .profile-area-top > div {
+  display: flex; 
+  gap: 30px;
+  align-items: center;
+}
+
+.mypage-container .profile-area-oshi {
+  padding-left: 6px;
+  margin-top: 10px;
+}
+
+.mypage-container .profile-area-oshi > span:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 13px;
+}
+
+.mypage-container .profile-area-oshi > span:first-of-type p {
+  color: #24abef;
+}
+
+.mypage-container .oshi {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 6px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+  background-color: rgb(97, 186, 238);
+  border-left: 5px solid rgb(148, 59, 168);
+  border-bottom: 2px solid rgba(230, 230, 230, 0.75);
+  color: rgb(255, 255, 255);
+  width: 80px;
+  display: inline-block;
+}
+
+.mypage-container .profile-area-username {
+  padding-left: 6px;
+  margin-bottom: 3px;
+}
+
+.mypage-container .profile-area-middle {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  padding-left: 6px;
+  gap: 20px;
+}
+
+.mypage-container .profile-area-ff span {
+  margin-right: 8px;
+}
+
+.mypage-container .profile-area-posts .link-field-profile p {
+  font-size: 12px;
+}
+
+.mypage-container .profile-area-introduction {
+  font-size: 14px;
+  padding: 2px 15px;
+}
+
+.mypage-container .profile-area-introduction p {
+  color: rgb(96, 94, 94);
 }
 
 .mypage-container .link-field {
@@ -245,6 +337,11 @@
 .mypage-container hr {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.mypage-row {
+  background-color: rgba(255, 255, 255, 0.868);
+  margin-bottom: 50px;
 }
 
 .mypage-row > div {

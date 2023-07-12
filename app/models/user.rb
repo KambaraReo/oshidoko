@@ -5,6 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :username, presence: true, length: { maximum: 15 }
+  validates :introduction, length: { maximum: 200 }
+
+  has_one_attached :icon
+  has_many :users_members
+  has_many :members, through: :users_members
 
   def update_without_current_password(params, *options)
     if params[:password].blank?

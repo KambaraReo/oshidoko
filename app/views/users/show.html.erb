@@ -5,6 +5,45 @@
     <h3>マイページ</h3>
     <div>
       <div class="subtitle">プロフィール</div>
+      <hr>
+      <div class="profile-area">
+        <div class="profile-area-top">
+          <div>
+            <% if @user.icon.attached? %>
+              <%= image_tag @user.icon, class:"rounded-circle", size: "70x70" %>
+            <% else %>
+              <%= image_tag "default_user.png", class:"rounded-circle", size: "70x70" %>
+            <% end %>
+          </div>
+          <%= link_to edit_profile_path, class: "link-field-profile", data: {"turbolinks"=>false} do %>
+            <i class="fa-solid fa-pen" style="color: #16479c;"></i>
+            <p>プロフィール編集</p>
+          <% end %>
+        </div>
+        <h4 class="profile-area-username"><%= @user.username %></h4>
+        <div class="profile-area-middle">
+          <p class="profile-area-ff">100フォロー<span></span>10フォロワー</p>
+          <div class="profile-area-posts">
+            <%= link_to user_path(@user), class: "link-field-profile" do %>
+              <i class="fa-regular fa-flag" style="color: #16479c;"></i>
+              <p>投稿一覧</p>
+            <% end %>
+          </div>
+        </div>
+        <div class="profile-area-introduction">
+          <p><%= @user.introduction %></p>
+        </div>
+        <div class="profile-area-oshi">
+          <span>
+            <i class="far fa-gem" style="color: #24abef;"></i>
+            <p>推しメン</p>
+            <i class="far fa-gem" style="color: #24abef;"></i>
+          </span>
+          <% @user.members.each do |member| %>
+            <div class="oshi"><%= member.name %></div>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div>
       <div class="subtitle">アカウント</div>

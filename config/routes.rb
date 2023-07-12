@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     collection do
       get 'edit_password'
       patch 'update_password'
+      resources :profiles, only: [:edit, :update]
     end
   end
 end

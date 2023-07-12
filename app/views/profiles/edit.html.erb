@@ -1,0 +1,76 @@
+<div class="edit-profile-container container">
+  <div class="edit-profile-row row">
+    <div class="edit-profile-form col-md-10 col-lg-8 col-xl-8">
+      <%= link_to user_path(@user), class: "mypage-link" do %>
+        <i class="fa-regular fa-circle-left"></i>
+        マイページ
+      <% end %>
+      <h3 class="title">プロフィール編集</h3>
+      <%= form_with model: @user, url: {controller: 'profiles', action: 'update'}  do |f| %>
+        <hr>
+        <div class="field-line">
+          <div class="field-line-left">
+            <%= f.label :icon, "アイコン", for: "img-select-btn" %>
+          </div>
+          <div class="field-line-right icon-line">
+            <% if @user.icon.attached? %>
+              <%= image_tag @user.icon, id: "img-prev", class: "rounded-circle", size: "90x90" %>
+            <% else %>
+              <%= image_tag "default_user.png", id: "img-prev", class: "rounded-circle", size: "90x90" %>
+            <% end %>
+            <%= f.file_field :icon, accept: 'image/jpeg, image/gif, image/png', id: "img-select-btn" %>
+          </div>
+        </div>
+        
+        <hr>
+        <div class="field-line">
+          <div class="field-line-left">
+            <%= f.label :username, "ユーザー名" %>
+            <span class="comment">（15文字以内）</span>
+          </div>
+          <div class="field-line-right">
+            <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+            <span class="error-message">
+              <% if @user.errors.include?(:username) %>
+                <%= @user.errors.full_messages_for(:username).first %>
+              <% end %>
+            </span>
+          </div>
+        </div>
+        
+        <hr>
+        <div class="field-line">
+          <div class="field-line-left">
+            <%= f.label :introduction, "プロフィール" %>
+            <span class="comment">（200文字以内）</span>
+          </div>
+          <div class="field-line-right">
+            <%= f.text_area :introduction %>
+            <span class="error-message">
+              <% if @user.errors.include?(:introduction) %>
+                <%= @user.errors.full_messages_for(:introduction).first %>
+              <% end %>
+            </span>
+          </div>
+        </div>
+       
+        <hr>
+        <div class="field-line">
+          <div class="field-line-left">
+            <p class="title-oshimem">推しメン</p>
+          </div>
+          <div class="field-line-right">
+            <div class="oshi-field">
+              <%= f.collection_check_boxes :member_ids, Member.all, :id, :name, { multiple: true } %>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+        <div class="actions">
+          <%= f.submit "更新" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
