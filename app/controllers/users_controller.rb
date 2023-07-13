@@ -25,6 +25,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def confirm_withdrawal
+    @user = current_user
+  end
+
   private
 
   def user_params

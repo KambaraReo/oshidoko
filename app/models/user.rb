@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 200 }
 
   has_one_attached :icon
-  has_many :users_members
+  has_many :users_members, dependent: :destroy
   has_many :members, through: :users_members
 
   def update_without_current_password(params, *options)

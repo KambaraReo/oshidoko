@@ -448,3 +448,97 @@
     width: 90%;
   }
 }
+
+// 退会確認画面
+.withdrawal-row {
+  width: 80%;
+  border-radius: 0.8em;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgb(144, 144, 144);
+  padding: 20px;
+}
+
+.withdrawal-content {
+  color: #535353;
+  font-size: 14px;
+  font-weight: 400;
+  margin: auto;
+}
+
+.withdrawal-content > span {
+  display: block;
+  text-align: center;
+}
+
+.withdrawal-content .title {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  padding: 0 70px;
+}
+
+.withdrawal-content .title:before, .withdrawal-content .title:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 55px;
+  height: 1px;
+  background-color: rgb(100, 100, 100);
+}
+
+.withdrawal-content .title:before {
+  left:0;
+}
+
+.withdrawal-content .title:after {
+  right: 0;
+}
+
+.withdrawal-content p {
+  margin-bottom: 0;
+}
+
+.withdrawal-content > div {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.withdrawal-content .btn-mypage {
+  color: rgb(255, 255, 255);
+  background-color: #22699ccc;
+  margin-left: 0 !important;
+  margin-right: 10px;
+}
+
+.withdrawal-content .btn-mypage:hover, .withdrawal-content .btn-mypage:active {
+  color: rgb(255, 255, 255);
+  background-color: #22699c;
+}
+
+.withdrawal-content .btn-withdrawal {
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 123, 123);
+  margin-left: 10px !important;
+}
+
+.withdrawal-content .btn-withdrawal:hover, .withdrawal-content .btn-withdrawal:active {
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 46, 46);
+}
+
+@media screen and (min-width: 992px) {
+  .withdrawal-row {
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .withdrawal-row {
+    width: 100%;
+    padding: 10px;
+  }
+}

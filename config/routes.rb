@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'edit_password'
       patch 'update_password'
       resources :profiles, only: [:edit, :update]
+      get 'confirm_withdrawal'
     end
   end
 end
