@@ -38,6 +38,9 @@
             <i class="far fa-gem" style="color: #24abef;"></i>
             <p>推しメン</p>
             <i class="far fa-gem" style="color: #24abef;"></i>
+            <% if @user.members.empty? %>
+              <div class="oshi-none">未設定</div>
+            <% end %>
           </span>
           <% @user.members.each do |member| %>
             <div class="oshi"><%= member.name %></div>

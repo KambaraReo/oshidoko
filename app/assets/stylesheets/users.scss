@@ -257,6 +257,7 @@
   align-items: center;
   gap: 3px;
   font-size: 13px;
+  margin-bottom: 1px;
 }
 
 .mypage-container .profile-area-oshi > span:first-of-type p {
@@ -275,6 +276,15 @@
   color: rgb(255, 255, 255);
   width: 80px;
   display: inline-block;
+}
+
+.mypage-container .oshi-none {
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 3px 5px;
+  margin-left: 12px;
+  background-color: rgba(214, 214, 214, 0.9);
+  border-radius: 3px;
 }
 
 .mypage-container .profile-area-username {
