@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'samples/index'
   root 'homes#index'
   get 'homes/index'
   devise_for :users,
