@@ -1,0 +1,554 @@
+// ユーザー登録，ログイン/ログアウトの通知
+.notice {
+  width: fit-content;
+  background-color: rgb(138, 109, 181);
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgb(144, 144, 144);
+  padding: 10px 15px;
+  margin: auto;
+  margin-top: 60px;
+  position: fixed;
+  bottom: 80px;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.notice:empty {
+  display: none;
+}
+
+//フラッシュメッセージ
+.alert {
+  color: rgb(246, 27, 27) !important;
+  text-align: center;
+  font-size: 14px;
+  margin: 0 !important;
+}
+
+// ユーザー登録，ログイン
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.form-row {
+  width: 70%;
+  border-radius: 0.8em;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgb(144, 144, 144);
+  padding: 40px;
+}
+
+.form-row > h3 {
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-bottom: 25px;
+}
+
+.form-row .title > h3 {
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+}
+
+.form-row .title > .guidance {
+  text-align: center;
+  font-size: 14px;
+  color: #8d8d8d;
+  margin-top: 7px;
+}
+
+.sign-up-form, .log-in-form, .password-reset-form {
+  color: #535353;
+  font-size: 14px;
+  font-weight: 400;
+  margin: auto;
+}
+
+.sign-up-form .field, .log-in-form .field, .password-reset-form .field {
+  height: 85px;
+}
+
+.sign-up-form .field input, .log-in-form .field input, .password-reset-form .field input {
+  width: 100%;
+  border: 1px solid rgb(142, 142, 142);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.sign-up-form input::placeholder, .log-in-form input::placeholder, .password-reset-form input::placeholder {
+  font-size: 12px;
+}
+
+.sign-up-form .icon-std, .log-in-form .icon-std {
+  position: relative;
+}
+
+.sign-up-form #password-toggle, .log-in-form #password-toggle, .sign-up-form #password-confirmation-toggle {
+  position: absolute;
+  top: 28px;
+  right: 8px;
+}
+
+.sign-up-form .error-message, .password-reset-form .error-message {
+  color: red;
+  font-size: smaller;
+}
+
+.sign-up-form .required > label:first-of-type::after {
+  content: "*";
+  color: rgb(246, 27, 27);
+  font-size: 12px;
+  margin-left: 2px;
+  vertical-align: top;
+}
+
+.sign-up-form .actions, .log-in-form .actions, .password-reset-form .actions {
+  text-align: center;
+}
+
+.sign-up-form .actions input, .log-in-form .actions input, .password-reset-form .actions input {
+  padding: 0 1.8em;
+  min-width: 80%;
+  line-height: 3.5;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  border-radius: 2em;
+  border: none;
+  background: linear-gradient(to right, #61c2e9 0%, #51ebb8 100%);
+  color: #ffffff;
+  transition: 0.4s;
+  margin: auto;
+  cursor: pointer;
+}
+
+.sign-up-form .actions input:hover, .log-in-form .actions input:hover, .password-reset-form .actions input:hover {
+  box-shadow: 5px 5px 10px #afafaf;
+}
+
+.sign-up-form .actions input:active, .log-in-form .actions input:active, .password-reset-form .actions input:active {
+  box-shadow: 5px 5px 10px #afafaf;
+}
+
+.log-in-form .remember-field {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.log-in-form .remember-field input {
+  width: auto;
+}
+
+.sign-up-form .log-in-link {
+  margin-top: 20px;
+  border-top: 1px solid #c1c1c1;
+  text-align: center;
+}
+
+.log-in-form .links, .password-reset-form .links {
+  margin-top: 35px;
+  border-top: 1px solid #c1c1c1;
+  text-align: center;
+}
+
+.sign-up-form .log-in-link a, .log-in-form .links a, .password-reset-form .links a {
+  display: inline-block;
+  margin-top: 7px;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 544px) {
+  .form-row {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .sign-up-form .actions input {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  .log-in-form .actions input, .password-reset-form .actions input {
+    font-size: 15px;
+  }
+}
+
+// マイページ
+.mypage-container h3 {
+  font-size: 27px;
+  font-weight: 900;
+  margin-top: 20px;
+  font-family: "Roboto";
+}
+
+.mypage-container ul {
+  padding-left: 0;
+}
+
+.mypage-container li a {
+  color: rgba(0, 0, 0, 0.73);
+  height: 46px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mypage-container li a:hover, .mypage-container li a:active {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+
+.mypage-container .subtitle {
+  font-size: 14px;
+  color: rgb(164, 161, 161);
+  padding-left: 10px; 
+}
+
+.mypage-container .profile-area {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 30px;
+}
+
+.mypage-container .profile-area p {
+  margin-bottom: 0;
+}
+
+.mypage-container .profile-area-top {
+  display: flex; 
+  justify-content: space-between;
+}
+
+.mypage-container .profile-area .link-field-profile {
+  white-space: nowrap;
+  padding-right: 6px;
+}
+
+.mypage-container .profile-area .link-field-profile p {
+  display: inline-block;
+  color: #22699c;
+  font-size: 15px;
+}
+
+.mypage-container .profile-area .link-field-profile:hover, .mypage-container .profile-area .link-field-profile:active {
+  opacity: .8;
+}
+
+.mypage-container .profile-area-top > div {
+  display: flex; 
+  gap: 30px;
+  align-items: center;
+  padding: 3px 5px;
+}
+
+.mypage-container .profile-area-oshi {
+  padding-left: 6px;
+  margin-top: 10px;
+}
+
+.mypage-container .profile-area-oshi > span:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 13px;
+  margin-bottom: 1px;
+}
+
+.mypage-container .profile-area-oshi > span:first-of-type p {
+  color: #24abef;
+}
+
+.mypage-container .oshi {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 6px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+  background-color: rgb(97, 186, 238);
+  border-left: 5px solid rgb(148, 59, 168);
+  border-bottom: 2px solid rgba(230, 230, 230, 0.75);
+  color: rgb(255, 255, 255);
+  width: 80px;
+  display: inline-block;
+}
+
+.mypage-container .oshi-none {
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 3px 5px;
+  margin-left: 12px;
+  background-color: rgba(214, 214, 214, 0.9);
+  border-radius: 3px;
+}
+
+.mypage-container .profile-area-username {
+  padding-left: 6px;
+  margin-bottom: 3px;
+}
+
+.mypage-container .profile-area-middle {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  padding-left: 6px;
+  gap: 20px;
+}
+
+.mypage-container .profile-area-ff span {
+  margin-right: 8px;
+}
+
+.mypage-container .profile-area-posts .link-field-profile p {
+  font-size: 12px;
+}
+
+.mypage-container .profile-area-introduction {
+  font-size: 14px;
+  padding: 2px 15px;
+}
+
+.mypage-container .profile-area-introduction p {
+  color: rgb(96, 94, 94);
+}
+
+.mypage-container .link-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.mypage-container .link-field p {
+  margin: 0;
+}
+
+.mypage-container .link-field .link-field-email {
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  gap: 10px;
+}
+
+.mypage-container .link-field .link-field-email span {
+  font-size: 12px;
+  flex: 1;
+  width: 0;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mypage-container hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mypage-row {
+  background-color: rgba(255, 255, 255, 0.868);
+  margin-bottom: 50px;
+}
+
+.mypage-row > div {
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 767px) {
+  .mypage-container {
+    max-width: 700px !important;
+  }
+}
+
+// メールアドレス変更/パスワード変更
+.edit-account-row {
+  max-width: 660px;
+}
+
+.edit-account-form {
+  color: #535353;
+  font-size: 14px;
+  font-weight: 400;
+  margin: auto;
+}
+
+.edit-account-form .mypage-link {
+  color: rgb(34, 105, 156);
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.edit-account-form .mypage-link:hover, .edit-account-form .mypage-link:active {
+  opacity: .8;
+}
+
+.edit-account-form .title {
+  color: #24abef;
+}
+
+.edit-account-form p {
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.edit-account-form .field {
+  height: 85px;
+}
+
+.edit-account-form .field input {
+  width: 100%;
+  border: 1px solid rgb(142, 142, 142);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.edit-account-form .icon-std {
+  position: relative;
+}
+
+.edit-account-form #current-password-toggle, .edit-account-form #password-toggle, .edit-account-form #password-confirmation-toggle {
+  position: absolute;
+  top: 28px;
+  right: 8px;
+}
+
+.edit-account-form .error-message {
+  color: red;
+  font-size: smaller;
+}
+
+.edit-account-form .actions {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.edit-account-form .actions input {
+  padding: 0 1.8em;
+  min-width: 80%;
+  line-height: 3.5;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  border-radius: 2em;
+  border: none;
+  background: linear-gradient(to right, #61c2e9 0%, #51ebb8 100%);
+  color: #ffffff;
+  transition: 0.4s;
+  margin: auto;
+  cursor: pointer;
+}
+
+.edit-account-form .actions input:hover, .edit-account-form .actions input:active {
+  box-shadow: 5px 5px 10px #afafaf;
+}
+
+@media screen and (max-width: 544px) {
+  .edit-account-form .actions input {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .edit-account-row {
+    width: 90%;
+  }
+}
+
+// 退会確認画面
+.withdrawal-row {
+  width: 80%;
+  border-radius: 0.8em;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgb(144, 144, 144);
+  padding: 20px;
+}
+
+.withdrawal-content {
+  color: #535353;
+  font-size: 14px;
+  font-weight: 400;
+  margin: auto;
+}
+
+.withdrawal-content > span {
+  display: block;
+  text-align: center;
+}
+
+.withdrawal-content .title {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  padding: 0 70px;
+}
+
+.withdrawal-content .title:before, .withdrawal-content .title:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 55px;
+  height: 1px;
+  background-color: rgb(100, 100, 100);
+}
+
+.withdrawal-content .title:before {
+  left:0;
+}
+
+.withdrawal-content .title:after {
+  right: 0;
+}
+
+.withdrawal-content p {
+  margin-bottom: 0;
+}
+
+.withdrawal-content > div {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.withdrawal-content .btn-mypage {
+  color: rgb(255, 255, 255);
+  background-color: #22699ccc;
+  margin-left: 0 !important;
+  margin-right: 10px;
+}
+
+.withdrawal-content .btn-mypage:hover, .withdrawal-content .btn-mypage:active {
+  color: rgb(255, 255, 255);
+  background-color: #22699c;
+}
+
+.withdrawal-content .btn-withdrawal {
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 123, 123);
+  margin-left: 10px !important;
+}
+
+.withdrawal-content .btn-withdrawal:hover, .withdrawal-content .btn-withdrawal:active {
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 46, 46);
+}
+
+@media screen and (min-width: 992px) {
+  .withdrawal-row {
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .withdrawal-row {
+    width: 100%;
+    padding: 10px;
+  }
+}

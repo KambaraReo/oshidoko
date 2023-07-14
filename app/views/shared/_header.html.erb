@@ -1,0 +1,61 @@
+<header class="header">
+  <nav class="navbar navbar-expand-md inner fixed-top">
+    <div class="container-fluid">
+      <div class="header-left">
+        <%= link_to "Oshidoko", homes_index_path, class: "navbar-brand" %>
+      </div>
+      <div class="header-right">
+        <div class="collapse navbar-collapse nav-items" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item"><%= link_to "Top", homes_index_path, class: "nav-link active top-link", "aria-current": "page" %></li>
+            <li class="nav-item"><%= link_to "About", "#", class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "Service", "#", class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "Contact", "#", class: "nav-link" %></li>
+          </ul>
+        </div>
+        <div class="btn-account">
+          <% if user_signed_in? %> 
+            <span class="status-signed-in">
+              <%= link_to user_path(@user) do %>
+                <span class="header-icon">                  
+                  <% if @user.icon.attached? %>
+                    <%= image_tag @user.icon, class: "rounded-circle", size: "40x40" %>
+                  <% else %>
+                    <%= image_tag "default_user.png", class: "rounded-circle user-default-img", size: "40x40" %>
+                  <% end %>
+                </span>
+                <span class="header-username">
+                  <%= @user.username %>
+                </span>
+              <% end %>
+            </span>
+          <% else %>
+            <span class="status-signed-out">
+              <%= link_to "ログイン", new_user_session_path %>
+              <%= link_to "新規登録", new_user_registration_path %>
+            </span>
+          <% end %>
+        </div>
+        <div class="btn-group header-menu">
+          <button type="button" class="btn btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
+            <% unless user_signed_in? %> 
+              <li class="dropdown-item top-link hidden-over-435px"><%= link_to "ログイン", new_user_session_path %></li>
+              <li class="dropdown-item top-link hidden-over-435px"><%= link_to "新規登録", new_user_registration_path %></li>
+              <li><hr class="dropdown-divider hidden-over-435px"></li>
+            <% end %>
+            <li><%= link_to "Top", homes_index_path, class: "dropdown-item top-link" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "About", "#", class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "Service", "#", class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "Contact", "#", class: "dropdown-item" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

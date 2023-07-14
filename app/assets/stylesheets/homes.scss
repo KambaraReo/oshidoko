@@ -1,0 +1,134 @@
+// トップビュー
+.context {
+  width: 100%;
+  position: absolute;
+  top: 200px;
+  z-index: 100;
+}
+
+.context h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 50px;
+}
+
+.context {
+  padding-left: 0;
+}
+
+.area {
+  background: #2eb6ff;  
+  width: 100%;
+  height: 550px;
+}
+
+.triangles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 550px;
+  overflow: hidden;
+  padding-left: 0;
+  background-color: #2eb6ff;
+}
+
+.triangles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+  z-index: 99;
+}
+
+.triangles li:nth-child(1) {
+  left: 25%;
+  border-bottom: 50px solid rgba(255, 255, 255, 0.39);
+  border-left: 50px solid transparent;
+  animation-delay: 0s;
+}
+
+.triangles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  border-bottom: 100px solid rgba(255, 255, 255, 0.39);
+  border-left: 100px solid transparent;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.triangles li:nth-child(3) {
+  left: 70%;
+  border-bottom: 50px solid rgba(255, 255, 255, 0.39);
+  border-left: 50px solid transparent;
+  animation-delay: 4s;
+}
+
+.triangles li:nth-child(4) {
+  left: 40%;
+  border-bottom: 60px solid rgba(255, 255, 255, 0.39);
+  border-left: 60px solid transparent;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.triangles li:nth-child(5) {
+  left: 65%;
+  border-bottom: 30px solid rgba(255, 255, 255, 0.39);
+  border-left: 30px solid transparent;
+  animation-delay: 0s;
+}
+
+.triangles li:nth-child(6) {
+  left: 75%;
+  border-bottom: 80px solid rgba(255, 255, 255, 0.39);
+  border-left: 80px solid transparent;
+  animation-delay: 3s;
+}
+
+.triangles li:nth-child(7) {
+  left: 35%;
+  border-bottom: 150px solid rgba(255, 255, 255, 0.39);
+  border-left: 150px solid transparent;
+  animation-delay: 7s;
+}
+
+.triangles li:nth-child(8) {
+  left: 50%;
+  border-bottom: 25px solid rgba(255, 255, 255, 0.39);
+  border-left: 25px solid transparent;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.triangles li:nth-child(9) {
+  left: 20%;
+  border-bottom: 35px solid rgba(255, 255, 255, 0.39);
+  border-left: 35px solid transparent;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.triangles li:nth-child(10) {
+  left: 85%;
+  border-bottom: 125px solid rgba(255, 255, 255, 0.39);
+  border-left: 125px solid transparent;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+@keyframes animate {
+0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+}
+
+100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 0;
+}
+}

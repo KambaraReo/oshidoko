@@ -56,3 +56,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rails-i18n'
 gem "aws-sdk", "~> 3.0"
+
+gem 'devise'
+gem 'devise-i18n'
+
+gem 'font-awesome-sass'
+
+gem 'net-http'
