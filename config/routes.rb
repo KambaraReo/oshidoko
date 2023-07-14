@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'homes/index'
   devise_for :users,
     controllers: { registrations: 'users/registrations' }
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:show] do
     collection do
       get 'edit_password'
       patch 'update_password'
