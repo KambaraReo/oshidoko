@@ -61,3 +61,5 @@ gem 'devise'
 gem 'devise-i18n'
 
 gem 'font-awesome-sass'
+
+gem 'net-http'
