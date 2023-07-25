@@ -1497,6 +1497,10 @@ GEM
     devise-i18n (1.11.0)
       devise (>= 4.9.0)
     diff-lcs (1.5.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -1506,6 +1510,7 @@ GEM
     ffi (1.15.5)
     font-awesome-sass (6.4.0)
       sassc (~> 2.0)
+    geocoder (1.8.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -1723,8 +1728,10 @@ DEPENDENCIES
   capybara
   devise
   devise-i18n
+  dotenv-rails
   factory_bot_rails
   font-awesome-sass
+  geocoder
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mysql2 (~> 0.5)

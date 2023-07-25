@@ -14,6 +14,7 @@ import '@fortawesome/fontawesome-free/js/all'
 
 import "./password_display"
 import "./preview"
+import "./map"
 
 Rails.start()
 Turbolinks.start()

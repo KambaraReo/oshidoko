@@ -1,0 +1,201 @@
+// 新規投稿
+#map {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 24px;
+}
+
+.post-row {
+  max-width: 660px;
+  margin-bottom: 50px;
+}
+
+.post-form {
+  color: #535353;
+  font-size: 14px;
+  font-weight: 400;
+  margin: auto;
+}
+
+.post-row .title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: .5em .5em .5em 1em;
+  margin-bottom: 24px;
+  background: #61baee;
+  border-radius: 25px 0px 0px 25px;
+}
+
+.post-row .title h3 {
+  color: rgb(255, 255, 255);
+  font-size: 22px;
+  margin-bottom: 0 !important;
+
+}
+
+.post-form p {
+  font-size: 13px;
+}
+
+.post-form .field {
+  margin-bottom: 24px;
+}
+
+.post-form .field:nth-of-type(1) label {
+  margin-bottom: 4px;
+}
+
+.post-form .field:nth-of-type(3) label {
+  margin-bottom: 4px;
+}
+
+.post-form .field:nth-of-type(4) label {
+  margin-bottom: 4px;
+}
+
+.post-form .field:nth-of-type(4) {
+  margin-bottom: 12px;
+}
+
+.post-form .field:nth-of-type(4) input {
+  background-color: #5353531c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.post-form .member-field {
+  margin-bottom: 24px;
+}
+
+.post-form .member-field > p {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.post-form .member-field > div {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.post-form .member-field label {
+  display: inline-block;
+  width: 100px;
+  font-size: 13px;
+}
+
+.post-form .field input, .post-form .field textarea {
+  width: 100%;
+  border: 1px solid rgb(142, 142, 142);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.post-form .field textarea {
+  resize: vertical;
+  max-height: 350px;
+}
+
+.search-field {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.post-form .search-field > p {
+  margin-bottom: 1px;
+}
+
+.post-form .search-field > div > input:first-of-type {
+  padding: 3px 6px;
+  border: 1px solid rgb(142, 142, 142);
+  width: 60%;
+}
+
+.post-form .search-field > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.post-form .search-field > div > input:last-of-type {
+  width: 45px;
+  padding: 3px 6px;
+  color: #535353;
+  background-color: #cbdeff;
+  border: 1px solid #5353535b;
+  border-radius: 10px;
+}
+
+.post-form .search-field > input:last-of-type:hover, .post-form .search-field > input:last-of-type:active {
+  opacity: .8;
+}
+
+.post-form .picture-field {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-wrap: wrap;
+  gap: 12px;
+  border: none;
+}
+
+.post-form .error-message {
+  color: red;
+  font-size: smaller;
+}
+
+.post-form .actions {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.post-form .actions input {
+  padding: 0 1.8em;
+  min-width: 80%;
+  line-height: 3.5;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  border-radius: 2em;
+  border: none;
+  background: linear-gradient(to right, #61c2e9 0%, #51ebb8 100%);
+  color: #ffffff;
+  transition: 0.4s;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+.post-form .actions input:hover, .post-form .actions input:active {
+  box-shadow: 5px 5px 10px #afafaf;
+}
+
+@media screen and (max-width: 767px) {
+  .post-row {
+    width: 90% !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  #map {
+    height: 250px;
+  }
+
+  .post-row {
+    padding: 40px !important;
+  }
+
+  .post-form .search-field > div {
+    justify-content: right;
+  }
+
+  .post-form .search-field > div > input:first-of-type {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 507px) {
+  .post-row {
+    padding: 40px 10px !important;
+  }
+}

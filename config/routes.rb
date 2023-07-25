@@ -11,4 +11,5 @@ Rails.application.routes.draw do
       get 'confirm_withdrawal'
     end
   end
+  resources :posts, only: [:new, :create]
 end

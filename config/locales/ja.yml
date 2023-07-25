@@ -27,8 +27,16 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+      post:
+        title: 場所・施設名
+        description: 説明
+        address: 住所
     models:
       user: ユーザー
+    errors:
+      models:
+        post:
+          blank: は必須項目です
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

@@ -1,3 +1,26 @@
+// 投稿ボタン
+.post-button {
+  display: block;
+  width: fit-content;
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  background: linear-gradient(to right, rgba(97, 194, 233, .8) 0%, rgba(81, 235, 184, .9) 100%);
+  box-shadow: 0 0 4px rgb(253, 253, 253);
+  border-radius: 2em;
+  border: none;
+  padding: 10px 15px;
+  margin: auto;
+  position: fixed;
+  right: 36px;
+  bottom: 30px;
+  z-index: 998;
+}
+
+.post-button:hover, .post-button:active {
+  opacity: .8;
+}
+
 // トップビュー
 .context {
   width: 100%;
