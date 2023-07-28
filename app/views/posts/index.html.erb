@@ -1,0 +1,98 @@
+<div class="top flex-shrink-0 my-posts">
+  <%= link_to user_path(@user), class: "mypage-link" do %>
+    <i class="fa-regular fa-circle-left"></i>
+    マイページ
+  <% end %>
+  <div class="posts-area">
+    <h1 class="title">
+      <i class="fa-solid fa-map-pin"></i>
+      <span>MY POSTS</span>
+    </h1>
+    <div class="posts">
+      <div class="number-of-displays"><%= @posts.count %>件</div>
+      <% @posts.each do |post| %>
+        <div class="post">
+          <span class="hidden-over-767px post-upper my-post-upper">
+            <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
+            <div>
+              <div>
+                <%= link_to "#" do %><i class="fa-solid fa-circle-info"></i><% end %>
+              </div>
+              <div>
+                <%= link_to "#" do %><i class="fa-regular fa-pen-to-square"></i><% end %>
+              </div>
+              <div>
+                <%= link_to post_path(post), method: :delete, data: { confirm: "投稿を削除しますか？" } do %><i class="fa-solid fa-trash"></i><% end %>
+              </div>
+            </div>
+          </span>
+          <div class="post-left">
+            <div class="post-left-upper">
+              <div>
+                <%= link_to root_path do %>
+                  <% if post.user.icon.attached? %>
+                    <%= image_tag post.user.icon, class:"rounded-circle", size: "50x50" %>
+                  <% else %>
+                    <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "50x50" %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div>
+                <span class="hidden-over-767px">
+                  <%= link_to root_path do %>
+                    <% if post.user.icon.attached? %>
+                      <%= image_tag post.user.icon, class:"rounded-circle", size: "35x35" %>
+                    <% else %>
+                      <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "35x35" %>
+                    <% end %>
+                  <% end %>
+                </span>
+                <div><%= link_to post.user.username, "#" %></div>
+                <div>
+                  <div><%= link_to post.title, "#", class: "title" %></div>
+                  <div><%= post.address %></div>
+                </div>
+              </div>
+            </div>
+            <div class="post-left-lower">
+              <% unless post.members.empty? %>
+                <div class="members-involved">
+                  <i class="fa-solid fa-person-dress"></i>
+                  関連メンバー
+                </div>
+                <div>
+                  <% post.members.each do |member| %>
+                    <span class="member-name"><%= member.name %></span>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="post-right">
+            <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
+            <div class="links">
+              <div>
+                <%= link_to "#" do %>
+                  <i class="fa-solid fa-circle-info"></i>
+                  詳細
+                <% end %>
+              </div>
+              <div>
+                <%= link_to "#" do %>
+                  <i class="fa-regular fa-pen-to-square"></i>
+                  編集
+                <% end %>
+              </div>
+              <div>
+                <%= link_to post_path(post), method: :delete, data: { confirm: "投稿を削除しますか？" } do %>
+                  <i class="fa-solid fa-trash"></i>
+                  削除
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
