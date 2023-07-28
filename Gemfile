@@ -65,3 +65,5 @@ gem 'font-awesome-sass'
 gem 'net-http'
 
 gem 'dotenv-rails'
+
+gem 'kaminari'
