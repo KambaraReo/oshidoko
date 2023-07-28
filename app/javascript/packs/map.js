@@ -29,6 +29,10 @@ window.codeAddress = function() {
         marker = new google.maps.Marker({
         map: map,
         position: results[0].geometry.location,
+        icon: {
+          url: '/assets/marker.svg',
+          scaledSize: new google.maps.Size(50, 50)
+        },
         draggable: true	// ドラッグ可能にする
       });
 
