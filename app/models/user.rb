@@ -7,6 +7,10 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 200 }
 
   has_one_attached :icon
+
+  validate :check_icon_type
+  validate :check_icon_size
+
   has_many :users_members, dependent: :destroy
   has_many :members, through: :users_members
 
@@ -32,5 +36,19 @@ class User < ApplicationRecord
 
     clean_up_passwords
     result
+  end
+
+  private
+
+  def check_icon_type
+    if icon.attached? && !icon.content_type.in?(%w(image/jpeg image/jpg image/png))
+      errors.add(:icon, 'のファイル形式はJPEG、JPG、またはPNGである必要があります。')
+    end
+  end
+
+  def check_icon_size
+    if icon.attached? && icon.byte_size > 1.megabytes
+      errors.add(:icon, 'のファイルサイズは1MB以下である必要があります。')
+    end
   end
 end

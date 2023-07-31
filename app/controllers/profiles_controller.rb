@@ -12,6 +12,12 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def delete_icon
+    @user = current_user
+    @user.icon.purge if @user.icon.attached?
+    redirect_to edit_profile_path(@user)
+  end
+
   private
 
   def user_params

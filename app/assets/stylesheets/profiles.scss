@@ -66,6 +66,19 @@
   gap: 15px;
 }
 
+.edit-profile-form .icon-line > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-profile-form .icon-line .delete-icon {
+  display: block;
+  font-size: 12px;
+  width: 80%;
+  text-align: right;
+  margin-top: 6px;
+}
+
 .edit-profile-form .field-line-right input, .edit-profile-form .field-line-right textarea {
   width: 80%;
   font-size: 14px;
@@ -148,6 +161,10 @@
   }
 
   .edit-profile-form .field-line-left {
+    width: 100%;
+  }
+
+  .edit-profile-form .icon-line .delete-icon {
     width: 100%;
   }
 
