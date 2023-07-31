@@ -77,6 +77,20 @@
   margin-bottom: 50px;
 }
 
+.post-row > span:first-of-type {
+  padding-left: 0 !important;
+}
+
+.post-row > span:first-of-type .back-link {
+  color: #22699c;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.post-row > span:first-of-type .back-link:hover, .post-row > span:first-of-type .back-link:active {
+  opacity: .8;
+}
+
 .post-form {
   color: #535353;
   font-size: 14px;
