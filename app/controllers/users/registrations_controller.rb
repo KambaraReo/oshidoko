@@ -8,6 +8,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # メールアドレス編集後のリダイレクト先
   def after_update_path_for(resource)
-    user_path(current_user)
+    mypage_users_path
   end
 end

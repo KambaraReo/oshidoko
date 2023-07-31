@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     if @user.update_without_current_password(user_params)
-      redirect_to user_path(@user)
+      redirect_to mypage_users_path
     else
       render "edit"
     end

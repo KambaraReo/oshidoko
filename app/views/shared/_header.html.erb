@@ -16,7 +16,7 @@
         <div class="btn-account">
           <% if user_signed_in? %> 
             <span class="status-signed-in">
-              <%= link_to user_path(@user) do %>
+              <%= link_to mypage_users_path do %>
                 <span class="header-icon">                  
                   <% if @user.icon.attached? %>
                     <%= image_tag @user.icon, class: "rounded-circle", size: "40x40" %>

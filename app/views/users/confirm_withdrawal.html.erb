@@ -7,7 +7,7 @@
       <p>退会すると、アカウントに関する全ての情報が閲覧できなくなります。</p>
       <p>退会する場合は「退会する」を選択してください。</p>
       <div>
-        <%= link_to "マイページ", user_path(@user), class: "btn ms-3 btn-mypage" %>
+        <%= link_to "マイページ", mypage_users_path, class: "btn ms-3 btn-mypage" %>
         <%= link_to "退会する", user_registration_path, method: :delete, class: "btn ms-3 btn-withdrawal", data: { confirm: "本当に退会しますか？" }  %>
       </div>
     </div>

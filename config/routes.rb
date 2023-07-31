@@ -5,11 +5,12 @@ Rails.application.routes.draw do
     controllers: { registrations: 'users/registrations' }
   resources :users, only: [:show] do
     collection do
+      get 'mypage'
       get 'edit_password'
       patch 'update_password'
+      get 'confirm_withdrawal'
       resources :profiles, only: [:edit, :update]
       delete 'profiles/delete_icon', as: :delete_icon
-      get 'confirm_withdrawal'
       resources :posts
     end
   end
