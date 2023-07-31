@@ -261,7 +261,11 @@
 }
 
 .mypage-container .profile-area-oshi > span:first-of-type p {
-  color: #24abef;
+  font-size: 11px;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, rgba(97, 194, 233, 0.8) 0%, rgba(81, 235, 184, 0.9) 100%);
+  border-radius: 2em;
+  padding: 3px 12px;
 }
 
 .mypage-container .oshi {
@@ -282,7 +286,7 @@
   font-size: 12px;
   letter-spacing: 1px;
   padding: 3px 5px;
-  margin-left: 12px;
+  margin-left: 3px;
   background-color: rgba(214, 214, 214, 0.9);
   border-radius: 3px;
 }
