@@ -266,3 +266,18 @@
     padding: 40px 10px !important;
   }
 }
+
+// 投稿の編集
+.edit-post-upper {
+  padding-left: 0 !important;
+}
+
+.edit-post-upper .mypage-link {
+  color: #22699c;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.edit-post-upper .mypage-link:hover, .edit-post-upper .mypage-link:active {
+  opacity: .8;
+}

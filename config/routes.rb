@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       patch 'update_password'
       resources :profiles, only: [:edit, :update]
       get 'confirm_withdrawal'
-      resources :posts, only: [:index, :new, :create, :destroy]
+      resources :posts
     end
   end
 end

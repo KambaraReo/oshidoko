@@ -21,6 +21,23 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @user = current_user
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:notice] = "投稿を更新しました。"
+      redirect_to posts_path
+    else
+      render "edit"
+    end
+
+  end
+
   private
 
   def post_params
