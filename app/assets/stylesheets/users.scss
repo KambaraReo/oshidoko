@@ -204,6 +204,11 @@
   background-color: rgba(0, 0, 0, 0.07);
 }
 
+.mypage-container .title {
+  text-align: center;
+  margin-top: 18px;
+}
+
 .mypage-container .subtitle {
   font-size: 14px;
   color: rgb(164, 161, 161);
@@ -228,11 +233,11 @@
 .mypage-container .profile-area .link-field-profile {
   white-space: nowrap;
   padding-right: 6px;
+  color: #22699c;
 }
 
 .mypage-container .profile-area .link-field-profile p {
   display: inline-block;
-  color: #22699c;
   font-size: 15px;
 }
 
@@ -308,10 +313,6 @@
   margin-right: 8px;
 }
 
-.mypage-container .profile-area-posts .link-field-profile p {
-  font-size: 12px;
-}
-
 .mypage-container .profile-area-introduction {
   font-size: 14px;
   padding: 2px 15px;
@@ -329,7 +330,7 @@
 }
 
 .mypage-container .link-field p {
-  margin: 0;
+  margin: 0 13px 0 0;
 }
 
 .mypage-container .link-field .link-field-email {
@@ -554,5 +555,194 @@
   .withdrawal-row {
     width: 100%;
     padding: 10px;
+  }
+}
+
+// ユーザー詳細
+.user-info-container {
+  margin-top: 100px;
+}
+
+.user-info-container .back-link {
+  color: #22699c;
+  display: inline-block;
+  margin-left: 2px;
+  margin-bottom: 12px;
+}
+
+.user-info-container .back-link:hover, .user-info-container .back-link:active {
+  opacity: .8;
+}
+
+// ユーザー詳細（プロフィール）
+.user-info-container .profile-area {
+  margin-bottom: 30px;
+}
+
+.user-info-container .profile-area p {
+  margin-bottom: 0;
+}
+
+.user-info-container .profile-area .content {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 15px 10px;
+  margin: 0 30px;
+}
+
+.user-info-container .profile-area-top {
+  display: flex; 
+  justify-content: space-between;
+}
+
+.user-info-container .profile-area .link-field-profile {
+  white-space: nowrap;
+  padding-right: 6px;
+}
+
+.user-info-container .profile-area .link-field-profile p {
+  display: inline-block;
+  color: #22699c;
+  font-size: 15px;
+}
+
+.user-info-container .profile-area .link-field-profile:hover, .user-info-container .profile-area .link-field-profile:active {
+  opacity: .8;
+}
+
+.user-info-container .profile-area-top > div {
+  display: flex; 
+  gap: 30px;
+  align-items: center;
+  padding: 3px 5px;
+}
+
+.user-info-container .profile-area-oshi {
+  padding-left: 6px;
+  margin-top: 10px;
+}
+
+.user-info-container .profile-area-oshi > span:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 13px;
+  margin-bottom: 1px;
+}
+
+.user-info-container .profile-area-oshi > span:first-of-type p {
+  font-size: 11px;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, rgba(97, 194, 233, 0.8) 0%, rgba(81, 235, 184, 0.9) 100%);
+  border-radius: 2em;
+  padding: 3px 12px;
+}
+
+.user-info-container .oshi {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 6px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+  background-color: rgb(97, 186, 238);
+  border-left: 5px solid rgb(148, 59, 168);
+  border-bottom: 2px solid rgba(230, 230, 230, 0.75);
+  color: rgb(255, 255, 255);
+  width: 80px;
+  display: inline-block;
+}
+
+.user-info-container .oshi-none {
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 3px 5px;
+  margin-left: 3px;
+  background-color: rgba(214, 214, 214, 0.9);
+  border-radius: 3px;
+}
+
+.user-info-container .profile-area-username {
+  padding-left: 6px;
+  margin-bottom: 3px;
+}
+
+.user-info-container .profile-area-middle {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  padding-left: 6px;
+  gap: 20px;
+}
+
+.user-info-container .profile-area-ff span {
+  margin-right: 8px;
+}
+
+.user-info-container .profile-area-introduction {
+  font-size: 14px;
+  padding: 2px 15px;
+}
+
+.user-info-container .profile-area-introduction p {
+  color: rgb(96, 94, 94);
+}
+
+// ユーザー詳細（投稿）
+.user-info-container .number-of-displays {
+  text-align: right;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin-top: -14px;
+  margin-bottom: 3px;
+}
+
+.user-info-container .links {
+  display: flex;
+  gap: 14px;
+}
+
+.user-info-container .links {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.user-info-container .positive-link a {
+  color: #116e9b;
+}
+
+.user-info-container .negative-link a {
+  color: #ff7b7b;
+}
+
+.user-info-container .links a:hover, .user-info-container .links a:active {
+  opacity: .8;
+}
+
+.user-info-container .username {
+  color: rgba(255, 255, 255, .9);
+}
+
+@media screen and (max-width: 767px) {
+  .user-info-container .back-link {
+    margin-left: 1px;
+  }
+
+  .user-info-container .profile-area .hidden-within-767px {
+    display: none !important;
+  }
+
+  .user-info-container .my-post-upper > div:last-of-type {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+  }
+
+  .user-info-container .positive-link a {
+    font-size: 12px;
+    color: #116e9b;
+  }
+
+  .user-info-container .negative-link a {
+    color: #ff7b7b;
   }
 }

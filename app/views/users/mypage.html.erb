@@ -2,7 +2,7 @@
 
 <div class="mypage-container container">
   <div class="mypage-row row">
-    <h3>マイページ</h3>
+    <h1 class="title">MY PAGE</h1>
     <div>
       <div class="subtitle">プロフィール</div>
       <hr>
@@ -15,20 +15,14 @@
               <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "70x70" %>
             <% end %>
           </div>
-          <%= link_to edit_profile_path(@user), class: "link-field-profile", data: {"turbolinks"=>false} do %>
-            <i class="fa-solid fa-pen" style="color: #22699c;"></i>
-            <p>プロフィール編集</p>
+          <%= link_to user_path(@user), class: "link-field-profile", data: {"turbolinks"=>false} do %>
+            <i class="fa-regular fa-user"></i>
+            <p>詳細</p>
           <% end %>
         </div>
         <h4 class="profile-area-username"><%= @user.username %></h4>
         <div class="profile-area-middle">
           <p class="profile-area-ff">100フォロー<span></span>10フォロワー</p>
-          <div class="profile-area-posts">
-            <%= link_to posts_path, class: "link-field-profile" do %>
-              <i class="fa-solid fa-map-pin" style="color: #22699c;"></i>
-              <p>マイ投稿</p>
-            <% end %>
-          </div>
         </div>
         <div class="profile-area-introduction">
           <p><%= @user.introduction %></p>

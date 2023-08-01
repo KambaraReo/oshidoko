@@ -67,7 +67,7 @@
                     <% end %>
                   <% end %>
                 </span>
-                <div><%= link_to post.user.username, "#" %></div>
+                <div><%= link_to post.user.username, user_path(post.user) %></div>
                 <div>
                   <div><%= link_to post.title, "#", class: "title" %></div>
                   <div><%= post.address %></div>

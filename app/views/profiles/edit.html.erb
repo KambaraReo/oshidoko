@@ -1,9 +1,9 @@
 <div class="edit-profile-container container">
   <div class="edit-profile-row row">
     <div class="edit-profile-form col-md-10 col-lg-8 col-xl-8">
-      <%= link_to mypage_users_path, class: "mypage-link" do %>
+      <%= link_to user_path(@user), class: "back-link" do %>
         <i class="fa-regular fa-circle-left"></i>
-        マイページ
+        ユーザー詳細
       <% end %>
       <h3 class="title">プロフィール編集</h3>
       <%= form_with model: @user, url: {controller: 'profiles', action: 'update'}  do |f| %>
