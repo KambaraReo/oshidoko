@@ -30,7 +30,14 @@ class PostsController < ApplicationController
     else
       render "edit"
     end
+  end
 
+  def destroy
+    @user = current_user
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = "投稿を削除しました。"
+    redirect_to user_path(@user)
   end
 
   private
