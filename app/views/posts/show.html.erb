@@ -1,8 +1,28 @@
 <div class="top flex-shrink-0 post-container">
-  <%= link_to :back, class: "back-link", data: { "turbolinks" => false } do %>
-    <i class="fa-regular fa-circle-left"></i>
-    戻る
-  <% end %>
+  <div class="post-details-links">
+    <div>
+      <%= link_to :back, class: "back-link", data: { "turbolinks" => false } do %>
+        <i class="fa-regular fa-circle-left"></i>
+        戻る
+      <% end %>
+    </div>
+    <div>
+      <% if @user == @post.user %>
+        <span class="positive-link">
+          <%= link_to edit_post_path(@post), data: { "turbolinks" => false } do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+            編集
+          <% end %>
+        </span>
+        <span class="negative-link">
+          <%= link_to post_path(@post), method: :delete, data: { confirm: "投稿を削除しますか？" } do %>
+            <i class="fa-solid fa-trash"></i>
+            削除
+          <% end %>
+        </span>
+      <% end %>
+    </div>
+  </div>
   <div class="post-details">
     <h2 class="title"><%= @post.title %></h2>
     <div class="content">
