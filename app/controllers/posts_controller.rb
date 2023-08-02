@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   def new
     @user = current_user
@@ -14,6 +14,11 @@ class PostsController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def show
+    @user = current_user
+    @post = Post.find(params[:id])
   end
 
   def edit

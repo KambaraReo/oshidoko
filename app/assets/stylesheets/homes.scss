@@ -169,29 +169,29 @@
   font-family: 'Comic Sans MS', cursive;
 }
 
-.main-map-area {
+.posts-map-area {
   margin-bottom: 45px;
 }
 
-#main-map {
+#posts-map {
   height: 80vh !important;
   margin: 0 30px;
 }
 
 @media screen and (max-width: 991px) {
-  #main-map {
+  #posts-map {
     height: 60vh !important;
   }
 }
 
 @media screen and (max-width: 767px) {
-  #main-map {
+  #posts-map {
     height: 45vh !important;
   }
 }
 
 @media screen and (max-width: 543px) {
-  #main-map {
+  #posts-map {
     height: 30vh !important;
   }
 }

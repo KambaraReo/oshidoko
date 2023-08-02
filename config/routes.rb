@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get 'confirm_withdrawal'
       resources :profiles, only: [:edit, :update]
       delete 'profiles/delete_icon', as: :delete_icon
-      resources :posts
+      resources :posts, except: [:index]
     end
   end
 end

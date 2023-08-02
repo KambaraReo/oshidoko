@@ -1,5 +1,5 @@
 <div class="notice"><%= notice %></div>
-<%= link_to new_post_path, class: "post-button", data: {"turbolinks"=>false} do %>
+<%= link_to new_post_path, class: "post-button", data: { "turbolinks" => false } do %>
   <i class="fa-solid fa-map-pin fa-2xl"></i>
   <span>投稿する</span>
 <% end %>
@@ -24,12 +24,12 @@
 </div >
 
 <div class="top flex-shrink-0">
-  <div class="main-map-area">
+  <div class="posts-map-area">
     <h1 class="title">
       <i class="fa-regular fa-map"></i>
       <span>MAP</span>
     </h1>
-    <div id="main-map"></div>
+    <div id="posts-map"></div>
   </div>
   <div class="posts-area">
     <h1 class="title">
@@ -44,7 +44,12 @@
         <div class="post">
           <span class="hidden-over-767px post-upper">
             <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
-            <div><%= link_to "詳細", "#" %></div>
+            <div>
+              <%= link_to post_path(post), data: { "turbolinks" => false } do %>
+                <i class="fa-solid fa-circle-info"></i>
+                詳細
+              <% end %>
+            </div>
           </span>
           <div class="post-left">
             <div class="post-left-upper">
@@ -69,7 +74,7 @@
                 </span>
                 <div><%= link_to post.user.username, user_path(post.user) %></div>
                 <div>
-                  <div><%= link_to post.title, "#", class: "title" %></div>
+                  <div><%= link_to post.title, post_path(post), class: "title", data: { "turbolinks" => false } %></div>
                   <div><%= post.address %></div>
                 </div>
               </div>
@@ -90,7 +95,12 @@
           </div>
           <div class="post-right">
             <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
-            <div><%= link_to "詳細", "#" %></div>
+            <div>
+              <%= link_to post_path(post), data: { "turbolinks" => false } do %>
+                <i class="fa-solid fa-circle-info"></i>
+                詳細
+              <% end %>
+            </div>
           </div>
         </div>
       <% end %>
@@ -114,7 +124,7 @@
     ];
 
     // 地図を作成
-    let map = new google.maps.Map(document.getElementById('main-map'), {
+    let map = new google.maps.Map(document.getElementById('posts-map'), {
       zoom: 5.5,
       styles: styles,
       center: latlng
@@ -141,7 +151,7 @@
         // マーカークリック時にinfowindowを表示
         let infowindowContent = `
           <div class="infowindow-content">
-            <a href='<%= post_path(post.id) %>' target='_blank' class="title"><%= post.title %></a>
+            <a href='<%= post_path(post.id) %>' class="title"><%= post.title %></a>
             <div class="address"><%= post.address %></div>
             <% unless post.members.empty? %>
               <div class="members-involved">

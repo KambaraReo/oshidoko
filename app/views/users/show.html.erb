@@ -1,6 +1,6 @@
 <div class="notice"><%= notice %></div>
 <div class="top flex-shrink-0 user-info-container">
-  <%= link_to :back, class: "back-link", data: {"turbolinks"=>false} do %>
+  <%= link_to :back, class: "back-link", data: { "turbolinks" => false } do %>
     <i class="fa-regular fa-circle-left"></i>
     戻る
   <% end %>
@@ -19,7 +19,7 @@
           <% end %>
         </div>
         <% if @user == @specific_user %>
-          <%= link_to edit_profile_path(@user), class: "link-field-profile", data: {"turbolinks"=>false} do %>
+          <%= link_to edit_profile_path(@user), class: "link-field-profile", data: { "turbolinks" => false } do %>
             <i class="fa-solid fa-pen" style="color: #22699c;"></i>
             <p class="hidden-within-767px">プロフィール編集</p>
           <% end %>
@@ -58,11 +58,11 @@
             <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
             <div class="links">
               <div class="positive-link">
-                <%= link_to "#" do %><i class="fa-solid fa-circle-info"></i><% end %>
+                <%= link_to post_path(post) do %><i class="fa-solid fa-circle-info"></i><% end %>
               </div>
               <% if @user == @specific_user %>
                 <div class="positive-link">
-                  <%= link_to edit_post_path(post), data: {"turbolinks"=>false} do %><i class="fa-regular fa-pen-to-square"></i><% end %>
+                  <%= link_to edit_post_path(post), data: { "turbolinks" => false } do %><i class="fa-regular fa-pen-to-square"></i><% end %>
                 </div>
                 <div class="negative-link">
                   <%= link_to post_path(post), method: :delete, data: { confirm: "投稿を削除しますか？" } do %><i class="fa-solid fa-trash"></i><% end %>
@@ -93,7 +93,7 @@
                 </span>
                 <div class="username"><%= post.user.username %></div>
                 <div>
-                  <div><%= link_to post.title, "#", class: "title" %></div>
+                  <div><%= link_to post.title, post_path(post), class: "title", data: { "turbolinks" => false } %></div>
                   <div><%= post.address %></div>
                 </div>
               </div>
@@ -116,14 +116,14 @@
             <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
             <div class="links">
               <div class="positive-link">
-                <%= link_to "#" do %>
+                <%= link_to post_path(post), data: { "turbolinks" => false } do %>
                   <i class="fa-solid fa-circle-info"></i>
                   詳細
                 <% end %>
               </div>
               <% if @user == @specific_user %>
                 <div class="positive-link">
-                  <%= link_to edit_post_path(post), data: {"turbolinks"=>false} do %>
+                  <%= link_to edit_post_path(post), data: { "turbolinks" => false } do %>
                     <i class="fa-regular fa-pen-to-square"></i>
                     編集
                   <% end %>
