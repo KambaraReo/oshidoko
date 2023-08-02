@@ -8,9 +8,11 @@
     <div class="content">
       <div class="content-left">
         <% if @post.pictures.attached? %>
-          <% @post.pictures.each do |picture| %>
-            <%= image_tag picture, class: "picture", size: "350x250" %>
-          <% end %>
+          <div class="slider">
+            <% @post.pictures.each do |picture| %>
+              <%= image_tag picture, class: "picture", size: "350x250" %>
+            <% end %>
+          </div>
         <% else %>
           <%= image_tag "default_post.png", class: "picture", size: "350x250" %>
         <% end %>
