@@ -32,6 +32,7 @@ ja:
         title: 場所・施設名
         description: 説明
         address: 住所
+        pictures: 画像
     models:
       user: ユーザー
     errors:

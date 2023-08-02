@@ -7,8 +7,10 @@
     <h2 class="title"><%= @post.title %></h2>
     <div class="content">
       <div class="content-left">
-        <% if @post.picture.attached? %>
-          <%= image_tag @post.picture, class: "picture", size: "350x250" %>
+        <% if @post.pictures.attached? %>
+          <% @post.pictures.each do |picture| %>
+            <%= image_tag picture, class: "picture", size: "350x250" %>
+          <% end %>
         <% else %>
           <%= image_tag "default_post.png", class: "picture", size: "350x250" %>
         <% end %>

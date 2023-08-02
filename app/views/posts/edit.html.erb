@@ -14,7 +14,7 @@
       <%= form_with model: @post do |f| %>
         <div class="field">
           <%= f.label :title, "場所・施設名" %>
-          <%= f.text_field :title, autofocus: true, placeholder: "例) 日向坂" %>
+          <%= f.text_field :title, placeholder: "例) 日向坂" %>
           <span class="error-message">
             <% if @post.errors.include?(:title) %>
               <%= @post.errors.full_messages_for(:title).first %>
@@ -63,9 +63,14 @@
           <div id='map'></div>
         </div>
 
-        <div class="picture-field">
-          <%= f.label :picture, "写真" %>
-          <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
+        <div class="pictures-field">
+          <%= f.label :pictures, "画像" %>
+          <%= f.file_field :pictures, accept: 'image/jpeg, image/jpg, image/png', multiple: true %>
+          <span class="error-message">
+            <% if @post.errors.include?(:pictures) %>
+              <%= @post.errors.full_messages_for(:pictures).first %>
+            <% end %>
+          </span>
         </div>
 
         <%= f.hidden_field :latitude, id: "lat" %>
