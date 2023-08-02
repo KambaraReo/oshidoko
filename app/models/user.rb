@@ -8,6 +8,9 @@ class User < ApplicationRecord
 
   has_one_attached :icon
 
+  VALID_ICON_TYPES = ['image/jpeg', 'image/jpg', 'image/png'].freeze
+  MAX_ICON_SIZE = 1.megabytes
+
   validate :check_icon_type
   validate :check_icon_size
 
@@ -41,14 +44,15 @@ class User < ApplicationRecord
   private
 
   def check_icon_type
-    if icon.attached? && !icon.content_type.in?(%w(image/jpeg image/jpg image/png))
-      errors.add(:icon, 'のファイル形式はJPEG、JPG、またはPNGである必要があります。')
+    if icon.attached? && !icon.content_type.in?(VALID_ICON_TYPES)
+      valid_types = VALID_ICON_TYPES.map { |type| type.split('/').last.upcase }
+      errors.add(:icon, "のファイル形式は#{valid_types.join('、')}である必要があります。")
     end
   end
 
   def check_icon_size
-    if icon.attached? && icon.byte_size > 1.megabytes
-      errors.add(:icon, 'のファイルサイズは1MB以下である必要があります。')
+    if icon.attached? && icon.byte_size > MAX_ICON_SIZE
+      errors.add(:icon, "のファイルサイズは#{MAX_ICON_SIZE / 1.megabyte}MB以下である必要があります。")
     end
   end
 end
