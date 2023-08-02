@@ -54,7 +54,7 @@
           <div class="post-left">
             <div class="post-left-upper">
               <div>
-                <%= link_to root_path do %>
+                <%= link_to user_path(post.user) do %>
                   <% if post.user.icon.attached? %>
                     <%= image_tag post.user.icon, class:"rounded-circle", size: "50x50" %>
                   <% else %>
@@ -64,7 +64,7 @@
               </div>
               <div>
                 <span class="hidden-over-767px">
-                  <%= link_to root_path do %>
+                  <%= link_to user_path(post.user) do %>
                     <% if post.user.icon.attached? %>
                       <%= image_tag post.user.icon, class:"rounded-circle", size: "35x35" %>
                     <% else %>

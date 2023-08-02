@@ -73,22 +73,18 @@
           <div class="post-left">
             <div class="post-left-upper">
               <div>
-                <%= link_to root_path do %>
-                  <% if post.user.icon.attached? %>
-                    <%= image_tag post.user.icon, class:"rounded-circle", size: "50x50" %>
-                  <% else %>
-                    <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "50x50" %>
-                  <% end %>
+                <% if post.user.icon.attached? %>
+                  <%= image_tag post.user.icon, class:"rounded-circle", size: "50x50" %>
+                <% else %>
+                  <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "50x50" %>
                 <% end %>
               </div>
               <div>
                 <span class="hidden-over-767px">
-                  <%= link_to root_path do %>
-                    <% if post.user.icon.attached? %>
-                      <%= image_tag post.user.icon, class:"rounded-circle", size: "35x35" %>
-                    <% else %>
-                      <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "35x35" %>
-                    <% end %>
+                  <% if post.user.icon.attached? %>
+                    <%= image_tag post.user.icon, class:"rounded-circle", size: "35x35" %>
+                  <% else %>
+                    <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "35x35" %>
                   <% end %>
                 </span>
                 <div class="username"><%= post.user.username %></div>
