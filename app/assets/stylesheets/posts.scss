@@ -253,6 +253,10 @@
   gap: 50px;
 }
 
+.post-container .content-left {
+  width: 350px;
+}
+
 .content-left .picture {
   object-fit: cover;
 }
@@ -264,7 +268,7 @@
 }
 
 .content-left #post-map {
-  width: 100%;
+  width: 350px;
   height: 275px;
 }
 
@@ -314,12 +318,21 @@
     gap: 25px;
   }
 
+  .post-container .content-left {
+    width: 250px;
+  }
+
   .content-left .picture {
     width: 250px;
     height: 150px;
   }
 
+  .content-left .address {
+    font-size: 12px;
+  }
+
   .content-left #post-map {
+    width: 250px;
     height: 200px;
   }
 
@@ -338,17 +351,18 @@
     margin-bottom: 6px;
   }
 
+  .post-container .content-left {
+    width: auto;
+  }
+
   .content-left .picture {
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
   }
 
-  .content-left .address {
-    font-size: 12px;
-  }
-
   .content-left #post-map {
+    width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
   }
