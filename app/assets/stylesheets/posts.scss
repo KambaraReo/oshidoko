@@ -1,4 +1,4 @@
-// 新規投稿
+// 新規投稿，投稿の編集
 #map {
   width: 100%;
   height: 300px;
@@ -8,20 +8,6 @@
 .post-row {
   max-width: 660px;
   margin-bottom: 50px;
-}
-
-.post-row > span:first-of-type {
-  padding-left: 0 !important;
-}
-
-.post-row > span:first-of-type .back-link {
-  color: #22699c;
-  display: inline-block;
-  margin-bottom: 8px;
-}
-
-.post-row > span:first-of-type .back-link:hover, .post-row > span:first-of-type .back-link:active {
-  opacity: .8;
 }
 
 .post-form {
@@ -184,6 +170,30 @@
   box-shadow: 5px 5px 10px #afafaf;
 }
 
+.post-form .actions:last-of-type {
+  margin-top: 0;
+}
+
+.post-form .back-button {
+  padding: 0 1.8em;
+  min-width: 80%;
+  line-height: 3.5;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  border-radius: 2em;
+  border: none;
+  background: #b8b8b8bd;
+  color: #ffffff;
+  transition: 0.4s;
+  margin-top: 24px;
+}
+
+.post-form .back-button:hover, .post-form .back-button:active {
+  background: #b8b8b8bd;
+  color: #ffffff;
+  box-shadow: 5px 5px 10px #afafaf;
+}
+
 @media screen and (max-width: 767px) {
   .post-row {
     width: 90% !important;
@@ -212,21 +222,6 @@
   .post-row {
     padding: 40px 10px !important;
   }
-}
-
-// 投稿の編集
-.edit-post-upper {
-  padding-left: 0 !important;
-}
-
-.edit-post-upper .back-link {
-  color: #22699c;
-  display: inline-block;
-  margin-bottom: 8px;
-}
-
-.edit-post-upper .back-link:hover, .edit-post-upper .back-link:active {
-  opacity: .8;
 }
 
 // 投稿の詳細

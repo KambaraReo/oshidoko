@@ -3,18 +3,8 @@
   margin-bottom: 50px;
 }
 
-.edit-profile-row .back-link {
-  color: rgb(34, 105, 156);
-  display: inline-block;
-  margin-top: 16px;
-}
-
-.edit-profile-row .back-link:hover, .edit-profile-row .back-link:active {
-  opacity: .8;
-}
-
 .edit-profile-form .title {
-  margin-top: 10px;
+  margin: 40px 0 0 0;
   color: #24abef;
 }
 
@@ -116,17 +106,23 @@
   padding: 0 5px;
 }
 
-.edit-profile-form .actions {
-  text-align: center;
+.edit-profile-form .update {
+  text-align: center !important;
   margin-top: 35px;
+  margin-bottom: 20px;
+}
+
+.edit-profile-form .actions:last-of-type {
+  text-align: center;
   margin-bottom: 30px;
 }
 
 .edit-profile-form .actions input {
   padding: 0 1.8em;
+  width: 185px;
   min-width: 30%;
-  line-height: 3.5;
-  font-size: 1.2em;
+  line-height: 3;
+  font-size: 18px;
   letter-spacing: 0.05em;
   border-radius: 2em;
   border: none;
@@ -138,6 +134,27 @@
 }
 
 .edit-profile-form .actions input:hover, .edit-profile-form .actions input:active {
+  box-shadow: 5px 5px 10px #afafaf;
+}
+
+.edit-profile-form .back-button {
+  padding: 0 1.8em;
+  width: 185px;
+  min-width: 30%;
+  line-height: 3;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  border-radius: 2em;
+  border: none;
+  background: #b8b8b8bd;
+  color: #ffffff;
+  transition: 0.4s;
+  margin: auto;
+}
+
+.edit-profile-form .back-button:hover, .edit-profile-form .back-button:active {
+  background: #b8b8b8bd;
+  color: #ffffff;
   box-shadow: 5px 5px 10px #afafaf;
 }
 

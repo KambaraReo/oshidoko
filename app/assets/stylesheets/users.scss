@@ -384,8 +384,10 @@
 
 .edit-account-form .mypage-link {
   color: rgb(34, 105, 156);
-  display: inline-block;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
 }
 
 .edit-account-form .mypage-link:hover, .edit-account-form .mypage-link:active {
@@ -566,7 +568,6 @@
 .user-info-container .back-link {
   color: #22699c;
   display: inline-block;
-  margin-left: 2px;
   margin-bottom: 12px;
 }
 
