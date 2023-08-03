@@ -78,9 +78,14 @@
 .edit-profile-form .icon-line .delete-icon {
   display: block;
   font-size: 12px;
+  color: #ff7b7b;
   width: 80%;
   text-align: right;
   margin-top: 6px;
+}
+
+.edit-profile-form .icon-line .delete-icon:hover, .edit-profile-form .icon-line .delete-icon:active {
+  opacity: .8;
 }
 
 .edit-profile-form .field-line-right input, .edit-profile-form .field-line-right textarea {

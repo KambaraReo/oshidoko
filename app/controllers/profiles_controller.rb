@@ -6,7 +6,8 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     if @user.update_without_current_password(user_params)
-      redirect_to mypage_users_path
+      flash[:notice] = "プロフィールを更新しました。"
+      redirect_to user_path(@user)
     else
       render "edit"
     end
@@ -15,7 +16,8 @@ class ProfilesController < ApplicationController
   def delete_icon
     @user = current_user
     @user.icon.purge if @user.icon.attached?
-    redirect_to edit_profile_path(@user)
+    flash[:notice] = "アイコンを削除しました。"
+    redirect_to user_path(@user)
   end
 
   private

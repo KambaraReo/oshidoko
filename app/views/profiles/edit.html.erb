@@ -20,7 +20,9 @@
             <% end %>
             <span>
               <%= f.file_field :icon, accept: 'image/jpeg, image/jpg, image/png', id: "img-select-btn" %>
-              <%= link_to "アイコンを削除", delete_icon_profile_path, method: :delete, class: "delete-icon" %>
+              <% if @user.icon.attached? &&  @user.icon != "default_user.png" %>
+                <%= link_to "アイコンを削除", delete_icon_profile_path, method: :delete, class: "delete-icon", data: { confirm: "アイコンを削除しますか？" } %>
+              <% end %>
             </span>
             <span class="error-message">
               <% if @user.errors.include?(:icon) %>
