@@ -9,8 +9,9 @@ Rails.application.routes.draw do
       get 'edit_password'
       patch 'update_password'
       get 'confirm_withdrawal'
-      resources :profiles, only: [:edit, :update]
-      delete 'profiles/delete_icon', as: :delete_icon
+      resource :profile, only: [:edit, :update] do
+        delete 'delete_icon', on: :collection
+      end
       resources :posts, except: [:index]
     end
   end

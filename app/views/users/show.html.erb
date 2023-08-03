@@ -19,7 +19,7 @@
           <% end %>
         </div>
         <% if @user == @specific_user %>
-          <%= link_to edit_profile_path(@user), class: "link-field-profile", data: { "turbolinks" => false } do %>
+          <%= link_to edit_profile_path, class: "link-field-profile", data: { "turbolinks" => false } do %>
             <i class="fa-solid fa-pen" style="color: #22699c;"></i>
             <p class="hidden-within-767px">プロフィール編集</p>
           <% end %>
