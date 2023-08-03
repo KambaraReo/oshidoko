@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = Post.new(post_params)
     if @post.save
+      flash[:notice] = "投稿を作成しました。"
       redirect_to root_path
     else
       render "new"
@@ -24,6 +25,10 @@ class PostsController < ApplicationController
   def edit
     @user = current_user
     @post = Post.find(params[:id])
+    unless @user == @post.user
+      flash[:alert] = "編集権限がありません。"
+      redirect_to root_path
+    end
   end
 
   def update
