@@ -104,6 +104,13 @@
             </div>
           </div>
         </div>
+        <div class="favorite" id="favorite-post-<%= post.id %>">
+          <% if user_signed_in? && post.favorited?(@user) %>
+            <%= render "shared/after_liked", post: post %>
+          <% else %>
+            <%= render "shared/before_liked", post: post %>
+          <% end %>
+        </div>
       <% end %>
       <%= paginate @posts, params: { anchor: 'posts-anchor' } %>
     </div>

@@ -1,0 +1,45 @@
+.favorite {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 3px;
+  font-size: 14px;
+  padding: 0 12px;
+}
+
+.heart {
+  color: #dd657a;
+}
+
+.heart:hover, .heart:active {
+  color: #d94d64;
+}
+
+.filled-heart {
+  color: #dd657a;
+}
+
+.filled-heart:hover, .filled-heart:active {
+  color: #d94d64;
+}
+
+.likes {
+  color: #dd657a;
+  font-size: 14px;
+}
+
+// 投稿詳細ページ
+.favorite-area {
+  text-align: right;
+  font-size: 14px;
+}
+
+.favorite-area .likes {
+  color: rgba(98, 98, 98, 0.9);
+  margin-left: 4px;
+}
+
+.favorite-area .likes::after {
+  content: "いいね";
+  margin-left: 3px;
+}
