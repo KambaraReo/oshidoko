@@ -19,6 +19,7 @@ class Post < ApplicationRecord
   has_many :members, through: :posts_members
 
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 
   def favorited?(user)
     favorites.where(user_id: user.id).exists?

@@ -1,4 +1,9 @@
 class FavoritesController < ApplicationController
+  def show
+    @user = current_user
+    @post = Post.find(params[:post_id])
+  end
+
   def create
     unless user_signed_in?
       flash[:alert] = "ログインが必要です。"
