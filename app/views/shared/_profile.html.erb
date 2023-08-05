@@ -1,0 +1,41 @@
+<div class="profile-area">
+  <h1 class="title">
+    <i class="fa-regular fa-id-card"></i>
+    <span>PROFILE</span>
+  </h1>
+  <div class="content">
+    <div class="profile-area-top">
+      <div>
+        <% if user.icon.attached? %>
+          <%= image_tag user.icon, class:"rounded-circle", size: "70x70" %>
+        <% else %>
+          <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "70x70" %>
+        <% end %>
+      </div>
+      <% if @user == user %>
+        <%= link_to edit_profile_path, class: "link-field-profile", data: { "turbolinks" => false } do %>
+          <i class="fa-solid fa-pen" style="color: #22699c;"></i>
+          <p class="hidden-within-767px">プロフィール編集</p>
+        <% end %>
+      <% end %>
+    </div>
+    <h4 class="profile-area-username"><%= user.username %></h4>
+    <div class="profile-area-middle">
+      <p class="profile-area-ff">100フォロー<span></span>10フォロワー</p>
+    </div>
+    <div class="profile-area-introduction">
+      <p><%= user.introduction %></p>
+    </div>
+    <div class="profile-area-oshi">
+      <span>
+        <p>推しメン</p>
+        <% if user.members.empty? %>
+          <div class="oshi-none">未設定</div>
+        <% end %>
+      </span>
+      <% user.members.each do |member| %>
+        <div class="oshi"><%= member.name %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

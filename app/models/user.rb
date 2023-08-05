@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_many :posts
 
   has_many :favorites, dependent: :destroy
+  has_many :favorited_posts, through: :favorites, source: :post
 
   def update_without_current_password(params, *options)
     if params[:password].blank?

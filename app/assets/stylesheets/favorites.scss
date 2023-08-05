@@ -26,6 +26,7 @@
 .likes {
   color: #dd657a;
   font-size: 14px;
+  pointer-events: none;
 }
 
 // 投稿詳細ページ
@@ -37,6 +38,7 @@
 .favorite-area .likes {
   color: rgba(98, 98, 98, 0.9);
   margin-left: 4px;
+  pointer-events: auto;
 }
 
 .favorite-area .likes:hover, .favorite-area .likes:active {

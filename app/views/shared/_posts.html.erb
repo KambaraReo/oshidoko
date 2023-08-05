@@ -1,0 +1,93 @@
+<div class="posts">
+  <div class="number-of-displays"><%= posts.count %>件</div>
+  <% posts.each do |post| %>
+    <div class="post">
+      <span class="hidden-over-767px post-upper my-post-upper">
+        <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
+        <div class="links">
+          <div class="positive-link">
+            <%= link_to post_path(post) do %><i class="fa-solid fa-circle-info"></i><% end %>
+          </div>
+          <% if user == post.user %>
+            <div class="positive-link">
+              <%= link_to edit_post_path(post), data: { "turbolinks" => false } do %><i class="fa-regular fa-pen-to-square"></i><% end %>
+            </div>
+            <div class="negative-link">
+              <%= link_to post_path(post), method: :delete, data: { confirm: "投稿を削除しますか？" } do %><i class="fa-solid fa-trash"></i><% end %>
+            </div>
+          <% end %>
+        </div>
+      </span>
+      <div class="post-left">
+        <div class="post-left-upper">
+          <div>
+            <% if post.user.icon.attached? %>
+              <%= image_tag post.user.icon, class:"rounded-circle", size: "50x50" %>
+            <% else %>
+              <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "50x50" %>
+            <% end %>
+          </div>
+          <div>
+            <span class="hidden-over-767px">
+              <% if post.user.icon.attached? %>
+                <%= image_tag post.user.icon, class:"rounded-circle", size: "35x35" %>
+              <% else %>
+                <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "35x35" %>
+              <% end %>
+            </span>
+            <div class="username"><%= post.user.username %></div>
+            <div>
+              <div><%= link_to post.title, post_path(post), class: "title", data: { "turbolinks" => false } %></div>
+              <div><%= post.address %></div>
+            </div>
+          </div>
+        </div>
+        <div class="post-left-lower">
+          <% unless post.members.empty? %>
+            <div class="members-involved">
+              <i class="fa-solid fa-person-dress"></i>
+              関連メンバー
+            </div>
+            <div>
+              <% post.members.each do |member| %>
+                <span class="member-name"><%= member.name %></span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="post-right">
+        <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
+        <div class="links">
+          <div class="positive-link">
+            <%= link_to post_path(post), data: { "turbolinks" => false } do %>
+              <i class="fa-solid fa-circle-info"></i>
+              詳細
+            <% end %>
+          </div>
+          <% if user == post.user %>
+            <div class="positive-link">
+              <%= link_to edit_post_path(post), data: { "turbolinks" => false } do %>
+                <i class="fa-regular fa-pen-to-square"></i>
+                編集
+              <% end %>
+            </div>
+            <div class="negative-link">
+              <%= link_to post_path(post), method: :delete, data: { confirm: "投稿を削除しますか？" } do %>
+                <i class="fa-solid fa-trash"></i>
+                削除
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="favorite" id="favorite-post-<%= post.id %>">
+      <% if user_signed_in? && post.favorited?(@user) %>
+        <%= render "shared/after_liked", post: post %>
+      <% else %>
+        <%= render "shared/before_liked", post: post %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

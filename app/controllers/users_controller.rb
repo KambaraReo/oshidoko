@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :favorites]
 
   def show
     @user = current_user
-    @specific_user = User.find(params[:id])
-    @posts = @specific_user.posts.order(created_at: :desc) 
+    @post_user = User.find(params[:id])
+    @posts = @post_user.posts.order(created_at: :desc)
+  end
+
+  def favorites
+    @user = current_user
+    @post_user = User.find(params[:id])
   end
 
   def mypage
