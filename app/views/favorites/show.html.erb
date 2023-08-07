@@ -1,4 +1,4 @@
-<div class="flex-shrink-0 favorited-user-container">
+<div class="flex-shrink-0 users-container">
   <%= link_to :back, class: "back-link", data: { "turbolinks" => false } do %>
     <i class="fa-regular fa-circle-left"></i>
     BACK
@@ -8,45 +8,6 @@
       <i class="fa-solid fa-users"></i>
       <span>いいねしたユーザー</span>
     </h3>
-    <div class="content">
-      <% @post.favorited_users.each do |favorited_user| %>
-        <div class="favorited-user">
-          <div class="profile-area-top">
-            <div>
-              <%= link_to user_path(favorited_user) do %>
-                <% if favorited_user.icon.attached? %>
-                  <%= image_tag favorited_user.icon, class:"rounded-circle", size: "45x45" %>
-                <% else %>
-                  <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "45x45" %>
-                <% end %>
-              <% end %>
-              <div>
-                <%= link_to favorited_user.username, user_path(favorited_user), class: "username" %>
-                <div class="posts-count">投稿数 <%= favorited_user.posts.count %></div>
-              </div>
-            </div>
-            <div>
-              <%= link_to edit_profile_path, class: "link-field-profile", data: { "turbolinks" => false } do %>
-                <div>フォロー</div>
-              <% end %>
-            </div>
-          </div>
-          <div class="profile-area-oshi">
-            <span>
-              <p>推しメン</p>
-              <% if favorited_user.members.empty? %>
-                <div class="oshi-none">未設定</div>
-              <% else %>
-                <div>
-                  <% favorited_user.members.each do |member| %>
-                    <div class="oshi"><%= member.name %></div>
-                  <% end %>
-                </div>
-              <% end %>
-            </span>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <%= render "shared/user_lists", users: @favorited_users %>
   </div>
 </div>

@@ -2,16 +2,17 @@ class FavoritesController < ApplicationController
   def show
     @user = current_user
     @post = Post.find(params[:post_id])
+    @favorited_users = @post.favorited_users
   end
 
   def create
-    unless user_signed_in?
-      flash[:alert] = "ログインが必要です。"
-      redirect_to new_user_session_path
-    else
+    if user_signed_in?
       @favorite = Favorite.new(favorite_params)
       @favorite.save
       @post = Post.find(params[:post_id])
+    else
+      flash[:alert] = "ログインが必要です。"
+      redirect_to new_user_session_path
     end
   end
 
