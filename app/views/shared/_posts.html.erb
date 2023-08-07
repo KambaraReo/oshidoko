@@ -35,7 +35,7 @@
                 <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "35x35" %>
               <% end %>
             </span>
-            <div class="username"><%= post.user.username %></div>
+            <%= link_to post.user.username, user_path(post.user), class: "username" %>
             <div>
               <div><%= link_to post.title, post_path(post), class: "title", data: { "turbolinks" => false } %></div>
               <div><%= post.address %></div>

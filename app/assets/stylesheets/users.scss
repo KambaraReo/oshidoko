@@ -723,7 +723,7 @@
 }
 
 .user-info-container .favorites-btn:hover, .user-info-container .favorites-btn:active {
-  background-color: #39b9e8bd !important;
+  background-color: #0da5a899 !important;
   color: rgb(255, 255, 255) !important;
 }
 
@@ -754,12 +754,12 @@
 }
 
 .user-info-container .username {
-  color: rgba(255, 255, 255, .9);
+  font-size: 12px;
 }
 
 @media screen and (max-width: 767px) {
-  .user-info-container .back-link {
-    margin-left: 1px;
+  .user-info-container .favorites-btn {
+    font-size: 10px !important;
   }
 
   .user-info-container .profile-area .hidden-within-767px {
