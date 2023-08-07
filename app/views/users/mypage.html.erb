@@ -1,5 +1,4 @@
 <div class="notice"><%= notice %></div>
-
 <div class="mypage-container container">
   <div class="mypage-row row">
     <h1 class="title">MY PAGE</h1>
@@ -22,7 +21,10 @@
         </div>
         <h4 class="profile-area-username"><%= @user.username %></h4>
         <div class="profile-area-middle">
-          <p class="profile-area-ff">100フォロー<span></span>10フォロワー</p>
+          <div class="profile-area-ff">
+            <%= link_to "#{@user.following_users.count}フォロー", follows_user_path(@user), class: "ff-link" %>
+            <%= link_to "#{@user.follower_users.count}フォロワー", followers_user_path(@user), class: "ff-link" %>
+          </div>
         </div>
         <div class="profile-area-introduction">
           <p><%= @user.introduction %></p>

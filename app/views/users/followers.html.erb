@@ -1,0 +1,13 @@
+<div class="flex-shrink-0 users-container">
+  <%= link_to :back, class: "back-link", data: { "turbolinks" => false } do %>
+    <i class="fa-regular fa-circle-left"></i>
+    BACK
+  <% end %>
+  <div class="profile-area">
+    <h3 class="title">
+      <i class="fa-solid fa-users"></i>
+      <span>フォロワー</span>
+    </h3>
+    <%= render "shared/user_lists", users: @followers %>
+  </div>
+</div>

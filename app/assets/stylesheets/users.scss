@@ -272,11 +272,17 @@
 }
 
 .mypage-container .profile-area-middle {
-  display: flex;
-  align-items: center;
   font-size: 12px;
   padding-left: 6px;
-  gap: 20px;
+}
+
+.mypage-container .ff-link {
+  color: #22699c;
+  margin-right: 5px;
+}
+
+.mypage-container .ff-link:hover, .mypage-container .ff-link:active {
+  color: #56c6fd;
 }
 
 .mypage-container .profile-area-ff span {
@@ -566,6 +572,34 @@
   justify-content: space-between;
 }
 
+.user-info-container .btn-follow {
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  background-color: #61baee;
+  border-radius: 2em;
+  height: fit-content;
+  margin-right: 9px;
+}
+
+.user-info-container .btn-follow:hover, .user-info-container .btn-follow:active {
+  color: rgb(255, 255, 255);
+  background-color: #61baeed5;
+}
+
+.user-info-container .btn-unfollow {
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  background-color: #c5c1c1d4;
+  border-radius: 2em;
+  height: fit-content;
+  margin-right: 9px;
+}
+
+.user-info-container .btn-unfollow:hover, .user-info-container .btn-unfollow:active {
+  color: rgb(255, 255, 255);
+  background-color: #cacacacb;
+}
+
 .user-info-container .profile-area .link-field-profile {
   white-space: nowrap;
   padding-right: 6px;
@@ -638,11 +672,17 @@
 }
 
 .user-info-container .profile-area-middle {
-  display: flex;
-  align-items: center;
   font-size: 12px;
   padding-left: 6px;
-  gap: 20px;
+}
+
+.user-info-container .ff-link {
+  color: #22699c;
+  margin-right: 5px;
+}
+
+.user-info-container .ff-link:hover, .user-info-container .ff-link:active {
+  color: #56c6fd;
 }
 
 .user-info-container .profile-area-ff span {
@@ -656,6 +696,16 @@
 
 .user-info-container .profile-area-introduction p {
   color: rgb(96, 94, 94);
+}
+
+@media screen and (max-width: 767px) {
+  .user-info-container .btn-follow {
+    font-size: 10px;
+  }
+
+  .user-info-container .btn-unfollow {
+    font-size: 10px;
+  }
 }
 
 // ユーザー詳細（投稿）
@@ -729,5 +779,136 @@
 
   .user-info-container .negative-link a {
     color: #ff7b7b;
+  }
+}
+
+//（フォロー，フォロワー）ユーザー一覧
+.users-container {
+  width: 65%;
+  max-width: 700px;
+  margin: 100px auto 50px auto;
+}
+
+.users-container .back-link {
+  color: #22699c;
+  font-size: 16px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.users-container .profile-area h3 {
+  color: rgb(255, 255, 255);
+}
+
+.user {
+  padding: 6px;
+  margin: 12px 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 10px;
+}
+
+.user .profile-area-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.user .profile-area-top > div:first-of-type {
+  display: flex;
+  gap: 9px;
+}
+
+.user .username {
+  font-size: 14px;
+}
+
+.user .posts-count {
+  font-size: 12px;
+  color: rgba(0, 0, 0, .6);
+}
+
+.user .btn-follow {
+  font-size: 10px;
+  color: rgb(255, 255, 255);
+  background-color: #61baee;
+  border-radius: 2em;
+  height: fit-content;
+  margin-right: 9px;
+}
+
+.user .btn-follow:hover, .user .btn-follow:active {
+  color: rgb(255, 255, 255);
+  background-color: #61baeed5;
+}
+
+.user .btn-unfollow {
+  font-size: 10px;
+  color: rgb(255, 255, 255);
+  background-color: #c5c1c1d4;
+  border-radius: 2em;
+  height: fit-content;
+  margin-right: 9px;
+}
+
+.user .btn-unfollow:hover, .user .btn-unfollow:active {
+  color: rgb(255, 255, 255);
+  background-color: #cacacacb;
+}
+
+.user .profile-area-oshi {
+  margin-top: 10px;
+}
+
+.user .profile-area-oshi > span:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 13px;
+  margin-bottom: 1px;
+}
+
+.user .profile-area-oshi > span:first-of-type p {
+  font-size: 11px;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, rgba(97, 194, 233, 0.8) 0%, rgba(81, 235, 184, 0.9) 100%);
+  border-radius: 2em;
+  padding: 3px 12px;
+  margin-right: 3px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.user .oshi {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 1px 6px;
+  margin-right: 3px;
+  margin-bottom: 1px;
+  background-color: rgb(97, 186, 238);
+  border-left: 5px solid rgb(148, 59, 168);
+  border-bottom: 2px solid rgba(230, 230, 230, 0.75);
+  color: rgb(255, 255, 255);
+  width: 75px;
+  display: inline-block;
+}
+
+.user .oshi-none {
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 3px 5px;
+  margin-left: 3px;
+  background-color: rgba(214, 214, 214, 0.9);
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 767px) {
+  .users-container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 543px) {
+  .users-container {
+    width: 90%;
   }
 }

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :favorites]
+  before_action :authenticate_user!, except: [:show, :favorites, :follows, :followers]
 
   def show
     @user = current_user
@@ -10,6 +10,18 @@ class UsersController < ApplicationController
   def favorites
     @user = current_user
     @post_user = User.find(params[:id])
+  end
+
+  def follows
+    @user = current_user
+    user = User.find(params[:id])
+    @follows = user.following_users
+  end
+
+  def followers
+    @user = current_user
+    user = User.find(params[:id])
+    @followers = user.follower_users
   end
 
   def mypage

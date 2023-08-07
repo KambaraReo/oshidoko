@@ -22,6 +22,11 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_posts, through: :favorites, source: :post
 
+  has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :following_users, through: :followers, source: :followed
+  has_many :follower_users, through: :followeds, source: :follower
+
   def update_without_current_password(params, *options)
     if params[:password].blank?
       params.delete(:password)
@@ -42,6 +47,21 @@ class User < ApplicationRecord
 
     clean_up_passwords
     result
+  end
+
+  # フォローしたときの処理
+  def follow(user_id)
+    followers.create(followed_id: user_id)
+  end
+
+  # フォローを外すときの処理
+  def unfollow(user_id)
+    followers.find_by(followed_id: user_id).destroy
+  end
+
+  # フォローしているか判定
+  def following?(user)
+    following_users.include?(user)
   end
 
   private
