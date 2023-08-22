@@ -13,8 +13,8 @@ Rails.application.routes.draw do
         delete 'delete_icon', on: :collection
       end
       resources :posts, except: [:index] do
-        resource :favorite, only: [:create, :destroy, :show] do
-        end
+        resource :favorite, only: [:create, :destroy, :show]
+        resources :comments, only: [:create, :destroy]
       end
     end
 

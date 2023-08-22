@@ -25,6 +25,8 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  has_many :comments, dependent: :destroy
+
   private
 
   def check_pictures_type

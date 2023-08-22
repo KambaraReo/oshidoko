@@ -1,0 +1,6 @@
+<span>レビュー <%= comments.count %>件</span>
+<% if comments.average(:rate).present? %>
+  <span class="average-rate">
+    （ 評価: <span class="star5-average-rating" data-rate="<%= number_with_precision(comments.average(:rate), precision: 1) %>"></span><span><%= number_with_precision(comments.average(:rate), precision: 1) %></span> ）
+  </span>
+<% end %>

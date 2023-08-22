@@ -33,12 +33,22 @@ ja:
         description: 説明
         address: 住所
         pictures: 画像
+      comment:
+        user_id: あなた
+        comment: レビュー
+        rate: 星評価
     models:
       user: ユーザー
     errors:
       models:
         post:
           blank: は必須項目です
+        comment:
+          attributes:
+            user_id:
+              taken: は既にレビューしています
+            rate:
+              blank: を選択してください
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

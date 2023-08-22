@@ -1,0 +1,2 @@
+$('#comment-count').html('<%= j( render 'shared/comment_count', comments: @comments ) %>');
+$('#comments').html('<%= j( render 'shared/comments', post: @post, comments: @comments ) %>');

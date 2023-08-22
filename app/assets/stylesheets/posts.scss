@@ -408,3 +408,233 @@
     margin-top: 16px;
   }
 }
+
+// レビュー（コメント）
+.comment-area {
+  background-color: rgba(255, 255, 255, .3);
+}
+
+.comment-area > div:first-of-type {
+  padding: 4px 3px;
+  margin-top: 30px;
+  background-color: rgba(231, 231, 231, .6);
+  color: rgba(100, 100, 100, 0.9);
+  font-size: 14px;
+}
+
+.comments .comment {
+  background-color: rgba(255, 255, 255, .5);
+  padding: 5px;
+  margin-top: 3px;
+}
+
+.comment > div:first-of-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.comment .created-at {
+  font-size: 10px;
+}
+
+.comment .trash-can {
+  font-size: 16px;
+  color: #ff7b7b;
+  margin-right: 6px;
+}
+
+.comment .trash-can:hover, .comment .trash-can:active {
+  color: #ff7b7bbd;
+}
+
+.comment .username {
+  display: inline-flex;
+  font-size: 14px;
+}
+
+.comment .body {
+  font-size: 14px;
+  color: rgba(98, 98, 98, .9);
+  margin-top: 5px;
+}
+
+.comment-area .field:nth-of-type(2) {
+  width: 100%;
+  padding: 4px 7px;
+  margin: 0 auto;
+}
+
+.comment-area .field:nth-of-type(2) > textarea {
+  font-size: 14px;
+  width: 100%;
+  padding: 3px;
+  max-height: 350px;
+}
+
+.comment-area .field:nth-of-type(2) > textarea::placeholder {
+  font-size: 14px;
+}
+
+.comment-area .actions {
+  display: block;
+  text-align: right;
+  padding: 0 3px;
+}
+
+.comment-area .actions > input {
+  padding: 3px 6px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: white;
+  background-color: #116e9b;
+  border: none;
+  border-radius: 4px;
+}
+
+.comment-area .actions > input:hover, .comment-area .actions > input:active {
+  opacity: .8;
+}
+
+// レビュー（星評価）
+.average-rate {
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.comment-form form > div:first-of-type {
+  padding: 4px 3px;
+  margin-top: 24px;
+  margin-bottom: 3px;
+  background-color: rgba(231, 231, 231, .6);
+  color: rgba(100, 100, 100, .9);
+  font-size: 14px;
+}
+
+.comment-form form > div:nth-of-type(2) {
+  background-color: rgba(255, 255, 255, .5);
+}
+
+.comment-form .field:first-of-type {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  padding-top: 16px;
+}
+
+.comment-form .field:first-of-type input[type="radio"] {
+  display: none;
+}
+
+.comment-form .field:first-of-type label {
+  position: relative;
+  padding: 0 10px;
+  color: #8080808f;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.comment-form .field:first-of-type label .text {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(98, 98, 98, .9);
+}
+
+.comment-form .field:first-of-type label:hover, .comment-form .field:first-of-type label:hover ~ label, .comment-form .field:first-of-type input[type='radio']:checked ~ label {
+  color: #ffcc00;
+}
+
+.star5-rating {
+  position: relative;
+  display: inline-block;
+  height: 1em;
+  font-size: 14px;
+}
+
+.star5-rating-front {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+  height: 21px;
+}
+
+.star5-rating-back {
+  display: inline-block;
+  color: #8080808f;
+}
+
+
+.average-rate > span:last-of-type {
+  margin-left: 6px;
+}
+
+.star5-average-rating {
+  position: relative;
+  z-index: 46;
+  display: inline-block;
+  white-space: nowrap;
+  color: #8080808f;
+}
+
+.star5-average-rating:before, .star5-average-rating:after {
+  content: '★★★★★';
+}
+
+.star5-average-rating:after {
+  position: absolute;
+  z-index: 47;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #ffcc33;
+}
+
+.star5-average-rating[data-rate="5.0"]:after { width: 100%; }
+.star5-average-rating[data-rate="4.5"]:after { width: 90%; }
+.star5-average-rating[data-rate="4.0"]:after { width: 80%; }
+.star5-average-rating[data-rate="3.5"]:after { width: 70%; }
+.star5-average-rating[data-rate="3.0"]:after { width: 60%; }
+.star5-average-rating[data-rate="2.5"]:after { width: 50%; }
+.star5-average-rating[data-rate="2.0"]:after { width: 40%; }
+.star5-average-rating[data-rate="1.5"]:after { width: 30%; }
+.star5-average-rating[data-rate="1.0"]:after { width: 20%; }
+.star5-average-rating[data-rate="0.5"]:after { width: 10%; }
+.star5-average-rating[data-rate="0"]:after { width: 0%; }
+
+@media screen and (max-width: 767px) {
+  .comment-area > div:first-of-type {
+    font-size: 12px;
+  }
+
+  .average-rate {
+    font-size: 10px;
+    margin-left: 4px;
+  }
+
+  .comment-form form > div:first-of-type {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .comment-area > div:first-of-type {
+    font-size: 14px;
+  }
+
+  .average-rate {
+    font-size: 12px;
+    margin-left: 6px;
+  }
+
+  .comment-form form > div:first-of-type {
+    font-size: 14px;
+  }
+}

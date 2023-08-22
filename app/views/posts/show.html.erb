@@ -74,7 +74,16 @@
             <%= render "shared/before_liked", post: @post %>
           <% end %>
         </div>
-        <div class="reviews-area">
+        <div class="comment-area">
+          <div id="comment-count">
+            <%= render "shared/comment_count", comments: @comments %>
+          </div>
+          <div class="comments" id="comments">
+            <%= render "shared/comments", post: @post, comments: @comments %>
+          </div>
+          <div class="comment-form">
+            <%= render "shared/comment_form", user: @user, post: @post, comment: @comment %>
+          </div>
         </div>
       </div>
     </div>

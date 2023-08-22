@@ -1,0 +1,20 @@
+<%= form_with model: [post, comment], local: false do |f| %>
+  <div>レビューを書く</div>
+  <div>
+    <div class="field">
+      <%= f.radio_button :rate, 5, id: "star1" %>
+      <label for="star1"><span class="text">最高</span>★</label>
+      <%= f.radio_button :rate, 4, id: "star2" %>
+      <label for="star2"><span class="text">良い</span>★</label>
+      <%= f.radio_button :rate, 3, id: "star3" %>
+      <label for="star3"><span class="text">普通</span>★</label>
+      <%= f.radio_button :rate, 2, id: "star4" %>
+      <label for="star4"><span class="text">悪い</span>★</label>
+      <%= f.radio_button :rate, 1, id: "star5" %>
+      <label for="star5"><span class="text">最低</span>★</label>
+    </div>
+    <div class="field"><%= f.text_area :comment, id: "comment-textarea", placeholder: "レビューを記入" %></div>
+    <%= f.hidden_field :user_id, value: user.id if user_signed_in? %>
+    <div class="actions"><%= f.submit "レビューする" %></div>
+  </div>
+<% end %>

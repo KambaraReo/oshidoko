@@ -20,6 +20,12 @@ class PostsController < ApplicationController
   def show
     @user = current_user
     @post = Post.find(params[:id])
+    @comments = @post.comments
+    if user_signed_in?
+      @comment = @user.comments.new
+    else
+      @comment = Comment.new
+    end
   end
 
   def edit
