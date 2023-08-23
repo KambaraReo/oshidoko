@@ -25,6 +25,11 @@
   </div>
   <div class="post-details">
     <h2 class="title"><%= @post.title %></h2>
+    <% if @post.url.present? %>
+      <div class="related-url">関連URL: <%= Rinku.auto_link(@post.url, :all, 'target="_blank"').html_safe %></div>
+    <% else %>
+      <div class="related-url"></div>
+    <% end %>
     <div class="content">
       <div class="content-left">
         <% if @post.pictures.attached? %>

@@ -1634,6 +1634,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.5)
+    rinku (2.0.6)
     rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
     rspec-expectations (3.12.3)
@@ -1754,6 +1755,7 @@ DEPENDENCIES
   rails (~> 6.1.7, >= 6.1.7.3)
   rails-erd
   rails-i18n
+  rinku
   rspec-rails
   rubocop-airbnb
   sass-rails (>= 6)

@@ -67,3 +67,5 @@ gem 'net-http'
 gem 'dotenv-rails'
 
 gem 'kaminari'
+
+gem 'rinku'

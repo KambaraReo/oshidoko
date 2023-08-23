@@ -277,7 +277,13 @@
 }
 
 .post-details .title {
-  margin: 12px 0 15px 0;
+  margin: 12px 0 2px 0;
+}
+
+.post-details .related-url {
+  font-size: 14px;
+  color: rgba(0, 0, 0, .6);
+  margin-bottom: 15px;
 }
 
 .post-container .content {
@@ -385,6 +391,10 @@
 
   .post-details .title {
     font-size: 20px;
+  }
+
+  .post-details .related-url {
+    font-size: 12px;
     margin-bottom: 6px;
   }
 
