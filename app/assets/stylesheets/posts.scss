@@ -31,7 +31,6 @@
   color: rgb(255, 255, 255);
   font-size: 22px;
   margin-bottom: 0 !important;
-
 }
 
 .post-form p {
@@ -226,26 +225,16 @@
 
 // 投稿の詳細
 .post-container {
-  margin-top: 100px;
+  margin-top: 20px;
   margin-bottom: 45px;
 }
 
 .post-container .post-details-links {
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   align-items: center;
   font-size: 14px;
   white-space: nowrap;
-}
-
-.post-container .back-link {
-  color: rgb(34, 105, 156);
-  font-size: 16px;
-  display: inline-block;
-}
-
-.post-container .back-link:hover, .post-container .back-link:active {
-  opacity: .8;
 }
 
 .post-container .positive-link {

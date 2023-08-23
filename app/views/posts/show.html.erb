@@ -1,11 +1,12 @@
+<div class="navigation-link">
+  <div>
+    <%= link_to_unless_current "TOP", root_path, data: { "turbolinks" => false } %>
+    <i class="fa-solid fa-angle-right fa-xs" style="color: #ffffff; margin: 0 2px;"></i>
+    <%= link_to_unless_current @post.title, post_path(@post), data: { "turbolinks" => false } %>
+  </div>
+</div>
 <div class="top flex-shrink-0 post-container">
   <div class="post-details-links">
-    <div>
-      <%= link_to :back, class: "back-link", data: { "turbolinks" => false } do %>
-        <i class="fa-regular fa-circle-left"></i>
-        BACK
-      <% end %>
-    </div>
     <div>
       <% if @user == @post.user %>
         <span class="positive-link">

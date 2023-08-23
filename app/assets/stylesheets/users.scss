@@ -538,17 +538,7 @@
 
 // ユーザー詳細
 .user-info-container {
-  margin-top: 100px;
-}
-
-.user-info-container .back-link {
-  color: #22699c;
-  display: inline-block;
-  margin-bottom: 12px;
-}
-
-.user-info-container .back-link:hover, .user-info-container .back-link:active {
-  opacity: .8;
+  margin-top: 32px;
 }
 
 // ユーザー詳細（プロフィール）
@@ -786,14 +776,7 @@
 .users-container {
   width: 65%;
   max-width: 700px;
-  margin: 100px auto 50px auto;
-}
-
-.users-container .back-link {
-  color: #22699c;
-  font-size: 16px;
-  display: inline-block;
-  margin-bottom: 12px;
+  margin: 30px auto 50px auto;
 }
 
 .users-container .profile-area h3 {
