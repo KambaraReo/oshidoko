@@ -7,7 +7,11 @@ Rails:
 
 # 文字数上限
 LineLength:
-  Max: 130
+  Max: 135
+
+# ドットの位置
+DotPosition:
+  EnforcedStyle: leading
 
 AllCops:
   NewCops: enable

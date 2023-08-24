@@ -170,7 +170,8 @@
 }
 
 .posts-map-area {
-  margin-bottom: 45px;
+  margin-top: 15px;
+  margin-bottom: 65px;
 }
 
 #posts-map {
@@ -246,6 +247,49 @@
 
 .posts-area > div {
   margin: 0 30px;
+}
+
+.search-form form {
+  font-size: 14px;
+  display: flex;
+  justify-content: end;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.search-form input {
+  width: 35%;
+  border: 1px solid #6c757d7d;
+  border-radius: 3px;
+  padding: 1px 4px;
+}
+
+.search-form input:placeholder-shown {
+  text-overflow: ellipsis;
+}
+
+.search-form input:focus {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #3affd5;
+  border-image: initial;
+  outline: 0px;
+}
+
+.search-form button {
+  width: 33px;
+  color: rgb(255, 255, 255);
+  background-color: #116e9b;
+  border: 1px solid #6c757d7d;
+  border-radius: 5px;
+}
+
+.search-form button:hover, .search-form button:active {
+  background-color: #0d4865;
+}
+
+.not-applicable {
+  font-size: 14px;
 }
 
 .posts .number-of-displays {
@@ -434,6 +478,10 @@
 }
 
 @media screen and (max-width: 543px) {
+  .search-form input:first-of-type {
+    width: 100%;
+  }
+
   .posts .pagination {
     justify-content: space-around;
   }

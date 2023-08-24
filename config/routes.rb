@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'homes#index'
-  get 'homes/index'
+  # get 'homes/index'
+  resources :homes, only: [:index] do
+    get 'search', on: :collection
+  end
   devise_for :users,
     controllers: { registrations: 'users/registrations' }
   resources :users, only: [:show] do

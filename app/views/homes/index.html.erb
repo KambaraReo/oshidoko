@@ -31,88 +31,102 @@
       <span>MAP</span>
     </h1>
     <div id="posts-map"></div>
+    <div id="posts-anchor"></div>
   </div>
   <div class="posts-area">
     <h1 class="title">
       <i class="fa-solid fa-map-pin"></i>
       <span>POSTS</span>
     </h1>
-    <div class="posts" id="posts-anchor">
-      <div class="number-of-displays">
-        <%= page_entries_info(@posts) %>
-      </div>
-      <% @posts.each do |post| %>
-        <div class="post">
-          <span class="hidden-over-767px post-upper">
-            <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
-            <div>
-              <%= link_to post_path(post), data: { "turbolinks" => false } do %>
-                <i class="fa-solid fa-circle-info"></i>
-                詳細
-              <% end %>
-            </div>
-          </span>
-          <div class="post-left">
-            <div class="post-left-upper">
+    <div class="search-form">
+      <%= form_with url: search_homes_path(anchor: "posts-anchor"), method: :get do |f| %>
+        <%= f.text_field :keyword, placeholder: "キーワードを入力" %>
+        <%= button_tag type: 'submit', class: "btn-sm btn-search" do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="posts">
+      <% if @posts.present? %>
+        <div class="number-of-displays">
+          <%= page_entries_info(@posts) %>
+        </div>
+        <% @posts.each do |post| %>
+          <div class="post">
+            <span class="hidden-over-767px post-upper">
+              <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
               <div>
-                <%= link_to user_path(post.user) do %>
-                  <% if post.user.icon.attached? %>
-                    <%= image_tag post.user.icon, class:"rounded-circle", size: "50x50" %>
-                  <% else %>
-                    <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "50x50" %>
-                  <% end %>
+                <%= link_to post_path(post), data: { "turbolinks" => false } do %>
+                  <i class="fa-solid fa-circle-info"></i>
+                  詳細
                 <% end %>
               </div>
-              <div>
-                <span class="hidden-over-767px">
+            </span>
+            <div class="post-left">
+              <div class="post-left-upper">
+                <div>
                   <%= link_to user_path(post.user) do %>
                     <% if post.user.icon.attached? %>
-                      <%= image_tag post.user.icon, class:"rounded-circle", size: "35x35" %>
+                      <%= image_tag post.user.icon, class:"rounded-circle", size: "50x50" %>
                     <% else %>
-                      <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "35x35" %>
+                      <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "50x50" %>
                     <% end %>
                   <% end %>
-                </span>
-                <div><%= link_to post.user.username, user_path(post.user) %></div>
+                </div>
                 <div>
-                  <div><%= link_to post.title, post_path(post), class: "title", data: { "turbolinks" => false } %></div>
-                  <div><%= post.address %></div>
+                  <span class="hidden-over-767px">
+                    <%= link_to user_path(post.user) do %>
+                      <% if post.user.icon.attached? %>
+                        <%= image_tag post.user.icon, class:"rounded-circle", size: "35x35" %>
+                      <% else %>
+                        <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "35x35" %>
+                      <% end %>
+                    <% end %>
+                  </span>
+                  <div><%= link_to post.user.username, user_path(post.user) %></div>
+                  <div>
+                    <div><%= link_to post.title, post_path(post), class: "title", data: { "turbolinks" => false } %></div>
+                    <div><%= post.address %></div>
+                  </div>
                 </div>
               </div>
+              <div class="post-left-lower">
+                <% unless post.members.empty? %>
+                  <div class="members-involved">
+                    <i class="fa-solid fa-person-dress"></i>
+                    関連メンバー
+                  </div>
+                  <div>
+                    <% post.members.each do |member| %>
+                      <span class="member-name"><%= member.name %></span>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
             </div>
-            <div class="post-left-lower">
-              <% unless post.members.empty? %>
-                <div class="members-involved">
-                  <i class="fa-solid fa-person-dress"></i>
-                  関連メンバー
-                </div>
-                <div>
-                  <% post.members.each do |member| %>
-                    <span class="member-name"><%= member.name %></span>
-                  <% end %>
-                </div>
-              <% end %>
+            <div class="post-right">
+              <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
+              <div>
+                <%= link_to post_path(post), data: { "turbolinks" => false } do %>
+                  <i class="fa-solid fa-circle-info"></i>
+                  詳細
+                <% end %>
+              </div>
             </div>
           </div>
-          <div class="post-right">
-            <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
-            <div>
-              <%= link_to post_path(post), data: { "turbolinks" => false } do %>
-                <i class="fa-solid fa-circle-info"></i>
-                詳細
-              <% end %>
-            </div>
+          <div class="favorite" id="favorite-post-<%= post.id %>">
+            <% if user_signed_in? && post.favorited?(@user) %>
+              <%= render "shared/after_liked", post: post %>
+            <% else %>
+              <%= render "shared/before_liked", post: post %>
+            <% end %>
           </div>
-        </div>
-        <div class="favorite" id="favorite-post-<%= post.id %>">
-          <% if user_signed_in? && post.favorited?(@user) %>
-            <%= render "shared/after_liked", post: post %>
-          <% else %>
-            <%= render "shared/before_liked", post: post %>
-          <% end %>
-        </div>
+        <% end %>
+        <%= paginate @posts, params: { anchor: 'posts-anchor' } %>
+      <% else %>
+        <div class="number-of-displays">0件</div>
+        <div class="post not-applicable">投稿が存在しません。</div>
       <% end %>
-      <%= paginate @posts, params: { anchor: 'posts-anchor' } %>
     </div>
   </div>
 </div>
