@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   def show
     @user = current_user
     @post = Post.with_attached_pictures.find(params[:id])
-    @comments = @post.comments.includes(user: {icon_attachment: :blob})
+    @comments = @post.comments.includes(user: { icon_attachment: :blob })
     if user_signed_in?
       @comment = @user.comments.new
     else
