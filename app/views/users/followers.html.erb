@@ -1,0 +1,18 @@
+<div class="navigation-link">
+  <div>
+    <%= link_to_unless_current "TOP", root_path, data: { "turbolinks" => false } %>
+    <i class="fa-solid fa-angle-right fa-xs" style="color: #ffffff; margin: 0 2px;"></i>
+    <%= link_to_unless_current @post_user.username, user_path(@post_user), data: { "turbolinks" => false } %>
+    <i class="fa-solid fa-angle-right fa-xs" style="color: #ffffff; margin: 0 2px;"></i>
+    <%= link_to_unless_current "フォロワー", followers_user_path(@post_user), data: { "turbolinks" => false } %>
+  </div>
+</div>
+<div class="flex-shrink-0 users-container">
+  <div class="profile-area">
+    <h3 class="title">
+      <i class="fa-solid fa-users"></i>
+      <span>フォロワー</span>
+    </h3>
+    <%= render "shared/user_lists", users: @followers %>
+  </div>
+</div>

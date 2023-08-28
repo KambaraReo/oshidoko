@@ -1,0 +1,40 @@
+<div class="content">
+  <% users.each do |user| %>
+    <div class="user">
+      <div class="profile-area-top">
+        <div>
+          <%= link_to user_path(user) do %>
+            <% if user.icon.attached? %>
+              <%= image_tag user.icon, class:"rounded-circle", size: "45x45" %>
+            <% else %>
+              <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "45x45" %>
+            <% end %>
+          <% end %>
+          <div>
+            <%= link_to user.username, user_path(user), class: "username" %>
+            <div class="posts-count">投稿数 <%= user.posts.count %></div>
+          </div>
+        </div>
+        <div>
+          <% if @user != user %>
+            <%= render "shared/follow_btn", user: user %>
+          <% end %>
+        </div>
+      </div>
+      <div class="profile-area-oshi">
+        <span>
+          <p>推しメン</p>
+          <% if user.members.empty? %>
+            <div class="oshi-none">未設定</div>
+          <% else %>
+            <div>
+              <% user.members.each do |member| %>
+                <div class="oshi"><%= member.name %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </span>
+      </div>
+    </div>
+  <% end %>
+</div>

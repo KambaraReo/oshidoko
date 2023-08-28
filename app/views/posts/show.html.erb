@@ -1,0 +1,134 @@
+<div class="navigation-link">
+  <div>
+    <%= link_to_unless_current "TOP", root_path, data: { "turbolinks" => false } %>
+    <i class="fa-solid fa-angle-right fa-xs" style="color: #ffffff; margin: 0 2px;"></i>
+    <%= link_to_unless_current @post.title, post_path(@post), data: { "turbolinks" => false } %>
+  </div>
+</div>
+<div class="top flex-shrink-0 post-container">
+  <div class="post-details-links">
+    <div>
+      <% if @user == @post.user %>
+        <span class="positive-link">
+          <%= link_to edit_post_path(@post), data: { "turbolinks" => false } do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+            編集
+          <% end %>
+        </span>
+        <span class="negative-link">
+          <%= link_to post_path(@post), method: :delete, data: { confirm: "投稿を削除しますか？" } do %>
+            <i class="fa-solid fa-trash"></i>
+            削除
+          <% end %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div class="post-details">
+    <h2 class="title"><%= @post.title %></h2>
+    <% if @post.url.present? %>
+      <div class="related-url">関連URL: <%= Rinku.auto_link(@post.url, :all, 'target="_blank"').html_safe %></div>
+    <% else %>
+      <div class="related-url"></div>
+    <% end %>
+    <div class="content">
+      <div class="content-left">
+        <% if @post.pictures.attached? %>
+          <div class="slider">
+            <% @post.pictures.each do |picture| %>
+              <%= image_tag picture, class: "picture", size: "350x250" %>
+            <% end %>
+          </div>
+        <% else %>
+          <%= image_tag "default_post.png", class: "picture", size: "350x250" %>
+        <% end %>
+        <div>
+          <div class="address"><%= @post.address %></div>
+          <div id='post-map' ></div>
+        </div>
+      </div>
+      <div class="content-right">
+        <div class="post-area">
+          <div class="created-at"><%= @post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
+          <div>
+            <%= link_to user_path(@post.user) do %>
+              <% if @post.user.icon.attached? %>
+                <%= image_tag @post.user.icon, class:"rounded-circle", size: "50x50" %>
+              <% else %>
+                <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "50x50" %>
+              <% end %>
+              <%= @post.user.username %>
+            <% end %>
+          </div>
+          <div class="description"><%= @post.description %></div>
+          <% unless @post.members.empty? %>
+            <div class="members-involved">
+              <i class="fa-solid fa-person-dress"></i>
+              関連メンバー
+            </div>
+            <div>
+              <% @post.members.each do |member| %>
+                <span class="member-name"><%= member.name %></span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="favorite-area" id="favorite-post-<%= @post.id %>">
+          <% if user_signed_in? && @post.favorited?(@user) %>
+            <%= render "shared/after_liked", post: @post %>
+          <% else %>
+            <%= render "shared/before_liked", post: @post %>
+          <% end %>
+        </div>
+        <div class="comment-area">
+          <div id="comment-count">
+            <%= render "shared/comment_count", comments: @comments %>
+          </div>
+          <div class="comments" id="comments">
+            <%= render "shared/comments", post: @post, comments: @comments %>
+          </div>
+          <div class="comment-form">
+            <%= render "shared/comment_form", user: @user, post: @post, comment: @comment %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let map
+  let marker
+  let infowindow
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('post-map'), {
+      center: { lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
+      zoom: 15,
+    });
+
+    marker = new google.maps.Marker({
+      position: { lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
+      map: map,
+      icon: {
+        url: '/assets/marker.svg',
+        scaledSize: new google.maps.Size(50, 50)
+      }
+    });
+
+    infowindow = new google.maps.InfoWindow({
+      content: '<div class="address-in-map"><%= @post.address %></div>'
+    });
+
+    marker.addListener("click", () => {
+      infowindow.open(map, marker);
+    });
+
+    google.maps.event.addListener(map, "click", () => {
+      infowindow.close();
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>

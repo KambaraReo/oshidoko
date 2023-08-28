@@ -1,0 +1,27 @@
+<% comments.each do |comment| %>
+  <div class="comment">
+    <div>
+      <div class="created-at"><%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
+      <% if comment.user == current_user %>
+        <%= link_to post_comment_path(post, comment), method: :delete, class: "trash-can", data: { confirm: "レビューを削除しますか？" }, remote: true do %>
+          <i class="fa-regular fa-trash-can"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <%= link_to user_path(comment.user) do %>
+      <% if comment.user.icon.attached? %>
+        <%= image_tag comment.user.icon, class:"rounded-circle", size: "35x35" %>
+      <% else %>
+        <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "35x35" %>
+      <% end %>
+      <div class="username"><%= comment.user.username %></div>
+    <% end %>
+    <div>
+      <div class="star5-rating">
+        <span class="star5-rating-front" style="width: <%= getPercent(comment.rate) %>%;">★★★★★</span>
+        <span class="star5-rating-back">★★★★★</span>
+      </div>
+    </div>
+    <div class="body"><%= comment.comment %></div>
+  </div>
+<% end %>

@@ -1,0 +1,4 @@
+<%= link_to post_favorite_path(post.id), class: "heart", method: :delete, remote: true do %>
+  <i class="fa-solid fa-heart"></i>
+<% end %>
+<%= link_to post.favorites.size, post_favorite_path(post), class: "likes" %>

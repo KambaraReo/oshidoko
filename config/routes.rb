@@ -1,14 +1,31 @@
 Rails.application.routes.draw do
   root 'homes#index'
-  get 'homes/index'
+  # get 'homes/index'
+  resources :homes, only: [:index] do
+    get 'search', on: :collection
+  end
   devise_for :users,
     controllers: { registrations: 'users/registrations' }
   resources :users, only: [:show] do
     collection do
+      get 'mypage'
       get 'edit_password'
       patch 'update_password'
-      resources :profiles, only: [:edit, :update]
       get 'confirm_withdrawal'
+      resource :profile, only: [:edit, :update] do
+        delete 'delete_icon', on: :collection
+      end
+      resources :posts, except: [:index] do
+        resource :favorite, only: [:create, :destroy, :show]
+        resources :comments, only: [:create, :destroy]
+      end
     end
+
+    member do
+      get 'favorites'
+      get 'follows'
+      get 'followers'
+    end
+    resource :relationships, only: [:create, :destroy]
   end
 end

@@ -8,8 +8,19 @@ body {
   font-weight: 400;
   line-height: 1.8;
   word-break: break-word;
+  height: 100%;
+}
+
+body:after {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: rgb(125, 229, 250);
   background-image: linear-gradient(120deg, rgba(87, 217, 255, 0.49), rgba(255, 255, 255, 0)), linear-gradient(185deg, rgba(109, 214, 255, 0.32), rgba(255, 255, 255, 0)), linear-gradient(340deg, rgba(152, 255, 170, 0.8), rgba(255, 255, 255, 0));
-  background-size: 100% 300%;
+  z-index: -1;
 }
 
 * {
@@ -27,6 +38,50 @@ ul {
 
 .container {
   padding-top: 85px;
+}
+
+// 通知
+.notice {
+  width: fit-content;
+  background-color: rgba(97, 186, 238, .6);
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgb(255, 255, 255);
+  padding: 10px 15px;
+  margin: auto;
+  margin-top: 60px;
+  position: fixed;
+  bottom: 80px;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.notice:empty {
+  display: none;
+}
+
+// フラッシュメッセージ
+.alert {
+  color: rgb(255, 255, 255) !important;
+  font-size: 14px;
+  width: fit-content;
+  background-color: #ff0000cc !important;
+  border-radius: 5px !important;
+  box-shadow: 0 0 8px #909090;
+  padding: 10px 15px !important;
+  margin: auto !important;
+  margin-top: 60px !important;
+  position: fixed !important;
+  bottom: 80px;
+  right: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.alert:empty {
+  display: none;
 }
 
 // ヘッダー
@@ -167,4 +222,37 @@ ul {
 // フッター
 footer {
   background-color: rgb(193, 193, 193);
+}
+
+// ナビゲーションリンク
+.navigation-link {
+  color: #22699c;
+  margin: 88px 35px 0 35px;
+}
+
+.navigation-link > div {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.navigation-link a {
+  color: #22699c;
+  font-size: 16px;
+}
+
+.navigation-link a:hover, .navigation-link a:active {
+  opacity: .8;
+}
+
+@media screen and (max-width: 575px) {
+  .navigation-link {
+    font-size: 12px;
+    margin: 88px auto 0 auto;
+    width: 90%;
+  }
+
+  .navigation-link a {
+    font-size: 12px;
+  }
 }

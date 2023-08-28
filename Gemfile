@@ -63,3 +63,9 @@ gem 'devise-i18n'
 gem 'font-awesome-sass'
 
 gem 'net-http'
+
+gem 'dotenv-rails'
+
+gem 'kaminari'
+
+gem 'rinku'

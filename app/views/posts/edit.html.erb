@@ -1,0 +1,90 @@
+<div class="form-container container">
+  <div class="form-row post-row row">
+    <div class="title">
+      <i class="fa-solid fa-map-pin fa-2xl" style="color: #cbdeff;"></i>
+      <h3>投稿の編集</h3>
+    </div>
+    <div class="post-form col-sm-12 col-md-11 col-lg-10 col-xl-10">
+      <%= form_with model: @post do |f| %>
+        <div class="field">
+          <%= f.label :title, "場所・施設名" %>
+          <%= f.text_field :title, placeholder: "例) 日向坂" %>
+          <span class="error-message">
+            <% if @post.errors.include?(:title) %>
+              <%= @post.errors.full_messages_for(:title).first %>
+            <% end %>
+          </span>
+        </div>
+
+        <div class="field">
+          <%= f.label :url, "関連URL" %>
+          <%= f.text_field :url, placeholder: "例) hinatazaka.jp" %>
+        </div>
+
+        <div class="member-field">
+          <p>関係するメンバー</p>
+          <div>
+            <%= f.collection_check_boxes :member_ids, Member.all, :id, :name, { multiple: true } do |b| %>
+              <label>
+                <%= b.check_box %>
+                <%= b.text %>
+              </label>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :description, "説明" %>
+          <%= f.text_area :description, placeholder: "例) 日向坂46命名の元になった坂です。読みは「ひなたざか」ではなく「ひゅうがざか」です。" %>
+          <span class="error-message">
+            <% if @post.errors.include?(:description) %>
+              <%= @post.errors.full_messages_for(:description).first %>
+            <% end %>
+          </span>
+        </div>
+
+        <div class="field">
+          <%= f.label :address, "住所", for: "add" %>
+          <%= f.text_field :address, id: "add", placeholder: "住所は下の検索より入力してください。", readonly: true %>
+          <span class="error-message">
+            <% if @post.errors.include?(:address) %>
+              <%= @post.errors.full_messages_for(:address).first %>
+            <% end %>
+          </span>
+        </div>
+
+        <div class="search-field">
+          <div>
+            <input id="address" type="textbox" placeholder="例) 港区日向坂">
+            <input type="button" value="検索" onclick="codeAddress()">
+          </div>
+          <p>※マーカーをドラック＆ドロップして位置の調整ができます。</p>
+          <div id='map'></div>
+        </div>
+
+        <div class="pictures-field">
+          <%= f.label :pictures, "画像" %>
+          <%= f.file_field :pictures, accept: 'image/jpeg, image/jpg, image/png', multiple: true %>
+          <span class="error-message">
+            <% if @post.errors.include?(:pictures) %>
+              <%= @post.errors.full_messages_for(:pictures).first %>
+            <% end %>
+          </span>
+        </div>
+
+        <%= f.hidden_field :latitude, id: "lat" %>
+        <%= f.hidden_field :longitude, id: "lng" %>
+        <%= f.hidden_field :user_id, value: @user.id %>
+
+        <div class="actions">
+          <%= f.submit "更新する" %>
+        </div>
+        <div class="actions">
+          <%= link_to "キャンセル", user_path(@user), class: "btn back-button", data: { "turbolinks" => false } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>

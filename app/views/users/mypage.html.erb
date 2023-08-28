@@ -1,0 +1,90 @@
+<div class="notice"><%= notice %></div>
+<div class="mypage-container container">
+  <div class="mypage-row row">
+    <h1 class="title">MY PAGE</h1>
+    <div>
+      <div class="subtitle">プロフィール</div>
+      <hr>
+      <div class="profile-area">
+        <div class="profile-area-top">
+          <div>
+            <% if @user.icon.attached? %>
+              <%= image_tag @user.icon, class:"rounded-circle", size: "70x70" %>
+            <% else %>
+              <%= image_tag "default_user.png", class:"rounded-circle user-default-img", size: "70x70" %>
+            <% end %>
+          </div>
+          <%= link_to user_path(@user), class: "link-field-profile", data: { "turbolinks" => false } do %>
+            <i class="fa-regular fa-user"></i>
+            <p>詳細</p>
+          <% end %>
+        </div>
+        <h4 class="profile-area-username"><%= @user.username %></h4>
+        <div class="profile-area-middle">
+          <div class="profile-area-ff">
+            <%= link_to "#{@user.following_users.count}フォロー", follows_user_path(@user), class: "ff-link" %>
+            <%= link_to "#{@user.follower_users.count}フォロワー", followers_user_path(@user), class: "ff-link" %>
+          </div>
+        </div>
+        <div class="profile-area-introduction">
+          <p><%= @user.introduction %></p>
+        </div>
+        <div class="profile-area-oshi">
+          <span>
+            <p>推しメン</p>
+            <% if @user.members.empty? %>
+              <div class="oshi-none">未設定</div>
+            <% end %>
+          </span>
+          <% @user.members.each do |member| %>
+            <div class="oshi"><%= member.name %></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="subtitle">アカウント</div>
+      <hr>
+      <ul>
+        <li>
+          <%= link_to edit_user_registration_path, class: "link-field" do %>
+          <p>メールアドレス</p>
+          <div class="link-field-email">
+            <span><%= @user.email %></span>
+            <i class="fa-solid fa-angle-right"></i>
+          </div>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to edit_password_users_path, class: "link-field" do %>
+          <p>パスワード</p>
+          <i class="fa-solid fa-angle-right"></i>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="subtitle">その他</div>
+      <hr>
+      <ul>
+        <li>
+          <%= link_to confirm_withdrawal_users_path, class: "link-field" do %>
+            <p>退会</p>
+            <i class="fa-solid fa-angle-right"></i>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <hr>
+      <ul>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete, class: "link-field" do %>
+            <p>ログアウト</p>
+            <i class="fa-solid fa-angle-right"></i>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

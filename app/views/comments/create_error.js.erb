@@ -1,0 +1,11 @@
+<% error_messages = [] %>
+<% if @comment.errors[:user_id].any? %>
+  <% error_messages << @comment.errors.full_messages_for(:user_id).first %>
+<% else %>
+  <% error_messages << @comment.errors.full_messages_for(:rate).first if @comment.errors[:rate].any? %>
+  <% error_messages << @comment.errors.full_messages_for(:comment).first if @comment.errors[:comment].any? %>
+<% end %>
+
+<% if error_messages.any? %>
+  alert('<%= j error_messages.join("\n") %>');
+<% end %>

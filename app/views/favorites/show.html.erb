@@ -1,0 +1,18 @@
+<div class="navigation-link">
+  <div>
+    <%= link_to_unless_current "TOP", root_path, data: { "turbolinks" => false } %>
+    <i class="fa-solid fa-angle-right fa-xs" style="color: #ffffff; margin: 0 2px;"></i>
+    <%= link_to_unless_current @post.title, post_path(@post), data: { "turbolinks" => false } %>
+    <i class="fa-solid fa-angle-right fa-xs" style="color: #ffffff; margin: 0 2px;"></i>
+    <%= link_to_unless_current "いいねしたユーザー", post_favorite_path(@post) %>
+  </div>
+</div>
+<div class="flex-shrink-0 users-container">
+  <div class="profile-area">
+    <h3 class="title">
+      <i class="fa-solid fa-users"></i>
+      <span>いいねしたユーザー</span>
+    </h3>
+    <%= render "shared/user_lists", users: @favorited_users %>
+  </div>
+</div>

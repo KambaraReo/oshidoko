@@ -1,0 +1,23 @@
+<div class="notice"><%= notice %></div>
+<div class="navigation-link">
+  <div>
+    <%= link_to_unless_current "TOP", root_path, data: { "turbolinks" => false } %>
+    <i class="fa-solid fa-angle-right fa-xs" style="color: #ffffff; margin: 0 2px;"></i>
+    <%= link_to_unless_current @post_user.username, user_path(@post_user), data: { "turbolinks" => false } %>
+  </div>
+</div>
+<div class="top flex-shrink-0 user-info-container">
+  <%= render "shared/profile", user: @post_user %>
+  <div class="posts-area">
+    <span>
+      <h1 class="title">
+        <span>
+          <i class="fa-solid fa-heart"></i>
+          <span>MY FAVORITES</span>
+        </span>
+        <%= link_to "マイ投稿一覧", user_path(@post_user), class: "favorites-btn btn" %>
+      </h1>
+      <%= render "shared/posts", posts: @favorited_posts, user: @user %>
+    </span>
+  </div>
+</div>

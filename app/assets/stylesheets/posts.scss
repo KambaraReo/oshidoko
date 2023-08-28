@@ -1,0 +1,645 @@
+// 新規投稿，投稿の編集
+#map {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 24px;
+}
+
+.post-row {
+  max-width: 660px;
+  margin-bottom: 50px;
+}
+
+.post-form {
+  color: #535353;
+  font-size: 14px;
+  font-weight: 400;
+  margin: auto;
+}
+
+.post-row .title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: .5em .5em .5em 1em;
+  margin-bottom: 24px;
+  background: #61baee;
+  border-radius: 25px 0px 0px 25px;
+}
+
+.post-row .title h3 {
+  color: rgb(255, 255, 255);
+  font-size: 22px;
+  margin-bottom: 0 !important;
+}
+
+.post-form p {
+  font-size: 13px;
+}
+
+.post-form .field {
+  margin-bottom: 24px;
+}
+
+.post-form .field:nth-of-type(1) label {
+  margin-bottom: 4px;
+}
+
+.post-form .field:nth-of-type(3) label {
+  margin-bottom: 4px;
+}
+
+.post-form .field:nth-of-type(4) label {
+  margin-bottom: 4px;
+}
+
+.post-form .field:nth-of-type(4) {
+  margin-bottom: 12px;
+}
+
+.post-form .field:nth-of-type(4) input {
+  background-color: #5353531c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.post-form .member-field {
+  margin-bottom: 24px;
+}
+
+.post-form .member-field > p {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.post-form .member-field > div {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.post-form .member-field label {
+  display: inline-block;
+  width: 100px;
+  font-size: 13px;
+}
+
+.post-form .field input, .post-form .field textarea {
+  width: 100%;
+  border: 1px solid rgb(142, 142, 142);
+  border-radius: 6px;
+  padding: 6px 10px;
+  text-overflow: ellipsis;
+}
+
+.post-form .field input:read-only {
+  background-color: #dbdbdb8a;
+}
+
+.post-form .field textarea {
+  resize: vertical;
+  min-height: 85px;
+  max-height: 350px;
+}
+
+.search-field {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.post-form .search-field > p {
+  margin-bottom: 1px;
+}
+
+.post-form .search-field > div > input:first-of-type {
+  padding: 3px 6px;
+  border: 1px solid rgb(142, 142, 142);
+  width: 60%;
+}
+
+.post-form .search-field > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.post-form .search-field > div > input:last-of-type {
+  width: 45px;
+  padding: 3px 6px;
+  color: rgb(255, 255, 255);
+  background-color: #116e9b;
+  border: 1px solid #6c757d7d;
+  border-radius: 5px;
+}
+
+.post-form .search-field > div > input:last-of-type:hover, .post-form .search-field > div > input:last-of-type:active {
+  background-color: #0d4865;
+}
+
+.post-form .pictures-field {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-wrap: wrap;
+  gap: 12px;
+  border: none;
+}
+
+.post-form .error-message {
+  color: red;
+  font-size: smaller;
+}
+
+.post-form .actions {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.post-form .actions input {
+  padding: 0 1.8em;
+  min-width: 80%;
+  line-height: 3.5;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  border-radius: 2em;
+  border: none;
+  background: linear-gradient(to right, #61c2e9 0%, #51ebb8 100%);
+  color: #ffffff;
+  transition: 0.4s;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+.post-form .actions input:hover, .post-form .actions input:active {
+  box-shadow: 5px 5px 10px #afafaf;
+}
+
+.post-form .actions:last-of-type {
+  margin-top: 0;
+}
+
+.post-form .back-button {
+  padding: 0 1.8em;
+  min-width: 80%;
+  line-height: 3.5;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  border-radius: 2em;
+  border: none;
+  background: #b8b8b8bd;
+  color: #ffffff;
+  transition: 0.4s;
+  margin-top: 24px;
+}
+
+.post-form .back-button:hover, .post-form .back-button:active {
+  background: #b8b8b8bd;
+  color: #ffffff;
+  box-shadow: 5px 5px 10px #afafaf;
+}
+
+@media screen and (max-width: 767px) {
+  .post-row {
+    width: 90% !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  #map {
+    height: 250px;
+  }
+
+  .post-row {
+    padding: 40px !important;
+  }
+
+  .post-form .search-field > div {
+    justify-content: right;
+  }
+
+  .post-form .search-field > div > input:first-of-type {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 507px) {
+  .post-row {
+    padding: 40px 10px !important;
+  }
+}
+
+// 投稿の詳細
+.post-container {
+  margin-top: 20px;
+  margin-bottom: 45px;
+}
+
+.post-container .post-details-links {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.post-container .positive-link {
+  margin-right: 3px;
+}
+
+.post-container .positive-link a {
+  color: #116e9b;
+  display: inline-block;
+  background-color: #e7fdff;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.post-container .positive-link a:hover, .post-container .positive-link a:active {
+  color: #116d9bbd;
+}
+
+.post-container .negative-link a {
+  color: #ff7b7b;
+  display: inline-block;
+  background-color: #fff0f0;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.post-container .negative-link a:hover, .post-container .negative-link a:active {
+  color: #ff7b7bbd;
+}
+
+.post-details .title {
+  margin: 12px 0 2px 0;
+}
+
+.post-details .related-url {
+  font-size: 14px;
+  color: rgba(0, 0, 0, .6);
+  margin-bottom: 15px;
+}
+
+.post-container .content {
+  display: flex;
+  gap: 50px;
+}
+
+.post-container .content-left {
+  width: 350px;
+}
+
+.content-left .picture {
+  object-fit: cover;
+  height: 250px;
+}
+
+.content-left .address {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 18px 0 6px 0;
+}
+
+.content-left #post-map {
+  width: 350px;
+  height: 275px;
+}
+
+.content-left .address-in-map {
+  font-size: 11px;
+}
+
+.content-right {
+  width: 100%;
+}
+
+.content-right .created-at {
+  font-size: 14px;
+  color: rgba(98, 98, 98, 0.9);
+  margin-bottom: 3px;
+}
+
+.content-right .description {
+  margin-top: 8px;
+}
+
+.content-right .members-involved {
+  font-size: 12px;
+  color: #63c3c0;
+  width: fit-content;
+  padding: 2px 6px;
+  margin-top: 16px;
+  background-color: rgba(255, 255, 255, .6);
+  border-radius: 3px;
+}
+
+.content-right .member-name {
+  font-size: 10px;
+  width: 80px;
+  padding: 3px 6px;
+  margin-right: 3px;
+  background-color: #61baee;
+  border-radius: 2em 0 0 2em;
+  color: rgb(255, 255, 255);
+  display: inline-block;
+}
+
+.content-right .member-name:before {
+	content: '●';
+	margin-right: .5em;
+	color: #943ba8;
+}
+
+@media screen and (max-width: 767px) {
+  .post-container .content {
+    gap: 25px;
+  }
+
+  .post-container .content-left {
+    width: 250px;
+  }
+
+  .content-left .picture {
+    width: 250px;
+    height: 150px;
+  }
+
+  .content-left .address {
+    font-size: 12px;
+  }
+
+  .content-left #post-map {
+    width: 250px;
+    height: 200px;
+  }
+
+  .content-right .description {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .post-container .content {
+    display: block;
+  }
+
+  .post-details .title {
+    font-size: 20px;
+  }
+
+  .post-details .related-url {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .post-container .content-left {
+    width: auto;
+  }
+
+  .content-left .picture {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .content-left #post-map {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .content-right .created-at {
+    margin-top: 16px;
+  }
+}
+
+// レビュー（コメント）
+.comment-area {
+  background-color: rgba(255, 255, 255, .3);
+}
+
+.comment-area > div:first-of-type {
+  padding: 4px 3px;
+  margin-top: 30px;
+  background-color: rgba(231, 231, 231, .6);
+  color: rgba(100, 100, 100, 0.9);
+  font-size: 14px;
+}
+
+.comments .comment {
+  background-color: rgba(255, 255, 255, .5);
+  padding: 5px;
+  margin-top: 3px;
+}
+
+.comment > div:first-of-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.comment .created-at {
+  font-size: 10px;
+}
+
+.comment .trash-can {
+  font-size: 16px;
+  color: #ff7b7b;
+  margin-right: 6px;
+}
+
+.comment .trash-can:hover, .comment .trash-can:active {
+  color: #ff7b7bbd;
+}
+
+.comment .username {
+  display: inline-flex;
+  font-size: 14px;
+}
+
+.comment .body {
+  font-size: 14px;
+  color: rgba(98, 98, 98, .9);
+  margin-top: 5px;
+}
+
+.comment-area .field:nth-of-type(2) {
+  width: 100%;
+  padding: 4px 7px;
+  margin: 0 auto;
+}
+
+.comment-area .field:nth-of-type(2) > textarea {
+  font-size: 14px;
+  width: 100%;
+  padding: 3px;
+  max-height: 350px;
+}
+
+.comment-area .field:nth-of-type(2) > textarea::placeholder {
+  font-size: 14px;
+}
+
+.comment-area .actions {
+  display: block;
+  text-align: right;
+  padding: 0 3px;
+}
+
+.comment-area .actions > input {
+  padding: 3px 6px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: white;
+  background-color: #116e9b;
+  border: none;
+  border-radius: 4px;
+}
+
+.comment-area .actions > input:hover, .comment-area .actions > input:active {
+  opacity: .8;
+}
+
+// レビュー（星評価）
+.average-rate {
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.comment-form form > div:first-of-type {
+  padding: 4px 3px;
+  margin-top: 24px;
+  margin-bottom: 3px;
+  background-color: rgba(231, 231, 231, .6);
+  color: rgba(100, 100, 100, .9);
+  font-size: 14px;
+}
+
+.comment-form form > div:nth-of-type(2) {
+  background-color: rgba(255, 255, 255, .5);
+}
+
+.comment-form .field:first-of-type {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  padding-top: 16px;
+}
+
+.comment-form .field:first-of-type input[type="radio"] {
+  display: none;
+}
+
+.comment-form .field:first-of-type label {
+  position: relative;
+  padding: 0 10px;
+  color: #8080808f;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.comment-form .field:first-of-type label .text {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(98, 98, 98, .9);
+}
+
+.comment-form .field:first-of-type label:hover, .comment-form .field:first-of-type label:hover ~ label, .comment-form .field:first-of-type input[type='radio']:checked ~ label {
+  color: #ffcc00;
+}
+
+.star5-rating {
+  position: relative;
+  display: inline-block;
+  height: 1em;
+  font-size: 14px;
+}
+
+.star5-rating-front {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+  height: 21px;
+}
+
+.star5-rating-back {
+  display: inline-block;
+  color: #8080808f;
+}
+
+
+.average-rate > span:last-of-type {
+  margin-left: 6px;
+}
+
+.star5-average-rating {
+  position: relative;
+  z-index: 46;
+  display: inline-block;
+  white-space: nowrap;
+  color: #8080808f;
+}
+
+.star5-average-rating:before, .star5-average-rating:after {
+  content: '★★★★★';
+}
+
+.star5-average-rating:after {
+  position: absolute;
+  z-index: 47;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #ffcc33;
+}
+
+.star5-average-rating[data-rate="5.0"]:after { width: 100%; }
+.star5-average-rating[data-rate="4.5"]:after { width: 90%; }
+.star5-average-rating[data-rate="4.0"]:after { width: 80%; }
+.star5-average-rating[data-rate="3.5"]:after { width: 70%; }
+.star5-average-rating[data-rate="3.0"]:after { width: 60%; }
+.star5-average-rating[data-rate="2.5"]:after { width: 50%; }
+.star5-average-rating[data-rate="2.0"]:after { width: 40%; }
+.star5-average-rating[data-rate="1.5"]:after { width: 30%; }
+.star5-average-rating[data-rate="1.0"]:after { width: 20%; }
+.star5-average-rating[data-rate="0.5"]:after { width: 10%; }
+.star5-average-rating[data-rate="0"]:after { width: 0%; }
+
+@media screen and (max-width: 767px) {
+  .comment-area > div:first-of-type {
+    font-size: 12px;
+  }
+
+  .average-rate {
+    font-size: 10px;
+    margin-left: 4px;
+  }
+
+  .comment-form form > div:first-of-type {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .comment-area > div:first-of-type {
+    font-size: 14px;
+  }
+
+  .average-rate {
+    font-size: 12px;
+    margin-left: 6px;
+  }
+
+  .comment-form form > div:first-of-type {
+    font-size: 14px;
+  }
+}

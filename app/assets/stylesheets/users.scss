@@ -1,33 +1,3 @@
-// ユーザー登録，ログイン/ログアウトの通知
-.notice {
-  width: fit-content;
-  background-color: rgb(138, 109, 181);
-  color: rgb(255, 255, 255);
-  font-size: 15px;
-  border-radius: 5px;
-  box-shadow: 0 0 8px rgb(144, 144, 144);
-  padding: 10px 15px;
-  margin: auto;
-  margin-top: 60px;
-  position: fixed;
-  bottom: 80px;
-  right: 0;
-  left: 0;
-  z-index: 999;
-}
-
-.notice:empty {
-  display: none;
-}
-
-//フラッシュメッセージ
-.alert {
-  color: rgb(246, 27, 27) !important;
-  text-align: center;
-  font-size: 14px;
-  margin: 0 !important;
-}
-
 // ユーザー登録，ログイン
 .form-container {
   display: flex;
@@ -204,6 +174,11 @@
   background-color: rgba(0, 0, 0, 0.07);
 }
 
+.mypage-container .title {
+  text-align: center;
+  margin-top: 18px;
+}
+
 .mypage-container .subtitle {
   font-size: 14px;
   color: rgb(164, 161, 161);
@@ -228,11 +203,11 @@
 .mypage-container .profile-area .link-field-profile {
   white-space: nowrap;
   padding-right: 6px;
+  color: #22699c;
 }
 
 .mypage-container .profile-area .link-field-profile p {
   display: inline-block;
-  color: #22699c;
   font-size: 15px;
 }
 
@@ -261,7 +236,11 @@
 }
 
 .mypage-container .profile-area-oshi > span:first-of-type p {
-  color: #24abef;
+  font-size: 11px;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, rgba(97, 194, 233, 0.8) 0%, rgba(81, 235, 184, 0.9) 100%);
+  border-radius: 2em;
+  padding: 3px 12px;
 }
 
 .mypage-container .oshi {
@@ -282,7 +261,7 @@
   font-size: 12px;
   letter-spacing: 1px;
   padding: 3px 5px;
-  margin-left: 12px;
+  margin-left: 3px;
   background-color: rgba(214, 214, 214, 0.9);
   border-radius: 3px;
 }
@@ -293,19 +272,21 @@
 }
 
 .mypage-container .profile-area-middle {
-  display: flex;
-  align-items: center;
   font-size: 12px;
   padding-left: 6px;
-  gap: 20px;
+}
+
+.mypage-container .ff-link {
+  color: #22699c;
+  margin-right: 5px;
+}
+
+.mypage-container .ff-link:hover, .mypage-container .ff-link:active {
+  color: #56c6fd;
 }
 
 .mypage-container .profile-area-ff span {
   margin-right: 8px;
-}
-
-.mypage-container .profile-area-posts .link-field-profile p {
-  font-size: 12px;
 }
 
 .mypage-container .profile-area-introduction {
@@ -325,7 +306,7 @@
 }
 
 .mypage-container .link-field p {
-  margin: 0;
+  margin: 0 13px 0 0;
 }
 
 .mypage-container .link-field .link-field-email {
@@ -379,8 +360,10 @@
 
 .edit-account-form .mypage-link {
   color: rgb(34, 105, 156);
-  display: inline-block;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
 }
 
 .edit-account-form .mypage-link:hover, .edit-account-form .mypage-link:active {
@@ -550,5 +533,365 @@
   .withdrawal-row {
     width: 100%;
     padding: 10px;
+  }
+}
+
+// ユーザー詳細
+.user-info-container {
+  margin-top: 32px;
+}
+
+// ユーザー詳細（プロフィール）
+.user-info-container .profile-area {
+  margin-bottom: 30px;
+}
+
+.user-info-container .profile-area p {
+  margin-bottom: 0;
+}
+
+.user-info-container .profile-area .content {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 15px 10px;
+  margin: 0 30px;
+}
+
+.user-info-container .profile-area-top {
+  display: flex; 
+  justify-content: space-between;
+}
+
+.user-info-container .btn-follow {
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  background-color: #61baee;
+  border-radius: 2em;
+  height: fit-content;
+  margin-right: 9px;
+}
+
+.user-info-container .btn-follow:hover, .user-info-container .btn-follow:active {
+  color: rgb(255, 255, 255);
+  background-color: #61baeed5;
+}
+
+.user-info-container .btn-unfollow {
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  background-color: #c5c1c1d4;
+  border-radius: 2em;
+  height: fit-content;
+  margin-right: 9px;
+}
+
+.user-info-container .btn-unfollow:hover, .user-info-container .btn-unfollow:active {
+  color: rgb(255, 255, 255);
+  background-color: #cacacacb;
+}
+
+.user-info-container .profile-area .link-field-profile {
+  white-space: nowrap;
+  padding-right: 6px;
+}
+
+.user-info-container .profile-area .link-field-profile p {
+  display: inline-block;
+  color: #22699c;
+  font-size: 15px;
+}
+
+.user-info-container .profile-area .link-field-profile:hover, .user-info-container .profile-area .link-field-profile:active {
+  opacity: .8;
+}
+
+.user-info-container .profile-area-top > div {
+  display: flex; 
+  gap: 30px;
+  align-items: center;
+  padding: 3px 5px;
+}
+
+.user-info-container .profile-area-oshi {
+  padding-left: 6px;
+  margin-top: 10px;
+}
+
+.user-info-container .profile-area-oshi > span:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 13px;
+  margin-bottom: 1px;
+}
+
+.user-info-container .profile-area-oshi > span:first-of-type p {
+  font-size: 11px;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, rgba(97, 194, 233, 0.8) 0%, rgba(81, 235, 184, 0.9) 100%);
+  border-radius: 2em;
+  padding: 3px 12px;
+}
+
+.user-info-container .oshi {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 6px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+  background-color: rgb(97, 186, 238);
+  border-left: 5px solid rgb(148, 59, 168);
+  border-bottom: 2px solid rgba(230, 230, 230, 0.75);
+  color: rgb(255, 255, 255);
+  width: 80px;
+  display: inline-block;
+}
+
+.user-info-container .oshi-none {
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 3px 5px;
+  margin-left: 3px;
+  background-color: rgba(214, 214, 214, 0.9);
+  border-radius: 3px;
+}
+
+.user-info-container .profile-area-username {
+  padding-left: 6px;
+  margin-bottom: 3px;
+}
+
+.user-info-container .profile-area-middle {
+  font-size: 12px;
+  padding-left: 6px;
+}
+
+.user-info-container .ff-link {
+  color: #22699c;
+  margin-right: 5px;
+}
+
+.user-info-container .ff-link:hover, .user-info-container .ff-link:active {
+  color: #56c6fd;
+}
+
+.user-info-container .profile-area-ff span {
+  margin-right: 8px;
+}
+
+.user-info-container .profile-area-introduction {
+  font-size: 14px;
+  padding: 2px 15px;
+}
+
+.user-info-container .profile-area-introduction p {
+  color: rgb(96, 94, 94);
+}
+
+@media screen and (max-width: 767px) {
+  .user-info-container .btn-follow {
+    font-size: 10px;
+  }
+
+  .user-info-container .btn-unfollow {
+    font-size: 10px;
+  }
+}
+
+// ユーザー詳細（投稿）
+.user-info-container .posts-area .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.user-info-container .favorites-btn {
+  background-color: #14c7c999 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 12px !important;
+}
+
+.user-info-container .favorites-btn:hover, .user-info-container .favorites-btn:active {
+  background-color: #0da5a899 !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.user-info-container .number-of-displays {
+  text-align: right;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.user-info-container .links {
+  display: flex;
+  gap: 14px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.user-info-container .positive-link a {
+  color: #116e9b;
+}
+
+.user-info-container .negative-link a {
+  color: #ff7b7b;
+}
+
+.user-info-container .links a:hover, .user-info-container .links a:active {
+  opacity: .8;
+}
+
+.user-info-container .username {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 767px) {
+  .user-info-container .favorites-btn {
+    font-size: 10px !important;
+  }
+
+  .user-info-container .profile-area .hidden-within-767px {
+    display: none !important;
+  }
+
+  .user-info-container .my-post-upper > div:last-of-type {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+  }
+
+  .user-info-container .positive-link a {
+    font-size: 12px;
+    color: #116e9b;
+  }
+
+  .user-info-container .negative-link a {
+    color: #ff7b7b;
+  }
+}
+
+//（いいね，フォロー，フォロワー）ユーザー一覧
+.users-container {
+  width: 65%;
+  max-width: 700px;
+  margin: 30px auto 50px auto;
+}
+
+.users-container .profile-area h3 {
+  color: rgb(255, 255, 255);
+}
+
+.user {
+  padding: 6px;
+  margin: 12px 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 10px;
+}
+
+.user .profile-area-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.user .profile-area-top > div:first-of-type {
+  display: flex;
+  gap: 9px;
+}
+
+.user .username {
+  font-size: 14px;
+}
+
+.user .posts-count {
+  font-size: 12px;
+  color: rgba(0, 0, 0, .6);
+}
+
+.user .btn-follow {
+  font-size: 10px;
+  color: rgb(255, 255, 255);
+  background-color: #61baee;
+  border-radius: 2em;
+  height: fit-content;
+  margin-right: 9px;
+}
+
+.user .btn-follow:hover, .user .btn-follow:active {
+  color: rgb(255, 255, 255);
+  background-color: #61baeed5;
+}
+
+.user .btn-unfollow {
+  font-size: 10px;
+  color: rgb(255, 255, 255);
+  background-color: #c5c1c1d4;
+  border-radius: 2em;
+  height: fit-content;
+  margin-right: 9px;
+}
+
+.user .btn-unfollow:hover, .user .btn-unfollow:active {
+  color: rgb(255, 255, 255);
+  background-color: #cacacacb;
+}
+
+.user .profile-area-oshi {
+  margin-top: 10px;
+}
+
+.user .profile-area-oshi > span:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 13px;
+  margin-bottom: 1px;
+}
+
+.user .profile-area-oshi > span:first-of-type p {
+  font-size: 11px;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, rgba(97, 194, 233, 0.8) 0%, rgba(81, 235, 184, 0.9) 100%);
+  border-radius: 2em;
+  padding: 3px 12px;
+  margin-right: 3px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.user .oshi {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 1px 6px;
+  margin-right: 3px;
+  margin-bottom: 1px;
+  background-color: rgb(97, 186, 238);
+  border-left: 5px solid rgb(148, 59, 168);
+  border-bottom: 2px solid rgba(230, 230, 230, 0.75);
+  color: rgb(255, 255, 255);
+  width: 75px;
+  display: inline-block;
+}
+
+.user .oshi-none {
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 3px 5px;
+  margin-left: 3px;
+  background-color: rgba(214, 214, 214, 0.9);
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 767px) {
+  .users-container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 543px) {
+  .users-container {
+    width: 90%;
   }
 }
