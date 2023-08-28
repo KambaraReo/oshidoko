@@ -207,6 +207,10 @@
   opacity: .8;
 }
 
+.infowindow-content .title:focus-visible {
+  outline: none;
+}
+
 .infowindow-content .address {
   font-size: 11px;
   margin-top: -4px;
