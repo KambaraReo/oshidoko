@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
   def show
     @user = current_user
     @post = Post.find(params[:post_id])
-    @favorited_users = @post.favorited_users
+    @favorited_users = @post.favorited_users.includes(:members, icon_attachment: :blob)
   end
 
   def create

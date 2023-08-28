@@ -4,24 +4,25 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @post_user = User.find(params[:id])
-    @posts = @post_user.posts.order(created_at: :desc)
+    @posts = @post_user.posts.includes(:members).order(created_at: :desc)
   end
 
   def favorites
     @user = current_user
     @post_user = User.find(params[:id])
+    @favorited_posts = @post_user.favorited_posts.includes(:members, user: {icon_attachment: :blob}).order(created_at: :desc)
   end
 
   def follows
     @user = current_user
     @post_user = User.find(params[:id])
-    @follows = @post_user.following_users
+    @follows = @post_user.following_users.includes(:members, icon_attachment: :blob)
   end
 
   def followers
     @user = current_user
     @post_user = User.find(params[:id])
-    @followers = @post_user.follower_users
+    @followers = @post_user.follower_users.includes(:members, icon_attachment: :blob)
   end
 
   def mypage

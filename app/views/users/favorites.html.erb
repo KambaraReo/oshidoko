@@ -17,7 +17,7 @@
         </span>
         <%= link_to "マイ投稿一覧", user_path(@post_user), class: "favorites-btn btn" %>
       </h1>
-      <%= render "shared/posts", posts: @post_user.favorited_posts.order(created_at: :desc), user: @user %>
+      <%= render "shared/posts", posts: @favorited_posts, user: @user %>
     </span>
   </div>
 </div>
