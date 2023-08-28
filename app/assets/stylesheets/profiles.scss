@@ -84,10 +84,12 @@
   background-color: rgba(250, 241, 241, 0.6);
   border: 1px solid rgb(187, 187, 187);
   padding: 4px 6px;
+  text-overflow: ellipsis;
 }
 
 .edit-profile-form .field-line-right > textarea {
   resize: vertical;
+  min-height: 85px;
   max-height: 350px;
 }
 

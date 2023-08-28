@@ -89,10 +89,16 @@
   border: 1px solid rgb(142, 142, 142);
   border-radius: 6px;
   padding: 6px 10px;
+  text-overflow: ellipsis;
+}
+
+.post-form .field input:read-only {
+  background-color: #dbdbdb8a;
 }
 
 .post-form .field textarea {
   resize: vertical;
+  min-height: 85px;
   max-height: 350px;
 }
 
@@ -121,14 +127,14 @@
 .post-form .search-field > div > input:last-of-type {
   width: 45px;
   padding: 3px 6px;
-  color: #535353;
-  background-color: #cbdeff;
-  border: 1px solid #5353535b;
-  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  background-color: #116e9b;
+  border: 1px solid #6c757d7d;
+  border-radius: 5px;
 }
 
-.post-form .search-field > input:last-of-type:hover, .post-form .search-field > input:last-of-type:active {
-  opacity: .8;
+.post-form .search-field > div > input:last-of-type:hover, .post-form .search-field > div > input:last-of-type:active {
+  background-color: #0d4865;
 }
 
 .post-form .pictures-field {
