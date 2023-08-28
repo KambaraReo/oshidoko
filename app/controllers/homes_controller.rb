@@ -9,13 +9,15 @@ class HomesController < ApplicationController
     @user = current_user
     @all_posts = Post.includes(:favorites).all.order(created_at: :desc)
     if params[:keyword].present?
-      @posts = Post.includes(:favorites)
-        .left_outer_joins(:user, :members)
-        .where("title like ? OR address like ? OR description like ? OR username like ? OR name like ?",
-          "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%")
-        .distinct
-        .order(created_at: :desc)
-        .page(params[:page])
+      keywords = params[:keyword].split(/[[:blank:]]+/)
+      posts = Post.left_outer_joins(:user, :members).includes(:favorites)
+      keywords.inject(posts) do |result, word|
+        posts = result.where(
+          "title like ? OR address like ? OR description like ? OR username like ? OR name like ?",
+          "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%"
+        )
+      end
+      @posts = posts.distinct.order(created_at: :desc).page(params[:page])
     else
       @posts = @all_posts.page(params[:page])
     end
