@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'homes#index'
-  # get 'homes/index'
   resources :homes, only: [:index] do
     get 'search', on: :collection
   end
