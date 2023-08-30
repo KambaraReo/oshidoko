@@ -747,6 +747,12 @@
   font-size: 12px;
 }
 
+.user-info-container .end-line {
+  height: 3px;
+  background-color: gray;
+  border: none;
+}
+
 @media screen and (max-width: 767px) {
   .user-info-container .favorites-btn {
     font-size: 10px !important;
