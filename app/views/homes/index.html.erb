@@ -6,7 +6,54 @@
 <% end %>
 
 <div class="context">
-  <h1>トップページです</h1>
+  <div>
+    <div class="oshidoko-logo"><%= image_tag "OSHIDOKO_removebg.png", size: "250x70" %></div>
+    <div class="subtitle">日向坂46の聖地マップ</div>
+  </div>
+  <div>
+    <div class="introduction">日向坂46のメンバーはこれまでに様々なロケーションを巡っています。『OSHIDOKO』は、そのような日向坂46の聖地となるロケーションをファンの間で共有し、あなたの日向坂46推し活ライフをより充実したものにするサービスです。</div>
+    <div class="features">
+      <div class="feature">
+        <div>- ロケーションの共有</div>
+        <div class="description">彼女たちが訪れた場所をコメントや写真と共に共有できます。あなたの推しメンが訪れたり紹介してくれた場所の魅力を伝えましょう。</div>
+      </div>
+      <div class="feature">
+        <div>- ロケーションの探索</div>
+        <div class="description">彼女たちが訪れた場所を探すことができます。あなたの推しメンがどのような場所を訪れ、どのような体験をしているのか発見しましょう。</div>
+      </div>
+      <div class="feature">
+        <div>- ロケーションのレビュー</div>
+        <div class="description">彼女たちが訪れた場所に足を運び、彼女たちと同じ感動や体験を味わいましょう。そこであなたが実際に目にしたもの、耳にしたもの、感じたものを教えてください。</div>
+      </div>
+    </div>
+    <div class="conclusion">今すぐ『OSHIDOKO』に参加して、あなたの推し活ライフを素晴らしいものにしましょう。</div>
+  </div>
+  <% if user_signed_in? %> 
+    <div class="links">
+      <%= link_to root_path(anchor: "map-anchor") do %>
+        <i class="fa-regular fa-map"></i>
+        MAP
+      <% end %>
+      <%= link_to root_path(anchor: "posts-anchor") do %>
+        <i class="fa-solid fa-map-pin"></i>
+        POSTS
+      <% end %>
+    </div>
+  <% else %>
+    <div class="status-signed-out">
+      <%= link_to "ログインはこちら", new_user_session_path %>
+        <div class="links">
+        <%= link_to root_path(anchor: "map-anchor") do %>
+          <i class="fa-regular fa-map"></i>
+          MAP
+        <% end %>
+        <%= link_to root_path(anchor: "posts-anchor") do %>
+          <i class="fa-solid fa-map-pin"></i>
+          POSTS
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <div class="top-area">
@@ -23,6 +70,8 @@
     <li></li>
   </ul>
 </div >
+
+<div id="map-anchor"></div>
 
 <div class="top flex-shrink-0">
   <div class="posts-map-area">

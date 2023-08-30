@@ -25,24 +25,159 @@
 .context {
   width: 100%;
   position: absolute;
-  top: 200px;
+  top: 77px;
   z-index: 100;
 }
 
-.context h1 {
+.context .oshidoko-logo {
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.context .subtitle {
+  color: #a6f1ef;
+  text-align: center;
+  font-size: 18px;
+}
+
+.context > div:nth-of-type(2) {
+  color: #ffffffe3;
+  width: 85%;
+  margin: 20px auto 0 auto;
+}
+
+.context .features {
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.context .feature {
+  margin-bottom: 8px;
+}
+
+.context .feature > div:first-of-type {
+  color: #22699c;
+}
+
+.context .description {
+  font-size: 12px;
+}
+
+.context > div:last-of-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.context .links a {
+  width: 90px;
+  color: rgb(255, 255, 255);
+  background-color: cornflowerblue;
+  border: 2px solid #ffffffe3;
+  border-radius: 6px;
+  padding: 3px 6px;
+  text-align: center;
+}
+
+.context .links a:hover, .context .links a:active {
+  background-color: #ffffff46;
+  border: 2px solid #ffffff;
+}
+
+.context .status-signed-out {
+  display: flex;
+  flex-direction: column;
+  gap: 5px !important;
+  margin-top: 15px !important;
+}
+
+.context .status-signed-out .links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.context .status-signed-out > a {
+  width: 195px;
   text-align: center;
   color: #fff;
-  font-size: 50px;
+  background-color: #22699c;
+  border-radius: 6px;
+  padding: 3px 6px;
 }
 
-.context {
-  padding-left: 0;
+.context .status-signed-out > a:hover, .context .status-signed-out > a:active {
+  opacity: .8;
 }
 
-.area {
-  background: #2eb6ff;  
-  width: 100%;
-  height: 550px;
+@media screen and (max-width: 991px) {
+  .context .status-signed-out {
+    margin-top: 15px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .context .subtitle {
+    font-size: 16px;
+  }
+
+  .context .introduction {
+    font-size: 14px;
+  }
+
+  .context .features {
+    font-size: 12px;
+  }
+
+  .context .description {
+    font-size: 11px;
+  }
+
+  .context .conclusion {
+    font-size: 14px;
+  }
+
+  .context > div:last-of-type {
+    margin-top: 45px;
+  }
+
+  .context .status-signed-out {
+    margin-top: 20px !important;
+  }
+}
+
+@media screen and (max-width: 543px) {
+  .context .subtitle {
+    font-size: 14px;
+  }
+
+  .context .introduction {
+    font-size: 13px;
+  }
+
+  .context .conclusion {
+    font-size: 13px;
+  }
+
+  .context > div:last-of-type {
+    margin-top: 25px;
+  }
+
+  .context .links a {
+    font-size: 14px;
+  }
+
+  .context .status-signed-out {
+    margin-top: 15px !important;
+  }
+
+  .context .status-signed-out > a {
+    font-size: 14px;
+  }
 }
 
 .triangles {
@@ -156,6 +291,24 @@
 }
 }
 
+@media screen and (max-width: 991px) {
+  .triangles {
+    height: 610px;
+  }
+}
+
+@media screen and (max-width: 543px) {
+  .triangles {
+    height: 670px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .triangles {
+    height: 730px;
+  }
+}
+
 // マップ表示
 .top {
   width: 85%;
@@ -180,6 +333,10 @@
 }
 
 @media screen and (max-width: 991px) {
+  .top {
+    margin-top: 660px;
+  }
+
   #posts-map {
     height: 60vh !important;
   }
@@ -192,6 +349,10 @@
 }
 
 @media screen and (max-width: 543px) {
+  .top {
+    margin-top: 720px;
+  }
+
   #posts-map {
     height: 30vh !important;
   }
@@ -493,5 +654,24 @@
   .posts .pagination > li > a {
     font-size: 11px;
     padding: 2px 6px;
+  }
+}
+
+// アンカー
+#map-anchor {
+  position: absolute;
+  top: 550px;
+  z-index: 120;
+}
+
+@media screen and (max-width: 991px) {
+  #map-anchor {
+    top: 610px;
+  }
+}
+
+@media screen and (max-width: 543px) {
+  #map-anchor {
+    top: 670px;
   }
 }
