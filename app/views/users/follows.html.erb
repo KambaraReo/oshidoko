@@ -14,6 +14,10 @@
       <i class="fa-solid fa-users"></i>
       <span>フォロー</span>
     </h3>
-    <%= render "shared/user_lists", users: @follows %>
+    <% if @follows.present? %>
+      <%= render "shared/user_lists", users: @follows %>
+    <% else %>
+      <div class="not-applicable">フォローしたユーザーはいません。</div>
+    <% end %>
   </div>
 </div>

@@ -789,6 +789,13 @@
   color: rgb(255, 255, 255);
 }
 
+.users-container .not-applicable {
+  padding: 6px 12px;
+  margin: 12px 0;
+  background-color: rgba(255, 255, 255, .75);
+  border-radius: 10px;
+}
+
 .user {
   padding: 6px;
   margin: 12px 0;
