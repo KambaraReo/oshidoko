@@ -1,16 +1,31 @@
-<h2>Resend confirmation instructions</h2>
+<% provide(:title, "確認メール再送のご案内") %>
+<div class="form-container container">
+  <div class="form-row row">
+    <div class="title">
+      <h3 class="long-words">確認メール再送<span>のご案内</span></h3>
+      <p class="guidance">確認メールが届かない場合は、以下より再送してください。</p>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+    <div class="password-reset-form col-md-8 col-lg-6">
+      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <div class="field">
+          <%= f.label :email, "メールアドレス" %><br>
+          <%= f.email_field :email, autofocus: true, placeholder: "メールアドレスを入力", autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %><br>
+          <span class="error-message">
+            <% if resource.errors.include?(:email) %>
+              <%= resource.errors.full_messages_for(:email).first %>
+            <% end %>
+          </span>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+        <div class="actions">
+          <%= f.submit "送信する" %>
+        </div>
+
+        <div class="links">
+          <%= render "users/shared/links" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
