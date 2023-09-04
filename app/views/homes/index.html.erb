@@ -223,7 +223,12 @@
         // マーカークリック時にinfowindowを表示
         let infowindowContent = `
           <div class="infowindow-content">
-            <a href='<%= post_path(post.id) %>' class="title"><%= post.title %></a>
+            <% if post.pictures.attached? %>
+              <div class="infowindow-picture"><%= image_tag post.pictures.first, class: "picture" %></div>
+            <% else %>
+              <div class="infowindow-picture"><%= image_tag "default_post_infowindow.png", class: "picture" %></div>
+            <% end %>
+            <a href='<%= post_path(post.id) %>' class="title" data-turbolinks="false"><%= post.title %></a>
             <div class="address"><%= post.address %></div>
             <% unless post.members.empty? %>
               <div class="members-involved">

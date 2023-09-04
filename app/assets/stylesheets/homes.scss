@@ -359,6 +359,22 @@
 }
 
 // マップ上の吹き出し
+.infowindow-content {
+  width: 400px;
+}
+
+.infowindow-content .infowindow-picture {
+  margin-bottom: 12px;
+}
+
+.infowindow-content .picture {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+}
+
 .infowindow-content .title {
   color: #116e9b;
   font-weight: bold;
@@ -403,6 +419,43 @@
 	content: '●';
 	margin-right: .5em;
 	color: #943ba8;
+}
+
+@media screen and (max-width: 991px) {
+  .infowindow-content {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .infowindow-content {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 543px) {
+  .infowindow-content {
+    width: 100%;
+    min-width: 90px;
+  }
+
+  .infowindow-content .title {
+    font-size: 11px;
+  }
+
+  .infowindow-content .address {
+    font-size: 10px;
+  }
+
+  .infowindow-content .members-involved {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .infowindow-content {
+    width: 90px;
+  }
 }
 
 // 投稿表示
