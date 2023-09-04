@@ -1,3 +1,4 @@
+<% provide(:title, "#{@post.title}: いいねしたユーザー") %>
 <div class="navigation-link">
   <div>
     <%= link_to_unless_current "TOP", root_path, data: { "turbolinks" => false } %>
@@ -13,6 +14,10 @@
       <i class="fa-solid fa-users"></i>
       <span>いいねしたユーザー</span>
     </h3>
-    <%= render "shared/user_lists", users: @favorited_users %>
+    <% if @favorited_users.present? %>
+      <%= render "shared/user_lists", users: @favorited_users %>
+    <% else %>
+      <div class="not-applicable">まだいいねしたユーザーはいません。</div>
+    <% end %>
   </div>
 </div>

@@ -135,10 +135,20 @@
   font-size: 13px;
 }
 
+@media screen and (max-width: 767px) {
+  .form-row .long-words span {
+    display: block;
+  }
+}
+
 @media screen and (max-width: 544px) {
   .form-row {
     width: 100%;
     padding: 10px;
+  }
+
+  .form-row .long-words span {
+    display: inline;
   }
 
   .sign-up-form .actions input {
@@ -148,6 +158,12 @@
 
   .log-in-form .actions input, .password-reset-form .actions input {
     font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 435px) {
+  .form-row .long-words span {
+    display: block;
   }
 }
 
@@ -747,6 +763,12 @@
   font-size: 12px;
 }
 
+.user-info-container .end-line {
+  height: 3px;
+  background-color: gray;
+  border: none;
+}
+
 @media screen and (max-width: 767px) {
   .user-info-container .favorites-btn {
     font-size: 10px !important;
@@ -781,6 +803,13 @@
 
 .users-container .profile-area h3 {
   color: rgb(255, 255, 255);
+}
+
+.users-container .not-applicable {
+  padding: 6px 12px;
+  margin: 12px 0;
+  background-color: rgba(255, 255, 255, .75);
+  border-radius: 10px;
 }
 
 .user {

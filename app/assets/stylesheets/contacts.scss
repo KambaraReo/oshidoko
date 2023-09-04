@@ -1,0 +1,161 @@
+// お問い合わせフォーム（入力画面）
+.contact-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 36px auto;
+}
+
+.contact-form-row {
+  width: 85%;
+}
+
+.contact-form-row h3 {
+  width: fit-content;
+  color: rgb(255, 255, 255);
+  border-bottom:2px solid rgba(255, 255, 255, .4);
+  padding-bottom: 4px;
+  margin: 0 auto;
+}
+
+.contact-form-row .form-status {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin: 12px 0 20px 0;
+}
+
+.contact-form-row .form-status > div {
+  font-size: 14px;
+  text-align: center;
+  width: 60px;
+  color: rgb(255, 255, 255);
+  background-color: #3587ff;
+  border-radius: 3px;
+  opacity: .6;
+  padding: 2px;
+}
+
+.form-status .current-page {
+  opacity: inherit !important;
+}
+
+.contact-form-row input {
+  text-overflow: ellipsis;
+}
+
+.contact-form-row textarea {
+  width: 100%;
+  height: 190px;
+  font-size: 12px;
+  border: 1px solid #8e8e8e;
+  border-radius: 6px;
+  padding: 6px 10px;
+  resize: none;
+}
+
+.contact-form-row .actions {
+  margin-top: 170px;
+}
+
+// お問い合わせフォーム（確認画面）
+.contact-form {
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+.contact-form table {
+  width: 100%;
+  background-color: #d6ffff70;
+}
+
+.contact-form tr:first-of-type, .contact-form tr:nth-of-type(2) {
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.contact-form .line-left {
+  width: 165px;
+  vertical-align: top;
+  color: rgb(0, 0, 0);
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px 16px;
+}
+
+.contact-form .line-right {
+  white-space: pre-wrap;
+  font-size: 12px;
+  background-color: #ffffff46;
+  padding: 10px 16px;
+}
+
+.contact-form-container .actions-in-confirm {
+  text-align: center;
+}
+
+.contact-form-container .actions-in-confirm input {
+  padding: 0 1.8em;
+  min-width: 80%;
+  line-height: 3.5;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  border-radius: 2em;
+  border: none;
+  color: #ffffff;
+  transition: 0.4s;
+  margin: 25px auto 6px auto;
+}
+
+.contact-form-container .actions-in-confirm input:hover, .contact-form-container .actions-in-confirm input:active {
+  box-shadow: 5px 5px 10px #afafaf;
+}
+
+.contact-form-container .positive input {
+  background: linear-gradient(to right, #61c2e9 0%, #51ebb8 100%);
+  margin: 25px auto 6px auto;
+}
+
+.contact-form-container .negative input {
+  background: #b8b8b8bd;
+  margin: 6px auto;
+}
+
+@media screen and (max-width: 767px) {
+  .contact-form tr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-form .line-left {
+    padding-left: 8px;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .contact-form-container .actions-in-confirm input {
+    font-size: 15px;
+  }
+}
+
+// お問い合わせフォーム（完了画面）
+.contact-form-container .message > div {
+  text-align: center;
+}
+
+.contact-form-container .message > div:last-of-type {
+  margin-top: 2px;
+}
+
+.contact-form-container .top-link {
+  color: #22699c !important;
+}
+
+.contact-form-container .top-link:hover, .contact-form-container .top-link:active {
+  opacity: .8;
+}
+
+@media screen and (max-width: 576px) {
+  .contact-form-container .message > div > span {
+    display: block;
+  }
+}

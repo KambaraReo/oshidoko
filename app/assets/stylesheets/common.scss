@@ -121,7 +121,7 @@ ul {
 }
 
 .nav-link {
-  margin-right: 40px;
+  margin-right: 25px;
 }
 
 .dropdown-item:active {
@@ -202,11 +202,11 @@ ul {
   }
 
   .hidden-over-435px a {
-    color: rgb(12, 56, 233);
+    color: #116e9b;
   }
 
   .hidden-over-435px a:hover, .hidden-over-435px a:active {
-    opacity: .6;
+    color: #56c6fd !important;
   }
 
   .btn-account .status-signed-in .header-username {
@@ -221,7 +221,13 @@ ul {
 
 // フッター
 footer {
-  background-color: rgb(193, 193, 193);
+  background-color: rgb(255, 255, 255);
+}
+
+footer > div {
+  text-align: center;
+  font-size: 12px;
+  font-family: "Roboto";
 }
 
 // ナビゲーションリンク

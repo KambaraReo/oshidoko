@@ -2,15 +2,17 @@
   <nav class="navbar navbar-expand-md inner fixed-top">
     <div class="container-fluid">
       <div class="header-left">
-        <%= link_to "Oshidoko", homes_index_path, class: "navbar-brand", data: { "turbolinks" => false } %>
+        <%= link_to root_path, class: "navbar-brand", data: { "turbolinks" => false } do %>
+          <%= image_tag "OSHIDOKO.png", size: "150x45" %>
+        <% end %>
       </div>
       <div class="header-right">
         <div class="collapse navbar-collapse nav-items" id="navbarSupportedContent">
           <ul class="navbar-nav">
-            <li class="nav-item"><%= link_to "Top", homes_index_path, class: "nav-link active top-link", "aria-current": "page", data: { "turbolinks" => false } %></li>
-            <li class="nav-item"><%= link_to "About", "#", class: "nav-link" %></li>
-            <li class="nav-item"><%= link_to "Service", "#", class: "nav-link" %></li>
-            <li class="nav-item"><%= link_to "Contact", "#", class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "TOP", root_path, class: "nav-link active top-link", "aria-current": "page", data: { "turbolinks" => false } %></li>
+            <li class="nav-item"><%= link_to "MAP", root_path(anchor: "map-anchor"), class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "POSTS", root_path(anchor: "posts-anchor"), class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "CONTACT", new_contact_path, class: "nav-link" %></li>
           </ul>
         </div>
         <div class="btn-account">
@@ -46,13 +48,13 @@
               <li class="dropdown-item top-link hidden-over-435px"><%= link_to "新規登録", new_user_registration_path %></li>
               <li><hr class="dropdown-divider hidden-over-435px"></li>
             <% end %>
-            <li><%= link_to "Top", homes_index_path, class: "dropdown-item top-link", data: { "turbolinks" => false } %></li>
+            <li><%= link_to "TOP", root_path, class: "dropdown-item top-link", data: { "turbolinks" => false } %></li>
             <li><hr class="dropdown-divider"></li>
-            <li><%= link_to "About", "#", class: "dropdown-item" %></li>
+            <li><%= link_to "MAP", root_path(anchor: "map-anchor"), class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
-            <li><%= link_to "Service", "#", class: "dropdown-item" %></li>
+            <li><%= link_to "POSTS", root_path(anchor: "posts-anchor"), class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
-            <li><%= link_to "Contact", "#", class: "dropdown-item" %></li>
+            <li><%= link_to "CONTACT", new_contact_path, class: "dropdown-item" %></li>
           </ul>
         </div>
       </div>

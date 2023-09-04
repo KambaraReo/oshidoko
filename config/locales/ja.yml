@@ -37,6 +37,10 @@ ja:
         user_id: あなた
         comment: レビュー
         rate: 星評価
+      contact:
+        name: お名前
+        email: メールアドレス
+        content: お問い合わせ内容
     models:
       user: ユーザー
     errors:
@@ -49,6 +53,8 @@ ja:
               taken: は既にレビューしています
             rate:
               blank: を選択してください
+        contact:
+          blank: は必須項目です
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
@@ -71,7 +77,7 @@ ja:
         action: メールアドレスの確認
         greeting: "%{recipient}様"
         instruction: 以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。
-        subject: メールアドレス確認メール
+        subject: メールアドレス確認のご連絡
       email_changed:
         greeting: こんにちは、%{recipient}様。
         message: メールアドレスの（%{email}）変更が完了したため、メールを送信しています。
@@ -87,7 +93,7 @@ ja:
         instruction: パスワード再設定の依頼を受けたため、メールを送信しています。下のリンクからパスワードの再設定ができます。
         instruction_2: パスワード再設定の依頼をしていない場合、このメールを無視してください。
         instruction_3: パスワードの再設定は、上のリンクから新しいパスワードを登録するまで完了しません。
-        subject: パスワードの再設定について
+        subject: パスワード再設定のご案内
       unlock_instructions:
         action: アカウントのロック解除
         greeting: "%{recipient}様"

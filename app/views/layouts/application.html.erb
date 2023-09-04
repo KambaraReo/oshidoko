@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja" class="h-100">
   <head>
-    <title>Myapp</title>
+    <title><%= full_title(yield(:title)) %></title>
+    <link href="<%= image_path("favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
+    <link href="<%= image_path("apple_touch_icon.png") %>" rel="apple-touch-icon" sizes="180x180" type="image/png" />
+    <link href="<%= image_path("android_touch_icon.png") %>" rel="icon" sizes="192x192" type="image/png" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>

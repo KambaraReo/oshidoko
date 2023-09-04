@@ -1,0 +1,49 @@
+<% provide(:title, "お問い合わせフォーム") %>
+<div class="contact-form-container container">
+  <div class="contact-form-row row">
+    <h3>お問い合わせフォーム</h3>
+    <div class="form-status">
+      <div class="current-page">入力</div>
+      <div>確認</div>
+      <div>完了</div>
+    </div>
+
+    <div class="sign-up-form col-md-10 col-lg-8">
+      <%= form_with model: @contact, url: confirm_contacts_path do |f| %>
+        <div class="field required">
+          <%= f.label :name, "お名前 （20文字以内）" %><br>
+          <%= f.text_field :name, autofocus: true, placeholder: "お名前を入力" %><br>
+          <span class="error-message">
+            <% if @contact.errors.include?(:name) %>
+              <%= @contact.errors.full_messages_for(:name).first %>
+            <% end %>
+          </span>
+        </div>
+
+        <div class="field required">
+          <%= f.label :email, "メールアドレス" %><br>
+          <%= f.email_field :email, placeholder: "メールアドレスを入力", autocomplete: "email" %><br>
+          <span class="error-message">
+            <% if @contact.errors.include?(:email) %>
+              <%= @contact.errors.full_messages_for(:email).first %>
+            <% end %>
+          </span>
+        </div>
+
+        <div class="field required">
+          <%= f.label :content, "お問い合わせ内容 （800文字以内）" %><br>
+          <%= f.text_area :content, placeholder: "お問い合わせ内容を入力" %><br>
+          <span class="error-message">
+            <% if @contact.errors.include?(:content) %>
+              <%= @contact.errors.full_messages_for(:content).first %>
+            <% end %>
+          </span>
+        </div>
+
+        <div class="actions">
+          <%= f.submit '入力内容の確認' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
