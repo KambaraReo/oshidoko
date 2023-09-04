@@ -1,0 +1,44 @@
+<% provide(:title, "お問い合わせフォーム") %>
+<div class="contact-form-container container">
+  <div class="contact-form-row row">
+    <h3>お問い合わせフォーム</h3>
+    <div class="form-status">
+      <div>入力</div>
+      <div class="current-page">確認</div>
+      <div>完了</div>
+    </div>
+
+    <div class="contact-form col-md-10 col-lg-8">
+      <table>
+        <tbody>
+          <tr>
+            <td class="line-left">お名前</td>
+            <td class="line-right"><%= @contact.name %></td>
+          </tr>
+          <tr>
+            <td class="line-left">メールアドレス</td>
+            <td class="line-right"><%= @contact.email %></td>
+          </tr>
+          <tr>
+            <td class="line-left">お問い合わせ内容</td>
+            <td class="line-right"><%= @contact.content %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <%= form_with model: @contact do |f| %>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :email %>
+        <%= f.hidden_field :content %>
+        <div class="actions-in-confirm positive"><%= f.submit "送信する" %></div>
+      <% end %>
+
+      <%= form_with model: @contact, url: back_contacts_path do |f| %>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :email %>
+        <%= f.hidden_field :content %>
+        <div class="actions-in-confirm negative"><%= f.submit "入力画面に戻る" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

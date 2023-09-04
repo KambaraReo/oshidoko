@@ -12,7 +12,7 @@
             <li class="nav-item"><%= link_to "TOP", root_path, class: "nav-link active top-link", "aria-current": "page", data: { "turbolinks" => false } %></li>
             <li class="nav-item"><%= link_to "MAP", root_path(anchor: "map-anchor"), class: "nav-link" %></li>
             <li class="nav-item"><%= link_to "POSTS", root_path(anchor: "posts-anchor"), class: "nav-link" %></li>
-            <li class="nav-item"><%= link_to "CONTACT", "#", class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "CONTACT", new_contact_path, class: "nav-link" %></li>
           </ul>
         </div>
         <div class="btn-account">
@@ -54,7 +54,7 @@
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to "POSTS", root_path(anchor: "posts-anchor"), class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
-            <li><%= link_to "CONTACT", "#", class: "dropdown-item" %></li>
+            <li><%= link_to "CONTACT", new_contact_path, class: "dropdown-item" %></li>
           </ul>
         </div>
       </div>

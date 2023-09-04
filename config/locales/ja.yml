@@ -37,6 +37,10 @@ ja:
         user_id: あなた
         comment: レビュー
         rate: 星評価
+      contact:
+        name: お名前
+        email: メールアドレス
+        content: お問い合わせ内容
     models:
       user: ユーザー
     errors:
@@ -49,6 +53,8 @@ ja:
               taken: は既にレビューしています
             rate:
               blank: を選択してください
+        contact:
+          blank: は必須項目です
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

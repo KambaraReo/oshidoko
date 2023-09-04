@@ -1,0 +1,16 @@
+<% provide(:title, "お問い合わせフォーム") %>
+<div class="contact-form-container container">
+  <div class="contact-form-row row">
+    <h3>お問い合わせフォーム</h3>
+    <div class="form-status">
+      <div>入力</div>
+      <div>確認</div>
+      <div class="current-page">完了</div>
+    </div>
+
+    <div class="contact-form message col-md-10 col-lg-8">
+      <div>送信しました。<span>お問い合わせありがとうございます。</span></div>
+      <div><%= link_to "TOPに戻る", root_path, class: "top-link", data: { "turbolinks" => false } %></div>
+    </div>
+  </div>
+</div>
