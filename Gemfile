@@ -37,6 +37,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'capybara'
   gem 'rails-erd'
+  gem 'shoulda-matchers'
 end
 
 group :development do

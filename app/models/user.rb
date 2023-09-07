@@ -8,10 +8,12 @@ class User < ApplicationRecord
       params.delete(:password)
       params.delete(:password_confirmation) if params[:password_confirmation].blank?
       params.delete(:current_password)
+      skip_reconfirmation!
       result = update(params, *options)
     else
       current_password = params.delete(:current_password)
       result = if valid_password?(current_password)
+                 skip_reconfirmation!
                  update(params, *options)
                else
                  assign_attributes(params, *options)
@@ -39,7 +41,7 @@ class User < ApplicationRecord
   has_many :users_members, dependent: :destroy
   has_many :members, through: :users_members
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   has_many :favorites, dependent: :destroy
   has_many :favorited_posts, through: :favorites, source: :post
