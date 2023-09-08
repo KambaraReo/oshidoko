@@ -38,7 +38,7 @@
             <%= link_to post.user.username, user_path(post.user), class: "username" %>
             <div>
               <div><%= link_to post.title, post_path(post), class: "title", data: { "turbolinks" => false } %></div>
-              <div><%= post.address %></div>
+              <div class="address"><%= post.address %></div>
             </div>
           </div>
         </div>
