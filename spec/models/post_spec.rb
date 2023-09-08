@@ -58,18 +58,30 @@ RSpec.describe Post, type: :model do
     end
 
     it "画像が設定されていれば有効な状態であること" do
-      post.pictures.attach(io: File.open(Rails.root.join("spec/fixtures/512bytes_sample.png")), filename: "512bytes_sample.png", content_type: "image/png")
+      post.pictures.attach(
+        io: File.open(Rails.root.join("spec/fixtures/512bytes_sample.png")),
+        filename: "512bytes_sample.png",
+        content_type: "image/png"
+      )
       expect(post).to be_valid
     end
 
     it "画像のフォーマットが適切でない場合は無効であること" do
-      post.pictures.attach(io: File.open(Rails.root.join("spec/fixtures/512bytes_sample.gif")), filename: "512bytes_sample.gif", content_type: "image/gif")
+      post.pictures.attach(
+        io: File.open(Rails.root.join("spec/fixtures/512bytes_sample.gif")),
+        filename: "512bytes_sample.gif",
+        content_type: "image/gif"
+      )
       expect(post).to_not be_valid
       expect(post.errors[:pictures]).to include("のファイル形式はJPEG、JPG、PNGである必要があります。")
     end
 
     it "画像のファイルサイズが5MB以下でない場合は無効であること" do
-      post.pictures.attach(io: File.open(Rails.root.join("spec/fixtures/6megabytes_sample.png")), filename: "6megabytes_sample.png", content_type: "image/png")
+      post.pictures.attach(
+        io: File.open(Rails.root.join("spec/fixtures/6megabytes_sample.png")),
+        filename: "6megabytes_sample.png",
+        content_type: "image/png"
+      )
       expect(post).to_not be_valid
       expect(post.errors[:pictures]).to include("のファイルサイズは5MB以下である必要があります。")
     end
@@ -80,23 +92,23 @@ RSpec.describe Post, type: :model do
           {
             io: File.open(Rails.root.join("spec/fixtures/512bytes_sample.png")),
             filename: "512bytes_sample.png",
-            content_type: "image/png"
+            content_type: "image/png",
           },
           {
             io: File.open(Rails.root.join("spec/fixtures/1megabytes_sample.jpeg")),
             filename: "1megabytes_sample.jpeg",
-            content_type: "image/jpeg"
+            content_type: "image/jpeg",
           },
           {
             io: File.open(Rails.root.join("spec/fixtures/2megabytes_sample.png")),
             filename: "2megabytes_sample.png",
-            content_type: "image/png"
+            content_type: "image/png",
           },
           {
             io: File.open(Rails.root.join("spec/fixtures/3megabytes_sample.jpg")),
             filename: "3megabytes_sample.jpg",
-            content_type: "image/jpg"
-          }
+            content_type: "image/jpg",
+          },
         ]
       )
       expect(post).to_not be_valid

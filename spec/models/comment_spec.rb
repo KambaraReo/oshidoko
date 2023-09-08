@@ -35,7 +35,7 @@ RSpec.describe Comment, type: :model do
     end
 
     it "投稿に対する自分のコメントが既に存在している場合は無効であること" do
-      other_comment =  build(:comment, post_id: post.id, user_id: user.id)
+      other_comment = build(:comment, post_id: post.id, user_id: user.id)
 
       expect(comment).to be_valid
       expect(other_comment).to_not be_valid

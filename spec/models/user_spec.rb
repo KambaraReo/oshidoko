@@ -51,7 +51,7 @@ RSpec.describe User, type: :model do
     end
 
     it "既に使用されているメールアドレスの場合は無効であること" do
-      user = create(:user)
+      create(:user)
       other_user = build(:user)
       expect(other_user).to_not be_valid
       expect(other_user.errors[:email]).to include("はすでに存在します")
@@ -105,18 +105,30 @@ RSpec.describe User, type: :model do
     end
 
     it "アイコンが設定されていれば有効な状態であること" do
-      user.icon.attach(io: File.open(Rails.root.join("spec/fixtures/512bytes_sample.png")), filename: "512bytes_sample.png", content_type: "image/png")
+      user.icon.attach(
+        io: File.open(Rails.root.join("spec/fixtures/512bytes_sample.png")),
+        filename: "512bytes_sample.png",
+        content_type: "image/png"
+      )
       expect(user).to be_valid
     end
 
     it "アイコンのフォーマットが適切でない場合は無効であること" do
-      user.icon.attach(io: File.open(Rails.root.join("spec/fixtures/512bytes_sample.gif")), filename: "512bytes_sample.gif", content_type: "image/gif")
+      user.icon.attach(
+        io: File.open(Rails.root.join("spec/fixtures/512bytes_sample.gif")),
+        filename: "512bytes_sample.gif",
+        content_type: "image/gif"
+      )
       expect(user).to_not be_valid
       expect(user.errors[:icon]).to include("のファイル形式はJPEG、JPG、PNGである必要があります。")
     end
 
     it "アイコンのファイルサイズが1MB以下でない場合は無効であること" do
-      user.icon.attach(io: File.open(Rails.root.join("spec/fixtures/2megabytes_sample.png")), filename: "2megabytes_sample.png", content_type: "image/png")
+      user.icon.attach(
+        io: File.open(Rails.root.join("spec/fixtures/2megabytes_sample.png")),
+        filename: "2megabytes_sample.png",
+        content_type: "image/png"
+      )
       expect(user).to_not be_valid
       expect(user.errors[:icon]).to include("のファイルサイズは1MB以下である必要があります。")
     end
@@ -158,7 +170,7 @@ RSpec.describe User, type: :model do
           {
             email: "new_tester@example.com",
             password: "password789",
-            current_password: "password123"
+            current_password: "password123",
           }
         end
 
@@ -177,7 +189,7 @@ RSpec.describe User, type: :model do
           {
             email: "new_tester@example.com",
             password: "password789",
-            current_password: "passward123"
+            current_password: "passward123",
           }
         end
 
