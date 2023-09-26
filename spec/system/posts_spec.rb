@@ -12,7 +12,7 @@ RSpec.describe "posts", type: :system, js: true do
     end
 
     describe "バリデーション成功" do
-      it "トップページに遷移し, 投稿がMAPエリアとPOSTSエリアに表示されていること" do
+      it "トップページに遷移し, 投稿がMAPエリアとPOSTSエリアに表示されていること", ciskip: true do
         fill_in "post[title]", with: post.title
         fill_in "post[url]", with: "https://test.example.jp"
         check "post[member_ids][]", option: members[1].id
@@ -126,7 +126,7 @@ RSpec.describe "posts", type: :system, js: true do
       end
     end
 
-    describe "住所の検索" do
+    describe "住所の検索", ciskip: true do
       context "検索結果が存在しない時" do
         it "検索結果が存在しないことを示すダイアログが表示されること" do
           page.accept_confirm("該当する結果がありませんでした：INVALID_REQUEST") do
@@ -280,7 +280,7 @@ RSpec.describe "posts", type: :system, js: true do
       end
     end
 
-    describe "住所の検索" do
+    describe "住所の検索", ciskip: true do
       context "検索結果が存在しない時" do
         it "検索結果が存在しないことを示すダイアログが表示されること" do
           page.accept_confirm("該当する結果がありませんでした：INVALID_REQUEST") do
@@ -486,7 +486,7 @@ RSpec.describe "posts", type: :system, js: true do
           end
         end
 
-        it "マーカーピンをクリックするとinfowindowが表示されること" do
+        it "マーカーピンをクリックするとinfowindowが表示されること", ciskip: true do
           within "#post-map" do
             find("div[title='marker-#{post.id}']").click
           end

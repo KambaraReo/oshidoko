@@ -28,6 +28,7 @@ jobs:
       BUNDLE_RETRY: "3"
       MYAPP_DATABASE_HOST: "127.0.0.1"
       RAILS_ENV: test
+      SEND_MAIL: "tester@example.com"
     resource_class: small
     working_directory: ~/oshidoko
     steps:
@@ -42,7 +43,7 @@ jobs:
       - run: bundle exec bin/webpack
       - run:
           name: run rspec
-          command: bundle exec rspec
+          command: bundle exec rspec --tag ~ciskip
 
   rubocop:
     docker:
