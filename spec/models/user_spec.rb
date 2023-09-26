@@ -50,6 +50,12 @@ RSpec.describe User, type: :model do
       expect(user.errors[:email]).to include("を入力してください")
     end
 
+    it "メールアドレスのフォーマットが不適切である場合は無効であること" do
+      user = build(:user, email: "tester_1@example")
+      expect(user).to_not be_valid
+      expect(user.errors[:email]).to include("は不正な値です")
+    end
+
     it "既に使用されているメールアドレスの場合は無効であること" do
       create(:user)
       other_user = build(:user, email: "#{user.email}")
