@@ -52,7 +52,7 @@ RSpec.describe User, type: :model do
 
     it "既に使用されているメールアドレスの場合は無効であること" do
       create(:user)
-      other_user = build(:user)
+      other_user = build(:user, email: "#{user.email}")
       expect(other_user).to_not be_valid
       expect(other_user.errors[:email]).to include("はすでに存在します")
     end
