@@ -33,6 +33,12 @@ RSpec.describe Post, type: :model do
       expect(post.errors[:title]).to include("は30文字以内で入力してください")
     end
 
+    it "関連URLが101文字以上の場合は無効であること" do
+      post = build(:post, url: "a" * 101)
+      expect(post).to_not be_valid
+      expect(post.errors[:url]).to include("は100文字以内で入力してください")
+    end
+
     it "説明が400文字以上の場合は無効であること" do
       post = build(:post, description: "a" * 401)
       expect(post).to_not be_valid
