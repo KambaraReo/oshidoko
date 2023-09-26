@@ -34,18 +34,20 @@
     <% end %>
     <div class="content">
       <div class="content-left">
-        <% if @post.pictures.attached? %>
-          <div class="slider">
-            <% @post.pictures.each do |picture| %>
-              <%= image_tag picture, class: "picture", size: "350x250" %>
-            <% end %>
-          </div>
-        <% else %>
-          <%= image_tag "default_post.png", class: "picture", size: "350x250" %>
-        <% end %>
+        <div class="pictures">
+          <% if @post.pictures.attached? %>
+            <div class="slider">
+              <% @post.pictures.each do |picture| %>
+                <%= image_tag picture, class: "picture", size: "350x250" %>
+              <% end %>
+            </div>
+          <% else %>
+            <%= image_tag "default_post.png", class: "picture", size: "350x250" %>
+          <% end %>
+        </div>
         <div>
           <div class="address"><%= @post.address %></div>
-          <div id='post-map' ></div>
+          <div id='post-map'></div>
         </div>
       </div>
       <div class="content-right">
@@ -62,17 +64,19 @@
             <% end %>
           </div>
           <div class="description"><%= @post.description %></div>
-          <% unless @post.members.empty? %>
-            <div class="members-involved">
-              <i class="fa-solid fa-person-dress"></i>
-              関連メンバー
-            </div>
-            <div>
-              <% @post.members.each do |member| %>
-                <span class="member-name"><%= member.name %></span>
-              <% end %>
-            </div>
-          <% end %>
+          <div class="members">
+            <% unless @post.members.empty? %>
+              <div class="members-involved">
+                <i class="fa-solid fa-person-dress"></i>
+                関連メンバー
+              </div>
+              <div>
+                <% @post.members.each do |member| %>
+                  <span class="member-name"><%= member.name %></span>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
         <div class="favorite-area" id="favorite-post-<%= @post.id %>">
           <% if user_signed_in? && @post.favorited?(@user) %>
@@ -110,13 +114,15 @@
       zoom: 15,
     });
 
+    markerId = 'marker-' + <%= @post.id %>;
     marker = new google.maps.Marker({
       position: { lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
       map: map,
       icon: {
         url: '/assets/marker.svg',
         scaledSize: new google.maps.Size(50, 50)
-      }
+      },
+      title: markerId
     });
 
     infowindow = new google.maps.InfoWindow({

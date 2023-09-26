@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 30 }
+  validates :url, length: { maximum: 100 }
   validates :description, length: { maximum: 400 }
   validates :address, presence: true
 
