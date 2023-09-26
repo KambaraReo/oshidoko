@@ -5,7 +5,7 @@ RSpec.describe Post, type: :model do
 
   describe "validations" do
     it "タイトル, 関連URL, 説明, 住所, 緯度, 経度, 投稿ユーザーIDが有効な状態であること" do
-      post = build(:post, url: "https://tokyo.example.jp", description: "東京駅です。")
+      post = build(:post, url: "https://test.example.jp", description: "this is a description for test")
       expect(post).to be_valid
     end
 
