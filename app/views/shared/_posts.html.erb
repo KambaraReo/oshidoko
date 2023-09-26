@@ -3,17 +3,17 @@
   <% posts.each do |post| %>
     <div class="post">
       <span class="hidden-over-767px post-upper my-post-upper">
-        <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
+        <div class="post-created-at"><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
         <div class="links">
           <div class="positive-link">
-            <%= link_to post_path(post) do %><i class="fa-solid fa-circle-info"></i><% end %>
+            <%= link_to post_path(post), class: "info-link", data: { "turbolinks" => false } do %><i class="fa-solid fa-circle-info"></i><% end %>
           </div>
           <% if user == post.user %>
             <div class="positive-link">
-              <%= link_to edit_post_path(post), data: { "turbolinks" => false } do %><i class="fa-regular fa-pen-to-square"></i><% end %>
+              <%= link_to edit_post_path(post), class: "edit-link", data: { "turbolinks" => false } do %><i class="fa-regular fa-pen-to-square"></i><% end %>
             </div>
             <div class="negative-link">
-              <%= link_to post_path(post), method: :delete, data: { confirm: "投稿を削除しますか？" } do %><i class="fa-solid fa-trash"></i><% end %>
+              <%= link_to post_path(post), method: :delete, class: "delete-link", data: { confirm: "投稿を削除しますか？" } do %><i class="fa-solid fa-trash"></i><% end %>
             </div>
           <% end %>
         </div>
@@ -57,23 +57,23 @@
         </div>
       </div>
       <div class="post-right">
-        <div><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
+        <div class="post-created-at"><%= post.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
         <div class="links">
           <div class="positive-link">
-            <%= link_to post_path(post), data: { "turbolinks" => false } do %>
+            <%= link_to post_path(post), class: "info-link", data: { "turbolinks" => false } do %>
               <i class="fa-solid fa-circle-info"></i>
               詳細
             <% end %>
           </div>
           <% if user == post.user %>
             <div class="positive-link">
-              <%= link_to edit_post_path(post), data: { "turbolinks" => false } do %>
+              <%= link_to edit_post_path(post), class: "edit-link", data: { "turbolinks" => false } do %>
                 <i class="fa-regular fa-pen-to-square"></i>
                 編集
               <% end %>
             </div>
             <div class="negative-link">
-              <%= link_to post_path(post), method: :delete, data: { confirm: "投稿を削除しますか？" } do %>
+              <%= link_to post_path(post), method: :delete, class: "delete-link", data: { confirm: "投稿を削除しますか？" } do %>
                 <i class="fa-solid fa-trash"></i>
                 削除
               <% end %>

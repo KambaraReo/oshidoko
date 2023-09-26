@@ -6,7 +6,7 @@
       <p class="guidance">確認メールが届かない場合は、以下より再送してください。</p>
     </div>
 
-    <div class="password-reset-form col-md-8 col-lg-6">
+    <div class="confirmation-resend-form col-md-8 col-lg-6">
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
         <div class="field">
           <%= f.label :email, "メールアドレス" %><br>
