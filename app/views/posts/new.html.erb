@@ -21,6 +21,11 @@
         <div class="field">
           <%= f.label :url, "関連URL" %>
           <%= f.text_field :url, placeholder: "例) hinatazaka.jp" %>
+          <span class="error-message">
+            <% if @post.errors.include?(:url) %>
+              <%= @post.errors.full_messages_for(:url).first %>
+            <% end %>
+          </span>
         </div>
 
         <div class="member-field">
@@ -69,7 +74,9 @@
           <%= f.file_field :pictures, accept: 'image/jpeg, image/jpg, image/png', multiple: true %>
           <span class="error-message">
             <% if @post.errors.include?(:pictures) %>
-              <%= @post.errors.full_messages_for(:pictures).first %>
+              <% @post.errors.full_messages_for(:pictures).each do |message| %>
+                <%= message %><br>
+              <% end %>
             <% end %>
           </span>
         </div>

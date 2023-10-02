@@ -32,11 +32,13 @@ class UsersController < ApplicationController
   def edit_password
     @user = current_user
     @minimum_password_length = Devise.password_length.min
+    @maximum_password_length = Devise.password_length.max
   end
 
   def update_password
     @user = current_user
     @minimum_password_length = Devise.password_length.min
+    @maximum_password_length = Devise.password_length.max
     if @user.update_with_password(user_params)
       sign_out @user
       flash[:notice] = "パスワードが更新されました。ログアウトしました。"

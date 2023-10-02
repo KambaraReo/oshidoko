@@ -10,8 +10,10 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
-  devise_for :users,
-    controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+  }
   resources :users, only: [:show] do
     collection do
       get 'mypage'

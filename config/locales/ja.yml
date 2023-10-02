@@ -30,6 +30,7 @@ ja:
         updated_at: 更新日
       post:
         title: 場所・施設名
+        url: 関連URL
         description: 説明
         address: 住所
         pictures: 画像

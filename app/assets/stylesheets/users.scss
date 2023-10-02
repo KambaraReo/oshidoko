@@ -1,4 +1,4 @@
-// ユーザー登録，ログイン
+// ユーザー登録，ログイン，確認メール再送，パスワード再設定
 .form-container {
   display: flex;
   align-items: center;
@@ -33,39 +33,39 @@
   margin-top: 7px;
 }
 
-.sign-up-form, .log-in-form, .password-reset-form {
+.sign-up-form, .log-in-form, .password-reset-form, .confirmation-resend-form {
   color: #535353;
   font-size: 14px;
   font-weight: 400;
   margin: auto;
 }
 
-.sign-up-form .field, .log-in-form .field, .password-reset-form .field {
+.sign-up-form .field, .log-in-form .field, .password-reset-form .field, .confirmation-resend-form .field {
   height: 85px;
 }
 
-.sign-up-form .field input, .log-in-form .field input, .password-reset-form .field input {
+.sign-up-form .field input, .log-in-form .field input, .password-reset-form .field input, .confirmation-resend-form .field input {
   width: 100%;
   border: 1px solid rgb(142, 142, 142);
   border-radius: 6px;
   padding: 6px 10px;
 }
 
-.sign-up-form input::placeholder, .log-in-form input::placeholder, .password-reset-form input::placeholder {
+.sign-up-form input::placeholder, .log-in-form input::placeholder, .password-reset-form input::placeholder, .confirmation-resend-form input::placeholder {
   font-size: 12px;
 }
 
-.sign-up-form .icon-std, .log-in-form .icon-std {
+.sign-up-form .icon-std, .log-in-form .icon-std, .password-reset-form .icon-std {
   position: relative;
 }
 
-.sign-up-form #password-toggle, .log-in-form #password-toggle, .sign-up-form #password-confirmation-toggle {
+.sign-up-form #password-toggle, .log-in-form #password-toggle, .sign-up-form #password-confirmation-toggle, .password-reset-form #password-toggle, .password-reset-form #password-confirmation-toggle {
   position: absolute;
   top: 28px;
   right: 8px;
 }
 
-.sign-up-form .error-message, .password-reset-form .error-message {
+.sign-up-form .error-message, .password-reset-form .error-message, .confirmation-resend-form .error-message {
   color: red;
   font-size: smaller;
 }
@@ -78,11 +78,20 @@
   vertical-align: top;
 }
 
-.sign-up-form .actions, .log-in-form .actions, .password-reset-form .actions {
+.sign-up-form .actions, .log-in-form .actions {
   text-align: center;
 }
 
-.sign-up-form .actions input, .log-in-form .actions input, .password-reset-form .actions input {
+.password-reset-form .actions, .confirmation-resend-form .actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.sign-up-form .create-account {
+  margin-top: 20px;
+}
+
+.sign-up-form .actions input, .log-in-form .actions input, .password-reset-form .actions input, .confirmation-resend-form .actions input {
   padding: 0 1.8em;
   min-width: 80%;
   line-height: 3.5;
@@ -97,11 +106,11 @@
   cursor: pointer;
 }
 
-.sign-up-form .actions input:hover, .log-in-form .actions input:hover, .password-reset-form .actions input:hover {
+.sign-up-form .actions input:hover, .log-in-form .actions input:hover, .password-reset-form .actions input:hover, .confirmation-resend-form .actions input:hover {
   box-shadow: 5px 5px 10px #afafaf;
 }
 
-.sign-up-form .actions input:active, .log-in-form .actions input:active, .password-reset-form .actions input:active {
+.sign-up-form .actions input:active, .log-in-form .actions input:active, .password-reset-form .actions input:active, .confirmation-resend-form .actions input:active {
   box-shadow: 5px 5px 10px #afafaf;
 }
 
@@ -117,19 +126,19 @@
   width: auto;
 }
 
-.sign-up-form .log-in-link {
+.sign-up-form .log-in-link, .password-reset-form .log-in-link {
   margin-top: 20px;
   border-top: 1px solid #c1c1c1;
   text-align: center;
 }
 
-.log-in-form .links, .password-reset-form .links {
+.log-in-form .links, .password-reset-form .links, .confirmation-resend-form .links {
   margin-top: 35px;
   border-top: 1px solid #c1c1c1;
   text-align: center;
 }
 
-.sign-up-form .log-in-link a, .log-in-form .links a, .password-reset-form .links a {
+.sign-up-form .log-in-link a, .password-reset-form .log-in-link a, .log-in-form .links a, .password-reset-form .links a, .confirmation-resend-form .links a {
   display: inline-block;
   margin-top: 7px;
   font-size: 13px;
@@ -156,7 +165,7 @@
     font-size: 15px;
   }
 
-  .log-in-form .actions input, .password-reset-form .actions input {
+  .log-in-form .actions input, .password-reset-form .actions input, .confirmation-resend-form .actions input {
     font-size: 15px;
   }
 }
@@ -791,6 +800,10 @@
 
   .user-info-container .negative-link a {
     color: #ff7b7b;
+  }
+
+  .user-info-container .address {
+    font-size: 11.5px;
   }
 }
 
