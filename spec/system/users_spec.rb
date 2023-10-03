@@ -291,6 +291,18 @@ RSpec.describe "users", type: :system, js: true do
     end
 
     describe "リンク" do
+      it "ゲストログインをクリックした時, ゲスト用アカウントでログインされ, トップページに遷移すること" do
+        click_link "ゲストログイン"
+        expect(page).to have_current_path root_path
+
+        within ".notice" do
+          expect(page).to have_content "ゲストユーザーとしてログインしました。"
+        end
+        within ".header" do
+          expect(page).to have_content "ゲスト"
+        end
+      end
+
       it "新規登録はこちらからをクリックした時, ユーザー登録ページに遷移すること" do
         click_link "新規登録はこちらから"
         expect(page).to have_current_path new_user_registration_path
@@ -605,6 +617,19 @@ RSpec.describe "users", type: :system, js: true do
       end
     end
 
+    describe "ゲスト用アカウントのメールアドレスを入力した場合" do
+      it "ログインページに遷移し, 適切なアラートが表示されること" do
+        fill_in "user[email]", with: "guest@example.com"
+
+        click_on "送信する"
+
+        expect(page).to have_current_path new_user_session_path
+        within ".alert" do
+          expect(page).to have_content "ゲストユーザーのパスワード再設定はできません。"
+        end
+      end
+    end
+
     describe "リンク" do
       it "ログインはこちらからをクリックした時, ログインページに遷移すること" do
         click_link "ログインはこちらから"
@@ -853,6 +878,32 @@ RSpec.describe "users", type: :system, js: true do
         expect(page).to have_content "メールアドレスは不正な値です"
       end
     end
+
+    context "ゲスト用アカウントでログインしている場合" do
+      let(:guest_user) { User.guest }
+
+      before do
+        logout(user)
+        login(guest_user)
+        # visit new_user_session_path
+        # click_link "ゲストログイン"
+        visit edit_user_registration_path
+      end
+
+      it "メールアドレスを変更できないこと" do
+        fill_in "user[email]", with: "new_#{guest_user.email}"
+        click_on "更新"
+
+        expect(page).to have_current_path mypage_users_path
+        within ".alert" do
+          expect(page).to have_content "ゲストユーザーは更新できません。"
+        end
+        within ".link-field-email" do
+          expect(page).to have_content guest_user.email
+          expect(page).to_not have_content "new_#{guest_user.email}"
+        end
+      end
+    end
   end
 
   describe "パスワード変更ページ" do
@@ -955,6 +1006,30 @@ RSpec.describe "users", type: :system, js: true do
       end
     end
 
+    context "ゲスト用アカウントでログインしている場合" do
+      let(:guest_user) { User.guest }
+
+      before do
+        logout(user)
+        login(guest_user)
+        # visit new_user_session_path
+        # click_link "ゲストログイン"
+        visit edit_password_users_path
+      end
+
+      it "パスワードを変更できないこと" do
+        fill_in "user[current_password]", with: guest_user.password
+        fill_in "user[password]", with: "new_#{guest_user.password}"
+        fill_in "user[password_confirmation]", with: "new_#{guest_user.password}"
+        click_on "更新"
+
+        expect(page).to have_current_path mypage_users_path
+        within ".alert" do
+          expect(page).to have_content "ゲストユーザーは更新できません。"
+        end
+      end
+    end
+
     describe "パスワード表示/非表示切り替え機能の確認" do
       before do
         fill_in "user[current_password]", with: user.password
@@ -1003,6 +1078,7 @@ RSpec.describe "users", type: :system, js: true do
 
   describe "退会ページ" do
     let(:user) { create(:user) }
+    let(:guest_user) { User.guest }
 
     before do
       login(user)
@@ -1047,6 +1123,21 @@ RSpec.describe "users", type: :system, js: true do
         within ".navbar" do
           expect(page).to have_link "ログイン"
           expect(page).to have_link "新規登録"
+        end
+      end
+
+      it "ゲスト用アカウントでログインしている場合は退会できないこと" do
+        logout(user)
+        login(guest_user)
+        visit confirm_withdrawal_users_path
+
+        page.accept_confirm("本当に退会しますか？") do
+          click_link "退会する"
+        end
+
+        expect(page).to have_current_path mypage_users_path
+        within ".alert" do
+          expect(page).to have_content "ゲストユーザーは退会できません。"
         end
       end
     end
