@@ -39,12 +39,16 @@ class UsersController < ApplicationController
     @user = current_user
     @minimum_password_length = Devise.password_length.min
     @maximum_password_length = Devise.password_length.max
-    if @user.update_with_password(user_params)
-      sign_out @user
-      flash[:notice] = "パスワードが更新されました。ログアウトしました。"
-      redirect_to root_path
+    if @user.email == "guest@example.com"
+      redirect_to mypage_users_path, alert: "ゲストユーザーは更新できません。"
     else
-      render "edit_password"
+      if @user.update_with_password(user_params)
+        sign_out @user
+        flash[:notice] = "パスワードが更新されました。ログアウトしました。"
+        redirect_to root_path
+      else
+        render "edit_password"
+      end
     end
   end
 
