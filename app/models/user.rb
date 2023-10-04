@@ -68,6 +68,16 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  # ゲストユーザー
+  def self.guest
+    find_or_create_by!(email: "guest@example.com") do |user|
+      user.password = SecureRandom.urlsafe_base64(12)
+      user.password_confirmation = user.password
+      user.username = "ゲスト"
+      user.confirmed_at = Time.now
+    end
+  end
+
   private
 
   def check_icon_type

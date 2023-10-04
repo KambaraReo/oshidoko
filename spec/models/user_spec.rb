@@ -235,4 +235,18 @@ RSpec.describe User, type: :model do
       expect(user.following?(other_user)).to be_falsey
     end
   end
+
+  describe ".guest" do
+    it "属性値が適切に設定された状態でゲスト用のユーザーが作成されること" do
+      expect do
+        user = User.guest
+        expect(user.email).to eq("guest@example.com")
+        expect(user.password).to_not be_nil
+        expect(user.password_confirmation).to_not be_nil
+        expect(user.password).to eq(user.password_confirmation)
+        expect(user.username).to eq("ゲスト")
+        expect(user.confirmed_at).to be_within(1.second).of(Time.now)
+      end.to change { User.count }.by(1)
+    end
+  end
 end

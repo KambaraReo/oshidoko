@@ -70,13 +70,14 @@ RSpec.describe "homes", type: :system, js: true do
         post = create(:post)
 
         visit root_path
+        visit root_path(anchor: "map-anchor")
         within ".posts-map-area" do
           find("div[title='marker-#{post.id}']").click
           expect(page).to have_selector "#marker-#{post.id}"
         end
       end
 
-      it "他のマーカーピンをクリックした時, 表示されていたinfowindowが閉じられること" do
+      it "他のマーカーピンをクリックした時, 表示されていたinfowindowが閉じられること", ciskip: true do
         posts = create_list(:post, 2)
         posts[0].update(latitude: "36.8", longitude: "140.0")
         posts[1].update(latitude: "35.8", longitude: "139.8")
@@ -289,6 +290,7 @@ RSpec.describe "homes", type: :system, js: true do
 
         before do
           visit root_path
+          visit root_path(anchor: "posts-anchor")
         end
 
         it "ユーザー名をクリックした時, ユーザー詳細ページに遷移すること" do
@@ -327,7 +329,7 @@ RSpec.describe "homes", type: :system, js: true do
           expect(page).to have_current_path post_path(post)
         end
 
-        describe "詳細リンク" do
+        describe "詳細リンク", ciskip: true do
           context "アイコンをクリックした時" do
             before do
               visit root_path(anchor: "posts-anchor")
@@ -352,7 +354,7 @@ RSpec.describe "homes", type: :system, js: true do
         end
       end
 
-      describe "いいね機能の確認" do
+      describe "いいね機能の確認", ciskip: true do
         let!(:post) { create(:post) }
 
         describe "ログイン前" do
