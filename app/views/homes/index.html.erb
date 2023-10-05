@@ -182,6 +182,30 @@
 </div>
 
 <script>
+  class Random {
+    constructor(seed = 88675123) {
+      this.x = 123456789;
+      this.y = 362436069;
+      this.z = 521288629;
+      this.w = seed;
+    }
+    
+    // XorShift
+    next() {
+      let t;
+
+      t = this.x ^ (this.x << 11);
+      this.x = this.y; this.y = this.z; this.z = this.w;
+      return this.w = (this.w ^ (this.w >>> 19)) ^ (t ^ (t >>> 8)); 
+    }
+
+    // min以上max以下の乱数(整数)を生成する
+    nextInt(min, max) {
+      const r = Math.abs(this.next());
+      return min + (r % (max + 1 - min));
+    }
+  }
+
   function initMap() {
     // 初期表示位置
     let latlng = new google.maps.LatLng(35.65263243481742, 139.73823818822285); //港区日向坂
@@ -206,11 +230,29 @@
     transitLayer.setMap(map);
 
     // 投稿した場所のマーカーを設置
+    let coordinateHashTable = {}; // 重複チェック用のハッシュテーブル
     let infowindows = []; // マーカーに対応するinfowindow(詳細情報)を格納する配列
+    const seed = 46;
+    const random = new Random(seed);
 
     <% @all_posts.each do |post| %>
-      ( function() {
-        let markerLatLng = { lat: <%= post.latitude %>, lng: <%= post.longitude %> }; // 緯度経度のデータ作成
+      (function() {
+        let lat = <%= post.latitude %>;
+        let lng = <%= post.longitude %>;
+        let key = `${lat},${lng}`;
+
+        // 重複チェック
+        const earthRadius = 6371000; // 地球の半径：約6,371,000m
+        const radiusInMeters = 10; // 座標のズレを約半径10メートル以内に収めるためのパラメータ
+
+        while (coordinateHashTable[key]) {
+          lat += ((random.nextInt(0, 10) / 10) - 0.5) * (radiusInMeters / earthRadius) * (180 / Math.PI);
+          lng += ((random.nextInt(0, 10) / 10) - 0.5) * (radiusInMeters / earthRadius) * (180 / Math.PI) / Math.cos(lat * Math.PI / 180);
+          key = `${lat},${lng}`;
+        }
+        coordinateHashTable[key] = true; // 重複がなければ座標をハッシュテーブルに追加
+
+        let markerLatLng = { lat: lat, lng: lng }; // 緯度経度のデータ作成
         let markerId = 'marker-' + <%= post.id %>;
         let marker = new google.maps.Marker({
           position: markerLatLng,
