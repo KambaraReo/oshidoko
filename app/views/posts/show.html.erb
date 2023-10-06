@@ -119,8 +119,8 @@
       position: { lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
       map: map,
       icon: {
-        url: '<%= asset_path("marker.svg") %>',
-        scaledSize: new google.maps.Size(50, 50)
+        url: '<%= asset_path("poka_marker.png") %>',
+        scaledSize: new google.maps.Size(42, 35)
       },
       title: markerId
     });
