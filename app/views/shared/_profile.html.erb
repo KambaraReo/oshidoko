@@ -18,14 +18,16 @@
           <p class="hidden-within-767px">プロフィール編集</p>
         <% end %>
       <% else %>
-        <%= render "shared/follow_btn", user: user %>
+        <div id="follow-<%= user.id %>">
+          <%= render "shared/follow_btn", user: user %>
+        </div>
       <% end %>
     </div>
     <h4 class="profile-area-username"><%= user.username %></h4>
     <div class="profile-area-middle">
       <div class="profile-area-ff">
         <%= link_to "#{user.following_users.count}フォロー", follows_user_path(user), class: "ff-link" %>
-        <%= link_to "#{user.follower_users.count}フォロワー", followers_user_path(user), class: "ff-link" %>
+        <%= link_to "#{user.follower_users.count}フォロワー", followers_user_path(user), class: "ff-link", id: "follower-link" %>
       </div>
     </div>
     <div class="profile-area-introduction">

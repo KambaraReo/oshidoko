@@ -1271,6 +1271,7 @@ RSpec.describe "users", type: :system, js: true do
       it "フォロー済みでフォローボタンをクリックした場合, ボタンの表示がフォローになり, フォロワー数の表示が1減ること" do
         within ".profile-area-top" do
           find(".btn-follow").click
+          expect(page).to have_css ".btn-unfollow"
         end
 
         initial_count = other_user_1.follower_users.count
@@ -1326,7 +1327,7 @@ RSpec.describe "users", type: :system, js: true do
 
           expect(page).to have_current_path new_user_session_path
           within ".alert" do
-            expect(page).to have_content "ログインもしくはアカウント登録してください。"
+            expect(page).to have_content "ログインが必要です。"
           end
         end
 
@@ -1853,11 +1854,14 @@ RSpec.describe "users", type: :system, js: true do
 
         describe "フォローボタン" do
           context "ログインユーザーのフォローページの場合" do
-            it "フォロー中と表示されているボタンをクリックするとフォローが外れ, 該当ユーザーが表示されないこと" do
-              within ".content" do
-                all(".btn-unfollow")[0].click
-                expect(page).to_not have_content other_user_1.username
-                expect(page).to have_content other_user_2.username
+            it "フォロー中と表示されているボタンをクリックするとフォローが外れ, 該当ユーザーの表示が消えずにボタンの表示がフォローになること" do
+              within all(".user")[0] do
+                within ".profile-area-top" do
+                  find(".btn-unfollow").click
+
+                  expect(page).to have_css ".btn-follow"
+                  expect(page).to_not have_css ".btn-unfollow"
+                end
               end
             end
           end
@@ -1876,11 +1880,7 @@ RSpec.describe "users", type: :system, js: true do
               within all(".user")[1] do
                 within ".profile-area-top" do
                   find(".btn-unfollow").click
-                end
-              end
 
-              within all(".user")[1] do
-                within ".profile-area-top" do
                   expect(page).to have_css ".btn-follow"
                   expect(page).to_not have_css ".btn-unfollow"
                 end
@@ -1893,6 +1893,8 @@ RSpec.describe "users", type: :system, js: true do
               within all(".user")[1] do
                 within ".profile-area-top" do
                   find(".btn-unfollow").click
+
+                  expect(page).to have_css ".btn-follow"
                 end
               end
 
@@ -1901,11 +1903,7 @@ RSpec.describe "users", type: :system, js: true do
               within all(".user")[1] do
                 within ".profile-area-top" do
                   find(".btn-follow").click
-                end
-              end
 
-              within all(".user")[1] do
-                within ".profile-area-top" do
                   expect(page).to have_css ".btn-unfollow"
                   expect(page).to_not have_css ".btn-follow"
                 end
@@ -1985,11 +1983,7 @@ RSpec.describe "users", type: :system, js: true do
             within all(".user")[1] do
               within ".profile-area-top" do
                 find(".btn-unfollow").click
-              end
-            end
 
-            within all(".user")[1] do
-              within ".profile-area-top" do
                 expect(page).to have_css ".btn-follow"
                 expect(page).to_not have_css ".btn-unfollow"
               end
@@ -2002,6 +1996,8 @@ RSpec.describe "users", type: :system, js: true do
             within all(".user")[1] do
               within ".profile-area-top" do
                 find(".btn-unfollow").click
+
+                expect(page).to have_css ".btn-follow"
               end
             end
 
@@ -2010,11 +2006,7 @@ RSpec.describe "users", type: :system, js: true do
             within all(".user")[1] do
               within ".profile-area-top" do
                 find(".btn-follow").click
-              end
-            end
 
-            within all(".user")[1] do
-              within ".profile-area-top" do
                 expect(page).to have_css ".btn-unfollow"
                 expect(page).to_not have_css ".btn-follow"
               end

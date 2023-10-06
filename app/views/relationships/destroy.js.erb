@@ -1,0 +1,4 @@
+var followersCount = <%= @unfollow_user.follower_users.count %>;
+
+$('#follow-<%= @unfollow_user.id %>').html('<%= j( render "shared/follow_btn", user: @unfollow_user ) %>');
+$('#follower-link').html(followersCount + "フォロワー");

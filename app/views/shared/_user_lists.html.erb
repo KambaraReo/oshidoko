@@ -17,7 +17,9 @@
         </div>
         <div>
           <% if @user != user %>
-            <%= render "shared/follow_btn", user: user %>
+            <div id="follow-<%= user.id %>">
+              <%= render "shared/follow_btn", user: user %>
+            </div>
           <% end %>
         </div>
       </div>
