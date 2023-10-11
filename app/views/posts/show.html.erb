@@ -102,12 +102,12 @@
 </div>
 
 <script>
-  let map
-  let marker
-  let infowindow
+  let map;
+  let marker;
+  let infowindow;
 
   function initMap() {
-    geocoder = new google.maps.Geocoder()
+    geocoder = new google.maps.Geocoder();
 
     map = new google.maps.Map(document.getElementById('post-map'), {
       center: { lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
@@ -119,8 +119,8 @@
       position: { lat: <%= @post.latitude %>, lng: <%= @post.longitude %> },
       map: map,
       icon: {
-        url: '/assets/marker.svg',
-        scaledSize: new google.maps.Size(50, 50)
+        url: '<%= asset_path("poka_marker.png") %>',
+        scaledSize: new google.maps.Size(42, 35)
       },
       title: markerId
     });

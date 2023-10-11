@@ -221,13 +221,43 @@ ul {
 
 // フッター
 footer {
-  background-color: rgb(255, 255, 255);
+  background-color: #00a6ff82;
 }
 
 footer > div {
+  display: flex;
+  align-items: center;
+  width: 85%;
+  margin: 16px auto;
+}
+
+footer .logo {
   text-align: center;
-  font-size: 12px;
+}
+
+footer .copyright {
+  text-align: left;
+  font-size: 11px;
   font-family: "Roboto";
+  color: #575151;
+}
+
+footer .copyright > div {
+  margin-left: 16px;
+}
+
+@media screen and (max-width: 767px) {
+  footer > div {
+    flex-direction: column-reverse;
+  }
+
+  footer .logo {
+    margin-top: 20px;
+  }
+
+  footer .copyright > div {
+    margin-left: 0;
+  }
 }
 
 // ナビゲーションリンク

@@ -1,0 +1,4 @@
+var followersCount = <%= @follow_user.follower_users.count %>;
+
+$('#follow-<%= @follow_user.id %>').html('<%= j( render "shared/follow_btn", user: @follow_user ) %>');
+$('#follower-link').html(followersCount + "フォロワー");
