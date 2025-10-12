@@ -29,7 +29,10 @@ RUN bundle install
 COPY . /myapp
 
 # アセットをプリコンパイル（ビルド時に実行）
-RUN RAILS_ENV=production bundle exec rails assets:precompile
+# 本番環境では実行時にプリコンパイルするため、ここではスキップ
+ENV RAILS_ENV=production
+ENV RAILS_SERVE_STATIC_FILES=true
+ENV RAILS_LOG_TO_STDOUT=true
 
 # コンテナ起動時に実行させるスクリプトを追加
 COPY entrypoint.sh /usr/bin/
