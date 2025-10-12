@@ -9,4 +9,5 @@ data:
   RAILS_LOG_TO_STDOUT: "true"
   MINIO_BUCKET: "oshidoko-bucket"
   MINIO_ENDPOINT: "http://minio-service:9000"
+  MINIO_PUBLIC_ENDPOINT: "https://minio.oshidoko.reokambara.com"
   APP_HOST: "oshidoko.reokambara.com"
