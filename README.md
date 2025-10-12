@@ -14,7 +14,7 @@
 ## URL
 
 - https://oshidoko.reokambara.com/
-- ~~https://oshidoko-d1f4be94096c.herokuapp.com/~~(Heroku 運用停止中)
+- Heroku（運用停止中）: https://oshidoko-d1f4be94096c.herokuapp.com/
 
 ## 使い方
 
