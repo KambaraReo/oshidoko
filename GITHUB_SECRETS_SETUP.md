@@ -10,25 +10,32 @@ GitHub Actions で CI/CD を動作させるために、以下の Secrets をリ�
 
 ## 必要な Secrets
 
-### DOCKER_USERNAME
+### Docker 関連
 
-- Docker Hub のユーザー名
+- **DOCKER_USERNAME**
+- **DOCKER_PASSWORD**: Docker Hub の Personal Access Token
 
-### DOCKER_PASSWORD
+### Kubernetes 関連
 
-- Docker Hub の Personal Access Token
-- Docker Hub → Account Settings → Security → New Access Token
+- **KUBECONFIG**: k3s クラスターの kubeconfig ファイル（Base64 エンコード済み）
+  ```bash
+  cat /home/<ユーザー名>/k3s.yaml | base64 -w 0
+  ```
 
-### KUBECONFIG
+### アプリケーション関連
 
-- k3s クラスターの kubeconfig ファイル（Base64 エンコード済み）
-- VPS で以下のコマンドを実行して Base64 エンコード:
-
-```bash
-sudo cat /etc/rancher/k3s/k3s.yaml | base64 -w 0
-```
-
-- 出力された文字列を Secrets に設定
+- **GMAIL_SPECIFIC_PASSWORD**
+- **GOOGLE_MAP_API_KEY**
+- **SEND_MAIL**
+- **MINIO_ACCESS_KEY**
+- **MINIO_SECRET_KEY**
+- **MINIO_ROOT_USER**
+- **MINIO_ROOT_PASSWORD**
+- **MYAPP_DATABASE**
+- **MYAPP_DATABASE_USERNAME**
+- **MYAPP_DATABASE_PASSWORD**
+- **MYAPP_DATABASE_HOST**
+- **RAILS_MASTER_KEY**
 
 ## 設定確認
 

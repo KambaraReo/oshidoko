@@ -54,7 +54,23 @@ jobs:
           # Apply Kubernetes manifests
           kubectl apply -f k8s/namespace.yaml
           kubectl apply -f k8s/configmap.yaml
-          kubectl apply -f k8s/secret.yaml
+
+          # Create secret dynamically (since secret.yaml is gitignored)
+          kubectl create secret generic oshidoko-secret \
+            --from-literal=GMAIL_SPECIFIC_PASSWORD="${{ secrets.GMAIL_SPECIFIC_PASSWORD }}" \
+            --from-literal=MINIO_ACCESS_KEY="${{ secrets.MINIO_ACCESS_KEY }}" \
+            --from-literal=MINIO_SECRET_KEY="${{ secrets.MINIO_SECRET_KEY }}" \
+            --from-literal=MINIO_ROOT_USER="${{ secrets.MINIO_ROOT_USER }}" \
+            --from-literal=MINIO_ROOT_PASSWORD="${{ secrets.MINIO_ROOT_PASSWORD }}" \
+            --from-literal=MYAPP_DATABASE="${{ secrets.MYAPP_DATABASE }}" \
+            --from-literal=MYAPP_DATABASE_USERNAME="${{ secrets.MYAPP_DATABASE_USERNAME }}" \
+            --from-literal=MYAPP_DATABASE_PASSWORD="${{ secrets.MYAPP_DATABASE_PASSWORD }}" \
+            --from-literal=MYAPP_DATABASE_HOST="${{ secrets.MYAPP_DATABASE_HOST }}" \
+            --from-literal=RAILS_MASTER_KEY="${{ secrets.RAILS_MASTER_KEY }}" \
+            --from-literal=GOOGLE_MAP_API_KEY="${{ secrets.GOOGLE_MAP_API_KEY }}" \
+            --from-literal=SEND_MAIL="${{ secrets.SEND_MAIL }}" \
+            --namespace oshidoko \
+            --dry-run=client -o yaml | kubectl apply -f -
           kubectl apply -f k8s/mysql-deployment.yaml
           kubectl apply -f k8s/minio-deployment.yaml
           kubectl apply -f k8s/minio-ingress.yaml
