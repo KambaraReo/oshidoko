@@ -1,6 +1,7 @@
 FROM ruby:2.7.5
 
 ENV RAILS_ENV=production
+ENV BUNDLE_WITHOUT=development:test
 
 # yarnをインストール
 RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
@@ -26,6 +27,9 @@ RUN bundle install
 
 # ローカルのmyapp配下のファイルをコンテナ内のmyapp配下にコピー
 COPY . /myapp
+
+# アセットをプリコンパイル（ビルド時に実行）
+RUN RAILS_ENV=production bundle exec rails assets:precompile
 
 # コンテナ起動時に実行させるスクリプトを追加
 COPY entrypoint.sh /usr/bin/

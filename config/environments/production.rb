@@ -38,7 +38,10 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :amazon
+  config.active_storage.service = :minio_production
+
+  # MinIO用の設定
+  config.active_storage.variant_processor = :mini_magick
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -119,7 +122,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # メール送信用の設定
-  config.action_mailer.default_url_options = { host: 'https://oshidoko-d1f4be94096c.herokuapp.com/'}
+  config.action_mailer.default_url_options = { host: ENV['APP_HOST'] || 'localhost' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: oshidoko-ingress
+  namespace: oshidoko
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - oshidoko.reokambara.com
+      secretName: oshidoko-tls
+  rules:
+    - host: oshidoko.reokambara.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: oshidoko-web-service
+                port:
+                  number: 80

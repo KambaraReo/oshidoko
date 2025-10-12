@@ -7,12 +7,33 @@ local:
   root: <%= Rails.root.join("storage") %>
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
-amazon:
+# amazon:
+#   service: S3
+#   access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+#   secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+#   region: <%= ENV['AWS_REGION'] %>
+#   bucket: <%= ENV['AWS_BUCKET'] %>
+
+minio:
   service: S3
-  access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
-  secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
-  region: <%= ENV['AWS_REGION'] %>
-  bucket: <%= ENV['AWS_BUCKET'] %>
+  access_key_id: <%= ENV['MINIO_ACCESS_KEY'] %>
+  secret_access_key: <%= ENV['MINIO_SECRET_KEY'] %>
+  region: "us-east-1"
+  bucket: <%= ENV['MINIO_BUCKET'] %>
+  endpoint: <%= ENV['MINIO_ENDPOINT'] %>
+  force_path_style: true
+  public: true
+
+# 本番環境用MinIO設定（外部URL使用）
+minio_production:
+  service: S3
+  access_key_id: <%= ENV['MINIO_ACCESS_KEY'] %>
+  secret_access_key: <%= ENV['MINIO_SECRET_KEY'] %>
+  region: "us-east-1"
+  bucket: <%= ENV['MINIO_BUCKET'] %>
+  endpoint: <%= ENV['MINIO_PUBLIC_ENDPOINT'] %>
+  force_path_style: true
+  public: true
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:

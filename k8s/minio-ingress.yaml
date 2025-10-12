@@ -1,0 +1,26 @@
+# MinIO API用Ingress（画像表示用）
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minio-api-ingress
+  namespace: oshidoko
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - minio.oshidoko.reokambara.com
+      secretName: minio-api-tls
+  rules:
+    - host: minio.oshidoko.reokambara.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: minio-service
+                port:
+                  number: 9000
