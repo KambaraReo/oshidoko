@@ -1,15 +1,14 @@
 name: Deploy to k3s
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
     types: [closed]
+  workflow_dispatch: # 手動実行を可能にする
 
 jobs:
   deploy:
-    if: github.event.pull_request.merged == true || github.ref == 'refs/heads/main'
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
 
     steps:
@@ -34,6 +33,10 @@ jobs:
           tags: sakuraore/oshidoko:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          build-args: |
+            RAILS_ENV=production
+            SECRET_KEY_BASE=dummy_secret_key_for_assets_precompile
+            RAILS_MASTER_KEY=dummy_master_key_for_assets_precompile
 
       - name: Setup kubectl
         uses: azure/setup-kubectl@v3

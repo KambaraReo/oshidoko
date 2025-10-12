@@ -29,7 +29,13 @@ RUN bundle install
 COPY . /myapp
 
 # アセットをプリコンパイル（ビルド時に実行）
-RUN RAILS_ENV=production bundle exec rails assets:precompile
+ARG RAILS_ENV=production
+ARG SECRET_KEY_BASE=dummy_secret_key_for_assets_precompile
+ARG RAILS_MASTER_KEY=dummy_master_key_for_assets_precompile
+ENV RAILS_ENV=${RAILS_ENV}
+ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
+ENV RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+RUN bundle exec rails assets:precompile
 
 # コンテナ起動時に実行させるスクリプトを追加
 COPY entrypoint.sh /usr/bin/
