@@ -135,7 +135,7 @@ Internet → Traefik Ingress → k3s Cluster
 
 ### 自動デプロイ
 
-- `main`ブランチに push または PR マージで自動実行
+- `main`ブランチに PR マージで自動実行
 - GitHub Actions の設定: `.github/workflows/deploy.yml`
 - 必要な Secrets 設定: [GITHUB_SECRETS_SETUP.md](./GITHUB_SECRETS_SETUP.md)
 
