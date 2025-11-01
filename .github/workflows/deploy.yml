@@ -87,9 +87,18 @@ jobs:
 
       - name: Initialize MinIO (if needed)
         run: |
+          # Get MinIO root password from secret
+          MINIO_ROOT_PASSWORD=$(kubectl get secret oshidoko-secret -n oshidoko -o jsonpath='{.data.MINIO_ROOT_PASSWORD}' | base64 -d)
+
+          # Set up MinIO client alias
+          if kubectl exec -n oshidoko deployment/minio -- mc alias set local http://localhost:9000 admin "$MINIO_ROOT_PASSWORD" 2>/dev/null; then
+            echo "MinIO client alias configured successfully"
+          else
+            echo "MinIO client alias already configured"
+          fi
+
           # Check if MinIO user already exists
-          if ! kubectl exec -n oshidoko deployment/minio -- mc admin user list local | grep -q "minio_oshidokoak"; then
-            kubectl exec -n oshidoko deployment/minio -- mc alias set local http://localhost:9000 admin adminpassword
+          if ! kubectl exec -n oshidoko deployment/minio -- mc admin user list local 2>/dev/null | grep -q "minio_oshidokoak"; then
             kubectl exec -n oshidoko deployment/minio -- mc admin user add local minio_oshidokoak minio_oshidokosk
             kubectl exec -n oshidoko deployment/minio -- mc admin policy attach local readwrite --user minio_oshidokoak
             kubectl exec -n oshidoko deployment/minio -- mc mb local/oshidoko-bucket --ignore-existing
