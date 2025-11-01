@@ -7,7 +7,15 @@ data:
   RAILS_ENV: "production"
   RAILS_SERVE_STATIC_FILES: "true"
   RAILS_LOG_TO_STDOUT: "true"
+
+  # データベース設定
+  MYAPP_DATABASE_HOST: "mysql-service"
+
+  # MinIO設定
   MINIO_BUCKET: "oshidoko-bucket"
   MINIO_ENDPOINT: "http://minio-service:9000"
   MINIO_PUBLIC_ENDPOINT: "https://minio.oshidoko.reokambara.com"
+  MINIO_ROOT_USER: "admin"
+
+  # アプリケーション設定
   APP_HOST: "oshidoko.reokambara.com"

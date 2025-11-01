@@ -7,8 +7,8 @@ echo "Starting deployment to k3s..."
 
 # Docker buildxが利用可能か確認
 if ! docker buildx version > /dev/null 2>&1; then
-  echo "Docker buildx is not available. Please install Docker Desktop or enable buildx."
-  exit 1
+    echo "Docker buildx is not available. Please install Docker Desktop or enable buildx."
+    exit 1
 fi
 
 # Docker イメージを x86_64 向けにビルドして Docker Hub に直接 push
@@ -25,6 +25,23 @@ echo "Applying Kubernetes manifests..."
 kubectl apply -f k8s/namespace.yaml
 kubectl apply -f k8s/configmap.yaml
 kubectl apply -f k8s/secret.yaml
+kubectl apply -f k8s/cluster-issuer.yaml
+
+# Docker Hub認証設定（プライベートリポジトリの場合）
+echo "Creating Docker registry credentials..."
+
+# secretからDocker認証情報を取得
+DOCKER_USERNAME=$(kubectl get secret oshidoko-secret -n oshidoko -o jsonpath='{.data.DOCKER_USERNAME}' | base64 -d)
+DOCKER_PASSWORD=$(kubectl get secret oshidoko-secret -n oshidoko -o jsonpath='{.data.DOCKER_PASSWORD}' | base64 -d)
+DOCKER_EMAIL=$(kubectl get secret oshidoko-secret -n oshidoko -o jsonpath='{.data.DOCKER_EMAIL}' | base64 -d)
+
+kubectl create secret docker-registry regcred \
+    --docker-server=https://index.docker.io/v1/ \
+    --docker-username="$DOCKER_USERNAME" \
+    --docker-password="$DOCKER_PASSWORD" \
+    --docker-email="$DOCKER_EMAIL" \
+    -n oshidoko \
+    --dry-run=client -o yaml | kubectl apply -f -
 
 # データベース(MySQL) とストレージ(MinIO) を先にデプロイ
 echo "Deploying database and storage..."
