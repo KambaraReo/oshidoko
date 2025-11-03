@@ -38,4 +38,8 @@ yarn-debug.log*
 
 .vscode
 
+# k8s documents
 k8s/secret.yaml
+
+# local管理するスクリプト
+local-scripts/
